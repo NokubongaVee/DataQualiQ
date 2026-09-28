@@ -1,0 +1,35 @@
+# Dependencies and generated builds
+**/node_modules/
+**/venv/
+**/.venv/
+**/dist/
+**/__pycache__/
+*.py[cod]
+**/.pytest_cache/
+**/.vite/
+**/coverage/
+
+# Credentials, local configuration and private datasets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+credentials*.json
+**/uploads/
+**/private_data/
+*.log
+
+# Local tooling / generated browser artifacts
+**/.qodo/
+**/.codex/
+**/.agents/
+**/.vscode/
+**/.idea/
+**/responsive-test-artifacts/
+.publication-tools/
+github-publication/
+.DS_Store
+Thumbs.db

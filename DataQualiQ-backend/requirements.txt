@@ -1,0 +1,6 @@
+# Versions used for the verified Python 3.13 environment.
+fastapi==0.141.1
+uvicorn==0.52.4
+pandas==3.0.5
+numpy==2.5.2
+python-multipart==0.0.32

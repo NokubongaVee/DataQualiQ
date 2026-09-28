@@ -1,0 +1,11 @@
+Name,Email,Signup Date,Country,Order Amount
+Demo Person 01,demo01@example.com,2024-01-15,United States,49.99
+Demo Person 02,demo02@example,2024-13-40,USA,32.50
+Demo Person 02,demo03@example.com,2024-02-02,USA,32.50
+Demo Person 03,,2024-03-11,Mexico,18.75
+Demo Person 04,demo04@example.com,2024-04-05,China,54.20
+Demo Person 05,demo05@example.com,2024-05-22,Italy,29.99
+Demo Person 06,demo06@example.com,2024-06-10,Japan,41.10
+Demo Person 07,demo07@example.com,2024-07-19,United States,38.60
+Demo Person 08,invalid-email,2024-08-02,UAE,26.40
+Demo Person 09,demo08@example.com,2024-09-30,Ireland,47500.00

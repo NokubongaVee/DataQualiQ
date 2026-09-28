@@ -1,0 +1,53 @@
+@import "tailwindcss";
+
+/* Content can shrink inside flex/grid tracks; long CSV labels stay readable. */
+.dashboard-layout { width: 100%; max-width: 1800px; margin-inline: auto; }
+main { overflow-wrap: anywhere; }
+main :where(section, aside, article, details) { min-width: 0; }
+button, summary { min-height: 44px; }
+button { cursor: pointer; }
+button:disabled { cursor: wait; }
+summary { padding-block: 12px; }
+:where(button, summary, input, [tabindex]):focus-visible {
+  outline: 3px solid #08756f;
+  outline-offset: 3px;
+}
+.preview-table { table-layout: fixed; }
+.preview-table td { white-space: normal; overflow-wrap: anywhere; }
+.preview-table th { text-align: left; }
+/* Keep the original upload composition compact relative to the available height. */
+.landing-page { min-height: 100dvh; }
+.landing-page > main { flex: 0 0 auto; padding-block: clamp(6px, 1.5dvh, 11.52px); }
+.landing-page > header > div { max-width: 1280px; }
+.landing-page .landing-hero { gap: clamp(8px, 2dvh, 15.36px); }
+.landing-page .upload-controls > div:first-child {
+  padding: 8px;
+  margin-top: clamp(8px, calc(8dvh - 24px), 40px);
+}
+.landing-page .upload-controls [role="group"] { padding-block: clamp(4px, 1dvh, 7.68px); }
+.landing-page .upload-controls [role="group"] > .mt-2 { margin-top: 4px; }
+.landing-page .upload-controls > div:first-child > .mt-3 { margin-top: 6px; }
+.landing-page .upload-controls > div:last-child { margin-top: 8px; padding-bottom: 0; }
+@media (min-width: 768px) {
+  .landing-page .landing-hero { grid-template-columns: minmax(0, 32%) minmax(0, 1fr); }
+  .landing-page h1 { font-size: clamp(26px, 3.5vw, 36px); }
+}
+/* Retain the laptop proportions on taller desktop and projector viewports. */
+.landing-page .preview-table td { padding-block: 5px; }
+.landing-page .scan-preview > div:first-child { padding-block: 8px; }
+.landing-page .landing-hero p { margin-top: 12px; font-size: 16px; }
+@media (max-width: 767px) {
+  .landing-page > header .mobile-menu { width: auto; }
+  .landing-page > header .mobile-menu[open] { width: 100%; }
+  .landing-page h1 { font-size: 24px; }
+  .landing-page .landing-hero p { margin-top: 6px; font-size: 14px; line-height: 1.4; max-width: none; }
+  .landing-page .preview-table { font-size: 10px; }
+  .landing-page .preview-table td { padding-block: 3px; }
+  .landing-page .scan-preview > div:last-child { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 4px; }
+  .landing-page .scan-preview > div:last-child > div { padding-inline: 4px; }
+  .landing-page .scan-preview > div:last-child .text-lg { font-size: 14px; line-height: 1.3; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+  .scan-beam { display: none; }
+}
