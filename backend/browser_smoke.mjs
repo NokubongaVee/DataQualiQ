@@ -9,7 +9,7 @@ import net from 'node:net'
 import { fileURLToPath, pathToFileURL } from 'node:url'
 
 const root = path.dirname(fileURLToPath(import.meta.url))
-const frontend = path.resolve(root, '../DataQualiQ1')
+const frontend = path.resolve(root, '../frontend')
 const temp = await mkdtemp(path.join(tmpdir(), 'dataqualiq-smoke-'))
 const delay = ms => new Promise(resolve => setTimeout(resolve, ms))
 async function until(fn, label) {

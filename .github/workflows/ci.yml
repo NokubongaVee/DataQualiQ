@@ -9,28 +9,28 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: DataQualiQ-backend
+        working-directory: backend
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: '3.13'
           cache: pip
-          cache-dependency-path: DataQualiQ-backend/requirements.txt
+          cache-dependency-path: backend/requirements.txt
       - run: python -m pip install -r requirements.txt
       - run: python -m unittest discover -v
   frontend:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: DataQualiQ1
+        working-directory: frontend
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: '24'
           cache: npm
-          cache-dependency-path: DataQualiQ1/package-lock.json
+          cache-dependency-path: frontend/package-lock.json
       - run: npm ci
       - run: npm run lint
       - run: node --test src/components/IssueCard.test.js src/utils/affectedValues.test.js src/utils/reviewOrder.test.js src/utils/navigation.test.js

@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="DataQualiQ1/src/assets/logo.png" alt="DataQualiQ logo" width="88" />
+<img src="frontend/src/assets/logo.png" alt="DataQualiQ logo" width="88" />
 
 # DataQualiQ
 
@@ -170,7 +170,7 @@ DataQualiQ/
 │   ├── EVALUATION.md
 │   ├── images/                 # Actual application screenshots
 │   └── history/                # Earlier engineering notes, labelled historical
-├── DataQualiQ-backend/
+├── backend/
 │   ├── main.py                # API boundary and upload checks
 │   ├── pipeline.py            # Assessment orchestration
 │   ├── csv_loading.py
@@ -188,7 +188,7 @@ DataQualiQ/
 │   ├── recommendation_policy.py
 │   ├── test_*.py
 │   └── sample_data/            # Public demonstration fixtures
-└── DataQualiQ1/
+└── frontend/
     ├── src/components/
     ├── src/pages/
     ├── src/utils/
@@ -197,7 +197,7 @@ DataQualiQ/
     └── package-lock.json
 ```
 
-The two sibling folder names are preserved so existing scripts retain their expected structure. Dependencies, virtual environments, generated builds, private uploads, and local tool configuration are excluded from Git.
+The application lives in two sibling folders: `backend` for the assessment API and `frontend` for the web interface. Scripts and CI use this structure. Dependencies, virtual environments, generated builds, private uploads, and local tool configuration are excluded from Git.
 
 ## Run locally
 
@@ -206,7 +206,7 @@ Use **Python 3.13** and **Node.js 24** to match the validation environment. Star
 ### Backend — Windows PowerShell
 
 ```powershell
-cd DataQualiQ-backend
+cd backend
 py -3.13 -m venv venv
 .\venv\Scripts\python.exe -m pip install -r requirements.txt
 .\venv\Scripts\python.exe -m uvicorn main:app --host 127.0.0.1 --port 8000
@@ -215,7 +215,7 @@ py -3.13 -m venv venv
 ### Backend — macOS / Linux
 
 ```bash
-cd DataQualiQ-backend
+cd backend
 python3.13 -m venv venv
 ./venv/bin/python -m pip install -r requirements.txt
 ./venv/bin/python -m uvicorn main:app --host 127.0.0.1 --port 8000
@@ -224,12 +224,12 @@ python3.13 -m venv venv
 ### Frontend
 
 ```bash
-cd DataQualiQ1
+cd frontend
 npm ci
 npm run dev -- --host localhost --port 5173
 ```
 
-On Windows, use `npm.cmd` if PowerShell blocks the `npm.ps1` wrapper. Open `http://localhost:5173`, choose a CSV from `DataQualiQ-backend/sample_data`, and select **Run Assessment**. API documentation is available at `http://127.0.0.1:8000/docs` while the backend is running.
+On Windows, use `npm.cmd` if PowerShell blocks the `npm.ps1` wrapper. Open `http://localhost:5173`, choose a CSV from `backend/sample_data`, and select **Run Assessment**. API documentation is available at `http://127.0.0.1:8000/docs` while the backend is running.
 
 ### API surface
 
@@ -241,7 +241,7 @@ On Windows, use `npm.cmd` if PowerShell blocks the `npm.ps1` wrapper. Open `http
 | POST | `/assess-with-sample` | Assess the bundled customer demonstration CSV |
 
 ```bash
-curl -F "file=@DataQualiQ-backend/sample_data/generalisation/education.csv" http://127.0.0.1:8000/assess
+curl -F "file=@backend/sample_data/generalisation/education.csv" http://127.0.0.1:8000/assess
 ```
 
 The response contains dataset dimensions, column profiles, inferred context, relationships, raw findings, translated reviews, recommendations, and score details.
@@ -251,12 +251,12 @@ The response contains dataset dimensions, column profiles, inferred context, rel
 ### Run the automated checks
 
 ```powershell
-cd DataQualiQ-backend
+cd backend
 .\venv\Scripts\python.exe -m unittest discover -v
 ```
 
 ```bash
-cd DataQualiQ1
+cd frontend
 npm run lint
 npm run build
 node --test src/components/IssueCard.test.js src/utils/affectedValues.test.js src/utils/reviewOrder.test.js src/utils/navigation.test.js

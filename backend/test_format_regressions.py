@@ -62,7 +62,7 @@ class FormatRegressionTests(unittest.TestCase):
         findings = [i for i in result['issues'] if i['check'] == 'format' or i['check'].startswith('invalid_')]
         self.assertEqual({i['check'] for i in findings}, {'format', 'invalid_categorical'})
         self.assertEqual([i['row_indices'] for i in findings], [[99], [99]])
-        helper = Path(__file__).resolve().parent.parent / 'DataQualiQ1/src/utils/affectedValues.js'
+        helper = Path(__file__).resolve().parent.parent / 'frontend/src/utils/affectedValues.js'
         script = f"""
             import {{ countInvalidFormatValues }} from {json.dumps(helper.as_uri())};
             let input = '';
