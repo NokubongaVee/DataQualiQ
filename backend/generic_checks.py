@@ -74,7 +74,7 @@ def check_numeric_format_consistency(df: pd.DataFrame, col: str) -> dict:
     if values.empty:
         return {"check": "format", "column": col, "count": 0, "pct": 0, "row_indices": []}
 
-    has_digit = values.str.match(r'^[+-]?[R$€£]?\s*\d[\d,.]*\s*$')
+    has_digit = values.str.strip().str.match(r'^[+-]?[R$€£]?\s*\d[\d,.]*\s*$')
     if has_digit.mean() < 0.5:
         # Doesn't look numeric enough to check — leave free text alone.
         return {"check": "format", "column": col, "count": 0, "pct": 0, "row_indices": []}
@@ -90,10 +90,10 @@ def check_numeric_format_consistency(df: pd.DataFrame, col: str) -> dict:
         has_space = v != v.strip()
         return (has_symbol, has_comma, has_space)
 
-    styles = values.apply(style)
+    styles = values[has_digit].apply(style)
     dominant_style = styles.value_counts().idxmax()
     inconsistent_mask = styles != dominant_style
-    inconsistent = values[inconsistent_mask]
+    inconsistent = values.loc[styles.index[inconsistent_mask]]
 
     return {
         "check": "format", "column": col, "count": int(inconsistent_mask.sum()),

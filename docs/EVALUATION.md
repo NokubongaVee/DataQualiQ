@@ -1,4 +1,6 @@
-# Validation and evaluation
+# Earlier generic assessment validation and evaluation
+
+> Historical scope: these generic assessment targets and publication checks predate the cybersecurity implementation. Use [Phase 5](phase5/README.md), [Phase 15](phase15/README.md) and [Phase 16](phase16/README.md) for verified classifier, system and degradation results; [Phase 17](phase17/README.md) consolidates the final evidence.
 
 ## How to interpret the evidence
 

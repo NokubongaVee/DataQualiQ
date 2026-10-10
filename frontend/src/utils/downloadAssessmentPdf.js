@@ -1,5 +1,6 @@
 import { jsPDF } from 'jspdf'
 import { rankReviews } from './reviewOrder'
+import { getIntrusionResults, percentage, normaliseStatus, QUALITY_LABELS, RELIABILITY_LABELS } from './intrusionResults'
 
 function getIssueDetails(issue) {
   const review = issue.issue_to_review || issue
@@ -118,6 +119,45 @@ export function downloadAssessmentPdf(result) {
       }
       y += 7
     })
+  }
+
+  const intrusion = getIntrusionResults(result)
+  if (intrusion.data) {
+    pdf.addPage()
+    y = 20
+    pdf.setFontSize(15)
+    pdf.setFont('helvetica', 'bold')
+    pdf.setTextColor(11, 30, 51)
+    pdf.text('Intrusion detection results', 15, y)
+    y += 10
+    pdf.setFontSize(10)
+    pdf.setFont('helvetica', 'normal')
+    const modelSummary = [
+      `Normal traffic: ${intrusion.normal ?? 'Pending'}`,
+      `Attacks detected: ${intrusion.malicious ?? 'Pending'}`,
+      `Average model confidence: ${percentage(intrusion.data.average_confidence)}`,
+      ...[['Accuracy', 'accuracy'], ['Precision', 'precision'], ['Recall', 'recall'], ['F1 score', 'f1']]
+        .map(([label, key]) => `${label}: ${percentage(intrusion.data.metrics?.[key])}`),
+      'Record reliability is supplied by the backend, not inferred by this report.',
+    ]
+    for (const line of modelSummary) y = addWrappedText(pdf, line, 15, y, 180)
+    if (intrusion.flaggedAttacks.length) {
+      y = addWrappedText(pdf, `Reliability warning: ${intrusion.flaggedAttacks.length} supplied malicious records contain missing, inconsistent or invalid fields. Verify these records before taking action.`, 15, y, 180)
+    }
+    if (intrusion.malicious > 0 || intrusion.records.some(record => normaliseStatus(record.prediction) === 'malicious')) {
+      y = addWrappedText(pdf, 'Security recommendation: Review malicious predictions against the original traffic records before taking action.', 15, y, 180)
+    }
+    y += 8
+    if (!intrusion.records.length) y = addWrappedText(pdf, 'Record predictions: Pending', 15, y, 180)
+    for (const record of intrusion.records) {
+      y = ensureSpace(pdf, y, 30)
+      y = addWrappedText(pdf, `Record ${record.record_id ?? 'Pending'}: ${record.source_ip || 'Pending'} to ${record.destination_ip || 'Pending'}; ${record.protocol || 'Pending'}`, 15, y, 180)
+      const prediction = { normal: 'Normal', malicious: 'Malicious' }[normaliseStatus(record.prediction)] || 'Pending'
+      const quality = QUALITY_LABELS[normaliseStatus(record.data_quality_status)] || 'Pending'
+      const reliability = RELIABILITY_LABELS[normaliseStatus(record.reliability)] || 'Pending'
+      y = addWrappedText(pdf, `Prediction: ${prediction}; Confidence: ${percentage(record.confidence)}; Data quality: ${quality}; Reliability: ${reliability}`, 15, y, 180)
+      y += 5
+    }
   }
 
   y = ensureSpace(pdf, y, 22)

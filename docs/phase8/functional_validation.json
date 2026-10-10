@@ -1,0 +1,450 @@
+{
+  "functional_input": "First 1000 official testing rows; predictive projection only; values unchanged",
+  "summary": {
+    "records_analysed": 1000,
+    "records_predicted": 1000,
+    "normal_count": 183,
+    "malicious_count": 817,
+    "average_predicted_class_probability": 0.9003807236044477,
+    "data_quality_score": 85.0,
+    "grade": "B",
+    "high_count": 999,
+    "review_count": 1,
+    "low_count": 0,
+    "rejected_count": 0,
+    "processing_seconds": 4.980223099992145
+  },
+  "quality_summary": {
+    "finding_summary": {
+      "data_error": {
+        "findings": 0,
+        "occurrences": 0
+      },
+      "quality_issue": {
+        "findings": 1,
+        "occurrences": 256
+      },
+      "analytical_security_anomaly": {
+        "findings": 30,
+        "occurrences": 2973
+      }
+    },
+    "issue_summary": {
+      "duplicate": 1,
+      "outlier": 30
+    },
+    "score_policy": {
+      "name": "quality_errors_weighted_penalty_v2",
+      "heuristic": true,
+      "description": "Heuristic score, not a percentage of correct data. Analytical anomalies and uncertain semantic/category candidates do not reduce it."
+    },
+    "unlinked_findings": 0
+  },
+  "schema_audit": {
+    "unseen_categories": {
+      "proto": 0,
+      "service": 0,
+      "state": 1
+    },
+    "missing_values": {
+      "dur": 0,
+      "proto": 0,
+      "service": 0,
+      "state": 0,
+      "spkts": 0,
+      "dpkts": 0,
+      "sbytes": 0,
+      "dbytes": 0,
+      "rate": 0,
+      "sttl": 0,
+      "dttl": 0,
+      "sload": 0,
+      "dload": 0,
+      "sloss": 0,
+      "dloss": 0,
+      "sinpkt": 0,
+      "dinpkt": 0,
+      "sjit": 0,
+      "djit": 0,
+      "swin": 0,
+      "stcpb": 0,
+      "dtcpb": 0,
+      "dwin": 0,
+      "tcprtt": 0,
+      "synack": 0,
+      "ackdat": 0,
+      "smean": 0,
+      "dmean": 0,
+      "trans_depth": 0,
+      "response_body_len": 0,
+      "ct_srv_src": 0,
+      "ct_state_ttl": 0,
+      "ct_dst_ltm": 0,
+      "ct_src_dport_ltm": 0,
+      "ct_dst_sport_ltm": 0,
+      "ct_dst_src_ltm": 0,
+      "is_ftp_login": 0,
+      "ct_ftp_cmd": 0,
+      "ct_flw_http_mthd": 0,
+      "ct_src_ltm": 0,
+      "ct_srv_dst": 0,
+      "is_sm_ips_ports": 0
+    },
+    "warnings": [
+      "Unseen categories use saved encoding and require Review; no categories were learned."
+    ]
+  },
+  "policy": {
+    "version": "input_integrity_v1",
+    "duplicate_review": false,
+    "probability_thresholds_used": false,
+    "low_means": "Rejected due to invalid required input; no prediction was fabricated"
+  },
+  "sample_records": [
+    {
+      "record_index": 0,
+      "prediction": 1,
+      "label": "Malicious",
+      "probability_normal": 0.14025538816577743,
+      "probability_malicious": 0.8597446118342225,
+      "predicted_class_probability": 0.8597446118342225,
+      "prediction_status": "Predicted",
+      "quality_status": "Issue detected",
+      "quality_findings": [
+        {
+          "id": "finding-20",
+          "check": "outlier",
+          "column": "smean",
+          "category": "analytical_security_anomaly",
+          "reason": "Requires five finite numbers, representable IQR fences, variation, and no identifier or binary-indicator interpretation."
+        }
+      ],
+      "quality_finding_count": 1,
+      "quality_finding_categories": [
+        "analytical_security_anomaly"
+      ],
+      "quality_findings_truncated": false,
+      "missing_predictive_fields": [],
+      "preprocessing_handled_missing": [],
+      "reliability": "High",
+      "reliability_reason": "Prediction produced with no unresolved predictive-field integrity issue. Analytical anomalies and preserved duplicates do not invalidate the input."
+    },
+    {
+      "record_index": 1,
+      "prediction": 1,
+      "label": "Malicious",
+      "probability_normal": 0.15521167881935566,
+      "probability_malicious": 0.8447883211806441,
+      "predicted_class_probability": 0.8447883211806441,
+      "prediction_status": "Predicted",
+      "quality_status": "Issue detected",
+      "quality_findings": [
+        {
+          "id": "finding-9",
+          "check": "outlier",
+          "column": "sload",
+          "category": "analytical_security_anomaly",
+          "reason": "Requires five finite numbers, representable IQR fences, variation, and no identifier or binary-indicator interpretation."
+        },
+        {
+          "id": "finding-20",
+          "check": "outlier",
+          "column": "smean",
+          "category": "analytical_security_anomaly",
+          "reason": "Requires five finite numbers, representable IQR fences, variation, and no identifier or binary-indicator interpretation."
+        }
+      ],
+      "quality_finding_count": 2,
+      "quality_finding_categories": [
+        "analytical_security_anomaly"
+      ],
+      "quality_findings_truncated": false,
+      "missing_predictive_fields": [],
+      "preprocessing_handled_missing": [],
+      "reliability": "High",
+      "reliability_reason": "Prediction produced with no unresolved predictive-field integrity issue. Analytical anomalies and preserved duplicates do not invalidate the input."
+    },
+    {
+      "record_index": 2,
+      "prediction": 1,
+      "label": "Malicious",
+      "probability_normal": 0.21795461126365392,
+      "probability_malicious": 0.7820453887363464,
+      "predicted_class_probability": 0.7820453887363464,
+      "prediction_status": "Predicted",
+      "quality_status": "Issue detected",
+      "quality_findings": [
+        {
+          "id": "finding-9",
+          "check": "outlier",
+          "column": "sload",
+          "category": "analytical_security_anomaly",
+          "reason": "Requires five finite numbers, representable IQR fences, variation, and no identifier or binary-indicator interpretation."
+        },
+        {
+          "id": "finding-20",
+          "check": "outlier",
+          "column": "smean",
+          "category": "analytical_security_anomaly",
+          "reason": "Requires five finite numbers, representable IQR fences, variation, and no identifier or binary-indicator interpretation."
+        }
+      ],
+      "quality_finding_count": 2,
+      "quality_finding_categories": [
+        "analytical_security_anomaly"
+      ],
+      "quality_findings_truncated": false,
+      "missing_predictive_fields": [],
+      "preprocessing_handled_missing": [],
+      "reliability": "High",
+      "reliability_reason": "Prediction produced with no unresolved predictive-field integrity issue. Analytical anomalies and preserved duplicates do not invalidate the input."
+    },
+    {
+      "record_index": 3,
+      "prediction": 1,
+      "label": "Malicious",
+      "probability_normal": 0.2694705917718018,
+      "probability_malicious": 0.7305294082281983,
+      "predicted_class_probability": 0.7305294082281983,
+      "prediction_status": "Predicted",
+      "quality_status": "Issue detected",
+      "quality_findings": [
+        {
+          "id": "finding-9",
+          "check": "outlier",
+          "column": "sload",
+          "category": "analytical_security_anomaly",
+          "reason": "Requires five finite numbers, representable IQR fences, variation, and no identifier or binary-indicator interpretation."
+        },
+        {
+          "id": "finding-20",
+          "check": "outlier",
+          "column": "smean",
+          "category": "analytical_security_anomaly",
+          "reason": "Requires five finite numbers, representable IQR fences, variation, and no identifier or binary-indicator interpretation."
+        }
+      ],
+      "quality_finding_count": 2,
+      "quality_finding_categories": [
+        "analytical_security_anomaly"
+      ],
+      "quality_findings_truncated": false,
+      "missing_predictive_fields": [],
+      "preprocessing_handled_missing": [],
+      "reliability": "High",
+      "reliability_reason": "Prediction produced with no unresolved predictive-field integrity issue. Analytical anomalies and preserved duplicates do not invalidate the input."
+    },
+    {
+      "record_index": 4,
+      "prediction": 1,
+      "label": "Malicious",
+      "probability_normal": 0.2522208680553842,
+      "probability_malicious": 0.7477791319446161,
+      "predicted_class_probability": 0.7477791319446161,
+      "prediction_status": "Predicted",
+      "quality_status": "Issue detected",
+      "quality_findings": [
+        {
+          "id": "finding-9",
+          "check": "outlier",
+          "column": "sload",
+          "category": "analytical_security_anomaly",
+          "reason": "Requires five finite numbers, representable IQR fences, variation, and no identifier or binary-indicator interpretation."
+        },
+        {
+          "id": "finding-20",
+          "check": "outlier",
+          "column": "smean",
+          "category": "analytical_security_anomaly",
+          "reason": "Requires five finite numbers, representable IQR fences, variation, and no identifier or binary-indicator interpretation."
+        }
+      ],
+      "quality_finding_count": 2,
+      "quality_finding_categories": [
+        "analytical_security_anomaly"
+      ],
+      "quality_findings_truncated": false,
+      "missing_predictive_fields": [],
+      "preprocessing_handled_missing": [],
+      "reliability": "High",
+      "reliability_reason": "Prediction produced with no unresolved predictive-field integrity issue. Analytical anomalies and preserved duplicates do not invalidate the input."
+    },
+    {
+      "record_index": 5,
+      "prediction": 1,
+      "label": "Malicious",
+      "probability_normal": 0.20953972859034325,
+      "probability_malicious": 0.7904602714096568,
+      "predicted_class_probability": 0.7904602714096568,
+      "prediction_status": "Predicted",
+      "quality_status": "Issue detected",
+      "quality_findings": [
+        {
+          "id": "finding-7",
+          "check": "outlier",
+          "column": "rate",
+          "category": "analytical_security_anomaly",
+          "reason": "Requires five finite numbers, representable IQR fences, variation, and no identifier or binary-indicator interpretation."
+        },
+        {
+          "id": "finding-9",
+          "check": "outlier",
+          "column": "sload",
+          "category": "analytical_security_anomaly",
+          "reason": "Requires five finite numbers, representable IQR fences, variation, and no identifier or binary-indicator interpretation."
+        },
+        {
+          "id": "finding-20",
+          "check": "outlier",
+          "column": "smean",
+          "category": "analytical_security_anomaly",
+          "reason": "Requires five finite numbers, representable IQR fences, variation, and no identifier or binary-indicator interpretation."
+        }
+      ],
+      "quality_finding_count": 3,
+      "quality_finding_categories": [
+        "analytical_security_anomaly"
+      ],
+      "quality_findings_truncated": false,
+      "missing_predictive_fields": [],
+      "preprocessing_handled_missing": [],
+      "reliability": "High",
+      "reliability_reason": "Prediction produced with no unresolved predictive-field integrity issue. Analytical anomalies and preserved duplicates do not invalidate the input."
+    },
+    {
+      "record_index": 6,
+      "prediction": 1,
+      "label": "Malicious",
+      "probability_normal": 0.23466794247268485,
+      "probability_malicious": 0.7653320575273154,
+      "predicted_class_probability": 0.7653320575273154,
+      "prediction_status": "Predicted",
+      "quality_status": "Issue detected",
+      "quality_findings": [
+        {
+          "id": "finding-9",
+          "check": "outlier",
+          "column": "sload",
+          "category": "analytical_security_anomaly",
+          "reason": "Requires five finite numbers, representable IQR fences, variation, and no identifier or binary-indicator interpretation."
+        },
+        {
+          "id": "finding-20",
+          "check": "outlier",
+          "column": "smean",
+          "category": "analytical_security_anomaly",
+          "reason": "Requires five finite numbers, representable IQR fences, variation, and no identifier or binary-indicator interpretation."
+        }
+      ],
+      "quality_finding_count": 2,
+      "quality_finding_categories": [
+        "analytical_security_anomaly"
+      ],
+      "quality_findings_truncated": false,
+      "missing_predictive_fields": [],
+      "preprocessing_handled_missing": [],
+      "reliability": "High",
+      "reliability_reason": "Prediction produced with no unresolved predictive-field integrity issue. Analytical anomalies and preserved duplicates do not invalidate the input."
+    },
+    {
+      "record_index": 7,
+      "prediction": 1,
+      "label": "Malicious",
+      "probability_normal": 0.25762934035704427,
+      "probability_malicious": 0.742370659642956,
+      "predicted_class_probability": 0.742370659642956,
+      "prediction_status": "Predicted",
+      "quality_status": "Issue detected",
+      "quality_findings": [
+        {
+          "id": "finding-20",
+          "check": "outlier",
+          "column": "smean",
+          "category": "analytical_security_anomaly",
+          "reason": "Requires five finite numbers, representable IQR fences, variation, and no identifier or binary-indicator interpretation."
+        }
+      ],
+      "quality_finding_count": 1,
+      "quality_finding_categories": [
+        "analytical_security_anomaly"
+      ],
+      "quality_findings_truncated": false,
+      "missing_predictive_fields": [],
+      "preprocessing_handled_missing": [],
+      "reliability": "High",
+      "reliability_reason": "Prediction produced with no unresolved predictive-field integrity issue. Analytical anomalies and preserved duplicates do not invalidate the input."
+    },
+    {
+      "record_index": 8,
+      "prediction": 0,
+      "label": "Normal",
+      "probability_normal": 0.9961693393413575,
+      "probability_malicious": 0.00383066065864238,
+      "predicted_class_probability": 0.9961693393413575,
+      "prediction_status": "Predicted",
+      "quality_status": "Issue detected",
+      "quality_findings": [
+        {
+          "id": "finding-8",
+          "check": "outlier",
+          "column": "sttl",
+          "category": "analytical_security_anomaly",
+          "reason": "Requires five finite numbers, representable IQR fences, variation, and no identifier or binary-indicator interpretation."
+        },
+        {
+          "id": "finding-13",
+          "check": "outlier",
+          "column": "sinpkt",
+          "category": "analytical_security_anomaly",
+          "reason": "Requires five finite numbers, representable IQR fences, variation, and no identifier or binary-indicator interpretation."
+        }
+      ],
+      "quality_finding_count": 2,
+      "quality_finding_categories": [
+        "analytical_security_anomaly"
+      ],
+      "quality_findings_truncated": false,
+      "missing_predictive_fields": [],
+      "preprocessing_handled_missing": [],
+      "reliability": "High",
+      "reliability_reason": "Prediction produced with no unresolved predictive-field integrity issue. Analytical anomalies and preserved duplicates do not invalidate the input."
+    },
+    {
+      "record_index": 9,
+      "prediction": 0,
+      "label": "Normal",
+      "probability_normal": 0.9961693393413575,
+      "probability_malicious": 0.00383066065864238,
+      "predicted_class_probability": 0.9961693393413575,
+      "prediction_status": "Predicted",
+      "quality_status": "Issue detected",
+      "quality_findings": [
+        {
+          "id": "finding-8",
+          "check": "outlier",
+          "column": "sttl",
+          "category": "analytical_security_anomaly",
+          "reason": "Requires five finite numbers, representable IQR fences, variation, and no identifier or binary-indicator interpretation."
+        },
+        {
+          "id": "finding-13",
+          "check": "outlier",
+          "column": "sinpkt",
+          "category": "analytical_security_anomaly",
+          "reason": "Requires five finite numbers, representable IQR fences, variation, and no identifier or binary-indicator interpretation."
+        }
+      ],
+      "quality_finding_count": 2,
+      "quality_finding_categories": [
+        "analytical_security_anomaly"
+      ],
+      "quality_findings_truncated": false,
+      "missing_predictive_fields": [],
+      "preprocessing_handled_missing": [],
+      "reliability": "High",
+      "reliability_reason": "Prediction produced with no unresolved predictive-field integrity issue. Analytical anomalies and preserved duplicates do not invalidate the input."
+    }
+  ],
+  "response_bytes": 13730,
+  "no_fit_methods_called": true
+}

@@ -55,6 +55,13 @@ def run_selected_checks(df, profiles):
                  'date_format': check_date_format_consistency, 'outlier': check_numeric_outliers}
     for col, profile in profiles.items():
         plan = select_checks(profile)
+        if profile.get('schema_rule'):
+            for key in ('validity', 'control_characters'):
+                plan[key] = {'selected': False, 'reason': 'Skipped: explicit schema validates this field without duplicating generic syntax penalties.'}
+        if col in profile.get('protected_fields', ()):
+            for key in plan:
+                if key != 'missing':
+                    plan[key] = {'selected': False, 'reason': 'Skipped: protected target/leakage field is not used to infer feature validity.'}
         profile['checks'] = plan
         for key, entry in plan.items():
             if not entry['selected']:

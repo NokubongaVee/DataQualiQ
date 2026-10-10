@@ -1,0 +1,12 @@
+# Matplotlib emits valid SVG path whitespace at line boundaries.
+# Preserve those generated assets without treating path formatting as an error.
+*.svg whitespace=-blank-at-eol
+
+# Preserve benchmark/evidence checksums across Windows and Linux checkouts.
+*.csv -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+*.json -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+
+# Generated reports and fitted artifacts must retain their exact bytes.
+*.pdf binary
+*.docx binary
+*.joblib binary

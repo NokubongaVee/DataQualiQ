@@ -1,4 +1,6 @@
-# Architecture and design rationale
+# Earlier generic assessment architecture and design rationale
+
+> Historical scope: this document records the earlier generic data-quality application. The completed network intrusion-detection architecture, saved inference and memory-only active results are documented in [Phase 17](phase17/README.md#4-final-architecture) and the [current project README](../README.md).
 
 ## System boundary
 

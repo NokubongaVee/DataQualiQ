@@ -115,7 +115,7 @@ class RecommendationPolicyTests(unittest.TestCase):
         self.assertNotEqual(baseline['translated_issues'], changed['translated_issues'])
         self.assertEqual({k: v for k, v in baseline.items() if k not in translated_fields},
                          {k: v for k, v in changed.items() if k not in translated_fields})
-        self.assertEqual(set(changed), {'filename', 'total_rows', 'total_columns', 'column_profiles', 'column_types', 'dataset_context', 'issues', 'translated_issues', 'issues_to_review', 'recommendations', 'issue_summary', 'score', 'grade', 'label', 'total_penalty', 'issue_details', 'relationships', 'score_policy'})
+        self.assertEqual(set(changed), {'filename', 'total_rows', 'total_columns', 'column_profiles', 'column_types', 'dataset_context', 'issues', 'translated_issues', 'issues_to_review', 'recommendations', 'issue_summary', 'score', 'grade', 'label', 'total_penalty', 'issue_details', 'relationships', 'score_policy', 'finding_summary', 'domain_validation'})
 
 
 if __name__ == '__main__':

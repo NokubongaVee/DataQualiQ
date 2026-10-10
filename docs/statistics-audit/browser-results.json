@@ -1,0 +1,62 @@
+{
+  "observations": [
+    {
+      "name": "clean",
+      "score": 100,
+      "grade": "A",
+      "findings": 0,
+      "pdf": true
+    },
+    {
+      "name": "missing",
+      "score": 62.5,
+      "grade": "C",
+      "findings": 2,
+      "pdf": true
+    },
+    {
+      "name": "duplicates",
+      "score": 85,
+      "grade": "B",
+      "findings": 2,
+      "pdf": true
+    },
+    {
+      "name": "invalid",
+      "score": 82,
+      "grade": "B",
+      "findings": 3,
+      "pdf": true
+    },
+    {
+      "name": "outlier",
+      "score": 97,
+      "grade": "A",
+      "findings": 1,
+      "pdf": true
+    },
+    {
+      "name": "mixed",
+      "score": 33.5,
+      "grade": "F",
+      "findings": 6,
+      "pdf": true
+    },
+    {
+      "name": "many_fields",
+      "score": 0,
+      "grade": "F",
+      "findings": 7,
+      "pdf": true
+    },
+    {
+      "name": "all_missing",
+      "score": 32.5,
+      "grade": "F",
+      "findings": 3,
+      "pdf": true
+    }
+  ],
+  "uploadRace": "passed",
+  "exceptions": []
+}

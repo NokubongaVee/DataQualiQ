@@ -243,6 +243,16 @@ class LiveAPITests(unittest.TestCase):
                 self.assertIsInstance(data['detail'], str)
         self.assertEqual(self.request('/assess', b'')[0], 422)
 
+    def test_configured_schema_multipart_upload(self):
+        config = json.dumps({'name':'alternate_network','fields':{'wire':{'kind':'protocol'},'count':{'kind':'count'}}})
+        body = (b'--boundary\r\nContent-Disposition: form-data; name="file"; filename="network.csv"\r\nContent-Type: text/csv\r\n\r\nwire,count\ntcp,-1\nudp,2\n\r\n'
+                + b'--boundary\r\nContent-Disposition: form-data; name="network_schema"\r\n\r\n'
+                + config.encode() + b'\r\n--boundary--\r\n')
+        status,_,result=self.request('/assess',body,{'Content-Type':'multipart/form-data; boundary=boundary'})
+        self.assertEqual(status,200)
+        self.assertTrue(result['domain_validation']['enabled'])
+        self.assertTrue(any(i['check']=='network_invalid_count' for i in result['issues']))
+
     def test_cors_preflight(self):
         for origin in ['http://localhost:5173', 'http://localhost:5174', 'http://127.0.0.1:5173', 'http://127.0.0.1:5174']:
             status, headers, _ = self.request('/assess', headers={'Origin': origin, 'Access-Control-Request-Method': 'POST'}, method='OPTIONS')

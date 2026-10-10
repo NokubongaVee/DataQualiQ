@@ -1,0 +1,354 @@
+# DataQualiQ: Data Quality-Aware Network Intrusion Detection
+
+Victoria Nokubonga Mnisi | 202428583 | 12 October 2026
+
+# Contents
+
+1. Executive Summary
+
+2. Business Domain
+
+3. Introduction
+
+4. Problem and Objectives
+
+5. Scope
+
+6. Solution
+
+7. Final Model Results
+
+8. Recommendations
+
+9. References
+
+10. Appendix: Links and Evidence
+
+The report follows the supplied capstone template. Recorded project evidence is distinguished from literature and from future recommendations. References use APA author–date citations.
+
+# 1. Executive Summary
+
+DataQualiQ is a working cybersecurity prototype that analyses uploaded network traffic records. It combines data-quality assessment, safe feature handling and machine-learning classification in a single upload-to-report workflow. The intended users are security analysts, network administrators and students who need to investigate traffic predictions alongside evidence about the inputs used to produce them.
+
+A React frontend communicates with a FastAPI backend. The backend validates the network schema, reuses a training-fitted preprocessor and serves a saved Random Forest. Each accepted record is classified as Normal or Malicious and accompanied by model probabilities and a separate input-integrity status. Invalid required inputs are rejected with reasons instead of receiving guessed predictions. Recommendations guide human review; the application does not automatically block traffic.
+
+On the official 82,332-record UNSW-NB15 testing split, Random Forest achieved 86.4111% accuracy, 80.6874% malicious precision, 99.0206% recall and 88.9188% F1. Its recall-weighted selection reduced missed attacks relative to the Decision Tree baseline, but increased false alarms. A controlled experiment showed that missing predictors reduced accuracy, precision and F1 while slightly increasing recall; supported formatting differences changed no predictions. These results demonstrate a mechanism-dependent relationship between data quality and classifier behavior, within a limited benchmark evaluation.
+
+Recorded whole-system validation passed 28 end-to-end scenarios, 274 backend tests and 49 frontend tests. A full testing-file upload succeeded, but took approximately 239.5 seconds. The deliverable is an explainable decision-support prototype, rather than a production intrusion-prevention system (Mnisi, 2026).
+
+# 2. Business Domain
+
+The domain is cybersecurity monitoring and network security analysis. The specific user group is analysts and network administrators reviewing compatible, labelled-feature network records exported to CSV. In an educational setting, the same interface can support computer science students examining intrusion detection and model limitations. No commissioned external client or organizational deployment is claimed.
+
+For this user group, the practical need is to prioritize suspicious records without confusing strong model estimates with verified attacks. Missing inputs, unseen categories and rejected values should be visible before an analyst relies on a prediction. Useful outputs include record explanations, concise recommendations, full-file summaries and an exportable report for investigation or academic assessment.
+
+# 3. Introduction
+
+Machine-learning-based intrusion detection applies classifiers to network features to distinguish benign from suspicious activity. Its usefulness depends on the input schema, preprocessing consistency and the interpretation of errors. Sommer and Paxson (2010) identify practical difficulties in transferring machine-learning detection to operational networks, including contextual interpretation and false alarms. DataQualiQ addresses a bounded part of this problem by exposing input-integrity evidence beside a classifier output.
+
+The project progressed from a general CSV quality engine to a supervised cybersecurity application. Quality checks remain a supporting layer: the Random Forest provides the intrusion classification, while validation and reliability logic explain whether predictive inputs were handled safely. The research question is: How does data quality affect the reliability of machine-learning-based network intrusion detection?
+
+# 4. Problem and Objectives
+
+## 4.1 Problem Statement
+
+A classifier can return a Malicious label even when required inputs were incomplete or unfamiliar. Without an input-integrity explanation, the user cannot distinguish a prediction based on known, valid features from one requiring review. Conversely, legitimate extreme traffic values may be security evidence and should not be deleted merely because they are statistically unusual. The problem is to integrate validated model inference with understandable input evidence and measured evaluation.
+
+## 4.2 Business Objectives
+
+| Objective by the submission date | Success measure and recorded evidence |
+| --- | --- |
+| Deliver a compatible CSV-to-report cybersecurity workflow. | Upload, validation, Dashboard, detailed pages and PDF export demonstrated; 28 of 28 Phase 15 scenarios passed. |
+| Compare two supervised classifiers on the same official split and select using a declared criterion. | Decision Tree and Random Forest evaluated on 82,332 rows; malicious F2 policy and confusion counts recorded in Phase 5. |
+| Expose predictive-input integrity independently of model probability. | High/Review/Low reasons and rejected-row null outputs verified; saved inference tested with fitting forbidden. |
+| Evaluate three controlled quality mechanisms at 5%, 10% and 20%. | Baseline plus nine full-data conditions completed with unchanged labels, source files and saved artifacts in Phase 16. |
+
+These four objectives are specific to the delivered prototype, measurable through stored evaluation evidence and bounded by the 12 October 2026 submission milestone. They do not promise operational accuracy thresholds that have not been agreed or verified.
+
+## 4.3 Literature Review
+
+Breiman (2001) presents Random Forest as an ensemble of randomized tree predictors. This provides the foundation for the project’s comparison between a single Decision Tree and a forest. The literature motivates the classifier family; it does not establish that DataQualiQ must outperform its baseline on every metric.
+
+Moustafa and Slay (2015) introduce UNSW-NB15 as a benchmark for network intrusion detection. The official dataset page describes a mixture of normal activity and synthetic attack behavior and publishes the 175,341-record training and 82,332-record testing partitions (UNSW, n.d.). DataQualiQ retains those partitions and performs binary prediction, rather than nine-way attack-category classification.
+
+Sommer and Paxson (2010) examine the gap between research evaluations and operational intrusion detection. Their discussion supports evaluating false alarms alongside missed attacks and avoiding claims of production readiness from a benchmark alone. DataQualiQ therefore presents recommendations for investigation and explicitly distinguishes a prediction from a confirmed security incident.
+
+Pedregosa et al. (2011) describe scikit-learn’s reusable machine-learning tools and API-oriented design. The project uses these tools for training-fitted imputation, encoding and saved inference. Official scikit-learn guidance warns against learning preprocessing statistics from evaluation data; fitting on training data and reusing transform on later data is central to the project’s separation strategy (scikit-learn developers, n.d.-a).
+
+Together, these sources motivate the project’s integration of a classifier, a reproducible preprocessing contract and interpretable security review. The controlled data-quality experiment supplies project-specific evidence; no literature result is substituted for the project’s own measured performance.
+
+# 5. Scope
+
+## 5.1 In-Scope
+
+The implemented scope includes compatible network CSV ingestion, existing generic quality checks, network schema validation, supervised binary classification, saved preprocessing and model serving, row-level input reliability, backend recommendations, React decision-support pages and bounded PDF reporting. Evaluation uses the official UNSW-NB15 partitions, a Decision Tree baseline, the selected Random Forest and controlled degradation of declared predictor groups.
+
+## 5.2 Out-of-Scope
+
+Live packet capture, automatic blocking or isolation, arbitrary feature schemas, multiclass attack attribution, deep-learning model development, calibrated probabilities, online retraining and production multiuser deployment are outside the delivered scope. No model tuning, feature selection or threshold sweep was performed using degraded test outcomes. Reusable analysis IDs, exhaustive result exports and independent external-network validation remain future work.
+
+# 6. Solution
+
+## 6.1 Overview of Methodology
+
+The development approach was incremental implementation with recorded phase-based verification. Existing quality rules were retained while separate modules added training-only preprocessing, candidate training, evaluation, artifact persistence, prediction serving, combined analysis and frontend reporting. This is an implementation and controlled-evaluation methodology; no unrecorded user study, survey or formal randomized trial is claimed.
+
+Source data were preserved. The training split supplied labels and learned preprocessing state; both classifiers were evaluated on the same official testing split. Subsequent serving reused saved artifacts. Phase 15 tested the integrated workflow, and Phase 16 held the model fixed while changing only selected predictive cells. The test split participated in model selection, so its reported performance is not a fresh independent estimate of the chosen winner.
+
+## 6.2 Process Flowchart and Implementation
+
+![Figure 1. Final upload-to-report architecture. Reliability is derived from input integrity, not probability thresholds.](assets/architecture.png)
+Figure 1. Final upload-to-report architecture. Reliability is derived from input integrity, not probability thresholds.
+
+| Stage | Implementation responsibility |
+| --- | --- |
+| CSV ingestion | FastAPI checks the file boundary; csv_loading.py parses input while retaining source representations. |
+| Quality and schema checks | pipeline.py supplies existing findings; combined_analysis.py validates saved required-feature rules and maps source positions. |
+| Saved preprocessing | NetworkMLPreprocessor applies normalization, training medians, reserved missing categories and one-hot encoding. |
+| Model inference | NetworkPredictionService loads verified artifacts, processes sparse batches and returns predict/predict_proba results. |
+| Reliability and advice | Combined analysis assigns High/Review/Low reasons; analysis_response.py produces evidence-based recommendations. |
+| Presentation and reports | React consumes the combined API contract and keeps active results in App memory; jsPDF exports a bounded report. |
+
+## 6.3 Model and Preprocessing Implementation
+
+![Figure 2. Relevant code excerpt rendered from the actual model factory source. The report generation did not execute training.](assets/model-configuration.png)
+Figure 2. Relevant code excerpt rendered from the actual model factory source. The report generation did not execute training.
+
+![Figure 3. Actual saved-encoder implementation excerpt. Missing categories are reserved and unknown categories do not extend the vocabulary.](assets/saved-encoding.png)
+Figure 3. Actual saved-encoder implementation excerpt. Missing categories are reserved and unknown categories do not extend the vocabulary.
+
+Numeric missing cells are handled with saved training medians. Categorical missing cells use an explicit reserved indicator. Supported whitespace and case differences are normalized according to the schema. No scaling is required by this tree-based implementation, and legitimate outliers are not removed. Structurally invalid required inputs are rejected rather than being silently converted to ordinary missing values.
+
+## 6.4 Record Reliability and Recommendations
+
+| Status | Meaning |
+| --- | --- |
+| High | Prediction succeeded and implemented checks found no qualifying unresolved predictive-input issue; correctness is not guaranteed. |
+| Review | Prediction succeeded but handled missingness, an unseen category or relevant noncritical input finding requires human review. |
+| Low | Invalid required input prevented safe prediction. The rejected record retains its reason and has null class/probability. |
+
+Low and rejected counts overlap: rejected records are the Low subset, not an additional disjoint class. IQR anomalies and preserved duplicates do not automatically lower reliability. Model probability and overall quality score do not select a reliability status. Backend advice prioritizes malicious predictions with input issues, independent investigation of malicious predictions and correction of rejected predictive inputs; no second recommendation algorithm runs in the frontend.
+
+## 6.5 API Integration, State and Bounded Results
+
+The combined endpoint is POST /analyze-network, while /assess and /predict-network remain separate. Its structured response separates quality, current-upload intrusion summaries, saved official evaluation, reliability, records, pagination and recommendations. The official model_performance metrics are explicitly labelled as official test evaluation and are not calculated from arbitrary uploads.
+
+Inference uses at most 4,096 rows per batch; record responses default to 100 and are capped at 1,000, with bounded evidence. The frontend stores the full active response in memory across navigation, persisting only a small summary and route state. A storage error cannot turn backend success into analysis failure. Refresh loses detailed results and displays a no-active-analysis state. There is no reusable analysis-ID store, so another result window requires reupload/reanalysis.
+
+## 6.6 User Interface and Reporting Evidence
+
+![Figure 4. Actual Phase 15 Dashboard capture after the full testing-file analysis. Full-file summaries and official evaluation are distinct from the returned 100-row record window.](../phase15/dashboard.png)
+Figure 4. Actual Phase 15 Dashboard capture after the full testing-file analysis. Full-file summaries and official evaluation are distinct from the returned 100-row record window.
+
+The finished interface includes Upload & Analyse, Dashboard, Data Quality, Intrusion Detection, Results and Reports. Results filters operate only on returned rows. Specific reliability and rejection reasons are available in expanded records. PDF export uses the active analysis and previews at most twenty important returned records. Existing captures verify the Dashboard and exported PDF; no unrecorded screenshot is fabricated.
+
+# 7. Final Model Results
+
+## 7.1 Final Data and Descriptive Statistics
+
+| Partition | Rows | Normal truth | Malicious truth | Malicious share |
+| --- | --- | --- | --- | --- |
+| Training | 175,341 | 56,000 | 119,341 | 68.0622% |
+| Testing | 82,332 | 37,000 | 45,332 | 55.0600% |
+
+These are ground-truth counts from the retained official partitions, not predicted class totals. The CSVs contain 45 columns. No resampling, class weighting or row removal was introduced in the final model pipeline. Training and testing distributions differ, which limits interpretation of training–test gaps. The official test split was preserved rather than replaced by a new random split. Dataset descriptions and target-validation evidence are recorded in Phase 3 (Mnisi, 2026).
+
+The original full-file quality score is 100/A under the existing error/quality penalty policy, despite analytical findings. Statistical anomaly occurrences may overlap across columns and are not an attack count. In the Phase 16 baseline, 248,284 analytical occurrences involved 58,543 distinct records, while missing, duplicate, invalid and inconsistency counts were zero. This shows why the heuristic score and analytical security review must remain distinct.
+
+## 7.2 Raw and Derived Features
+
+The saved model requires 42 predictors: 39 numeric columns and three categorical columns. The fields id, attack_cat and label are excluded from inputs. Labels are needed only for training/evaluation. The exact required names are listed in Appendix 10.2, avoiding an incomplete hand-picked feature list.
+
+Derived features comprise normalized numeric representations and saved one-hot category indicators, producing 197 encoded columns. This is representation expansion rather than new attack labels or a learned feature vocabulary at upload time. Sparse matrices preserve the fixed encoded order. Numeric features remain available without outlier clipping or unnecessary scaling.
+
+## 7.3 Feature-Importance Ranking
+
+For this report, importance was read from the already-saved forest’s feature_importances_ without fitting or predicting. The values describe mean decrease in impurity. One-hot indicator importances were summed by their raw categorical field so the ranking covers all 42 raw predictors. These are relative model contributions, not causal effects or calibrated measures of security relevance. Impurity importance can favor features with more possible split values; an independent permutation study was not performed (scikit-learn developers, n.d.-b).
+
+| Rank | Raw predictor | Relative importance |
+| --- | --- | --- |
+| 1 | ct_state_ttl | 10.2800% |
+| 2 | sttl | 9.5596% |
+| 3 | dttl | 7.1917% |
+| 4 | dload | 6.2466% |
+| 5 | dmean | 5.3907% |
+| 6 | rate | 4.4827% |
+| 7 | sload | 3.5047% |
+| 8 | state | 3.4480% |
+| 9 | sbytes | 3.0390% |
+| 10 | dbytes | 3.0376% |
+
+![Figure 5. Top ten saved-forest raw predictor importances; categorical indicator contributions are aggregated. Complete ranking is retained in report_evidence.json.](assets/feature-importance.png)
+Figure 5. Top ten saved-forest raw predictor importances; categorical indicator contributions are aggregated. Complete ranking is retained in report_evidence.json.
+
+## 7.4 Algorithm and Hyperparameters
+
+The selected classifier is RandomForestClassifier. It uses Gini-based splits, bootstrap samples and randomized feature subsets, following the ensemble approach described by Breiman (2001). Serving reuses the fitted forest, with its default predict decision rule; it does not optimize a probability threshold for each uploaded dataset.
+
+| Stored parameter group | Actual saved values |
+| --- | --- |
+| n_estimators, criterion, max_depth | n_estimators=100; criterion=gini; max_depth=20 |
+| min_samples_split, min_samples_leaf, min_weight_fraction_leaf | min_samples_split=10; min_samples_leaf=2; min_weight_fraction_leaf=0.0 |
+| max_features, max_leaf_nodes | max_features=sqrt; max_leaf_nodes=None |
+| bootstrap, max_samples, oob_score | bootstrap=True; max_samples=None; oob_score=False |
+| class_weight, min_impurity_decrease, ccp_alpha | class_weight=None; min_impurity_decrease=0.0; ccp_alpha=0.0 |
+| random_state, n_jobs | random_state=42; n_jobs=2 |
+| verbose, warm_start, monotonic_cst | verbose=0; warm_start=False; monotonic_cst=None |
+
+All stored estimator parameters are reported above. The Decision Tree comparison uses Gini, best splitter, depth 16, minimum split 10, minimum leaf 5 and random_state 42. Both candidates were configured before the official comparison. No parameter sweep is reported because none was performed.
+
+## 7.5 Official Test Evaluation and Model Comparison
+
+| Official test measure | Decision Tree | Random Forest |
+| --- | --- | --- |
+| Accuracy | 87.0221% | 86.4111% |
+| Precision | 82.8576% | 80.6874% |
+| Recall | 96.3668% | 99.0206% |
+| F1 | 89.1031% | 88.9188% |
+| F2 | 93.3237% | 94.7164% |
+| True Negatives | 27,962 | 26,256 |
+| False Positives | 9,038 | 10,744 |
+| False Negatives | 1,647 | 444 |
+| True Positives | 43,685 | 44,888 |
+
+Malicious is the positive class. Confusion matrices use actual rows and predicted columns in [Normal, Malicious] order: Decision Tree [[27962, 9038], [1647, 43685]]; Random Forest [[26256, 10744], [444, 44888]]. False negatives represent missed attacks, while false positives represent normal traffic incorrectly flagged as malicious. These exact counts total 82,332 for each candidate (Mnisi, 2026).
+
+The declared selection criterion was malicious F2, which weights recall more strongly than precision. Random Forest’s F2 of 94.7164% exceeded Decision Tree’s 93.3237%. It missed 1,203 fewer attacks but generated 1,706 additional false alarms. Decision Tree had better accuracy, precision and F1; selecting the forest is a cybersecurity tradeoff, not evidence that it wins all measures.
+
+The selected forest still missed 444 attacks and produced 10,744 false alarms. Its probability estimates have not been calibrated, and its High input-integrity status does not certify a correct class. Comparing candidates on the official test split makes that split involved in selection, although it was not used for fitting. A fresh external evaluation is needed before operational claims.
+
+## 7.6 Controlled Data-Quality Experiment
+
+Phase 16 used the same saved forest and preprocessor for the original testing baseline and nine degraded conditions. Numeric missingness affected dur, rate and sbytes (seed 16042); categorical missingness affected proto, service and state (seed 16043); formatting changes added outer whitespace and uppercase proto only (seed 16044). Each 5%, 10% and 20% level is a nested sample of original nonmissing cells within its declared predictor group. Labels and attack categories never determined selection.
+
+| Condition | Quality | Acc. % | Prec. % | Recall % | F1 % | FN |
+| --- | --- | --- | --- | --- | --- | --- |
+| Baseline | 100 | 86.4111 | 80.6874 | 99.0206 | 88.9188 | 444 |
+| Numeric 5% | 55 | 86.1901 | 80.4166 | 99.0360 | 88.7604 | 437 |
+| Numeric 10% | 32.5 | 85.9605 | 80.1270 | 99.0735 | 88.5987 | 420 |
+| Numeric 20% | 32.5 | 85.5062 | 79.5750 | 99.1176 | 88.2777 | 400 |
+| Categorical 5% | 47.5 | 86.1475 | 80.3380 | 99.0934 | 88.7355 | 411 |
+| Categorical 10% | 32.5 | 85.8512 | 79.9644 | 99.1441 | 88.5273 | 388 |
+| Categorical 20% | 32.5 | 85.2937 | 79.2722 | 99.2389 | 88.1389 | 345 |
+| Formatting 5% | 100 | 86.4111 | 80.6874 | 99.0206 | 88.9188 | 444 |
+| Formatting 10% | 100 | 86.4111 | 80.6874 | 99.0206 | 88.9188 | 444 |
+| Formatting 20% | 100 | 86.4111 | 80.6874 | 99.0206 | 88.9188 | 444 |
+
+Categorical missingness affected accuracy, precision and F1 most at each matched level. At 20%, accuracy decreased by 1.1174 percentage points, precision by 1.4151 and F1 by 0.7799. False positives increased by 1,019. Recall nevertheless increased by 0.2184 points, with 99 fewer missed attacks. Numeric 20% missingness reduced accuracy by 0.9049 points and F1 by 0.6412, while reducing missed attacks by 44. Missingness therefore changed the error tradeoff rather than invariably increasing false negatives (Mnisi, 2026).
+
+Formatting changes produced exactly the baseline predictions and quality score at all three levels because the saved normalization handled the tested representations. This does not establish robustness to arbitrary corruption. Missingness raised Review counts, while quality scores plateaued at 32.5 for 10% and 20%. The score is a heuristic input-quality measure, not a calibrated predictor of model accuracy or recall.
+
+![Figure 6. Verified Phase 16 accuracy versus affected eligible predictor cells. Values and sampling denominators are preserved from the original experiment.](../phase16/plots/accuracy.png)
+Figure 6. Verified Phase 16 accuracy versus affected eligible predictor cells. Values and sampling denominators are preserved from the original experiment.
+
+![Figure 7. Verified Phase 16 malicious recall. Recall rose slightly under missingness, despite lower accuracy, precision and F1.](../phase16/plots/recall.png)
+Figure 7. Verified Phase 16 malicious recall. Recall rose slightly under missingness, despite lower accuracy, precision and F1.
+
+## 7.7 System Validation and Large-File Result
+
+| Verification | Recorded outcome |
+| --- | --- |
+| Phase 15 end-to-end scenarios | 28 passed; 0 failed |
+| Phase 15 backend regression | 274 tests passed |
+| Phase 15 frontend regression | 49 tests passed |
+| ESLint and production build | Passed; retained reporting-bundle size advisory |
+| Phase 16 backend regression | 282 passed, including eight experiment tests |
+
+The recorded checks exercised malformed CSVs, missing required features, missing values, invalid numeric values, unseen categories, outliers, duplicates, the full testing file, Dashboard and detailed routes, filters, refresh, storage quota handling and PDF export. Real React/FastAPI browser sessions handled successful CSV analyses; unavailable-backend and quota boundaries used deliberate mocks. This is automated verification, not a claimed human usability study (Mnisi, 2026).
+
+| Full official testing-file upload | Recorded value |
+| --- | --- |
+| Analysed / predicted rows | 82,332 / 82,332 |
+| Predicted Normal / Malicious | 26,700 / 55,632 |
+| Quality | 100 / A |
+| High / Review reliability | 82,327 / 5 |
+| Low / rejected | 0 / 0 |
+| Average predicted-class probability | 90.79% |
+| Backend analysis time | 239.5 seconds |
+| Detailed records returned | 100 |
+
+Predicted counts above are not ground-truth class counts. The average probability is not accuracy. Concurrent regression work was active during the recorded 239.5-second run, so the timing is a single observed value rather than a service guarantee. The full summary remained separate from the bounded preview; stored browser summary size was 266 bytes.
+
+## 7.8 Research Answer and Conclusion
+
+Data quality affects machine-learning-based network intrusion detection through the mechanism of the input problem and how the saved pipeline handles it. Missing predictors increased review needs and false alarms while reducing accuracy, precision and F1; recall slightly improved. Supported formatting differences were normalized without changing predictions. Input-integrity reliability, model probability and measured predictive performance are consequently related but distinct.
+
+The project demonstrates a working cybersecurity prototype integrating supervised classification, reusable preprocessing, backend model serving, frontend decision support and controlled evaluation. Its contribution is the connection between computational inference and explainable input evidence, supported by verified upload-to-report behavior. The evidence does not establish universal accuracy, guaranteed attack identification or production readiness.
+
+# 8. Recommendations
+
+## 8.1 Actionable Insights
+
+Prioritize malicious predictions with input-integrity issues and inspect rejected records before reanalysis. Investigate malicious predictions using independent security evidence rather than automatic blocking. Resolve missing source values and validate unfamiliar categories against authoritative network exports. Preserve analytical anomalies and duplicate provenance until their context is understood.
+
+Future evaluation should hold the classifier fixed and use a genuinely independent or temporally separate labelled dataset, multiple degradation seeds and uncertainty intervals. Systematic and combined missingness should be tested without selecting conditions from target labels. Any later tuning must use a separate development protocol and retain an independent final evaluation.
+
+For practical large-file browsing, implement an explicitly bounded, expiring analysis-result store and reusable analysis IDs before adding further result-window requests. Optimize quality-assessment latency and profile peak memory/concurrent workload. These are recommendations, not completed features of the submitted prototype.
+
+## 8.2 Potential Risks and Mitigation Strategies
+
+| Risk or limitation | Mitigation / next step |
+| --- | --- |
+| False alarms and missed attacks | Use analyst review and independent evidence; establish operational error costs on new data. |
+| Benchmark/domain shift | Evaluate on genuinely independent networks and time periods before deployment claims. |
+| Schema mismatch and unseen categories | Require saved feature names; expose explicit errors/audits and Review status. |
+| Uncalibrated probabilities | Label them as estimates; assess calibration separately with a proper validation protocol. |
+| Slow full-file assessment | Profile the quality stage, memory and concurrency; retain bounded output and sparse inference. |
+| Refresh and page-local evidence | Keep clear empty states; add reusable analysis IDs before claiming durable result browsing. |
+| Sensitive traffic exports | Use authorized/anonymized data and restrict access; production security controls require separate work. |
+
+## 8.3 Challenges and Remaining Limitations
+
+Engineering challenges included aligning quality findings to original rows after rejected inputs, maintaining the fitted feature order, preserving source values, separating official evaluation from current-upload summaries and preventing large-response browser storage failures. The final design uses explicit source-position mapping, saved artifacts, bounded responses and memory-based active results to address these issues.
+
+Remaining limits include UNSW-NB15-focused evaluation, a required schema, uploaded-record rather than live analysis, slow large files, uncalibrated probability, page-local filters/PDF previews, evidence truncation and refresh loss. Phase 16 used one seed per mechanism, limited predictor groups and nested levels, without confidence intervals or combined corruption. The official testing split previously participated in model selection. No universal reliability or production security guarantee follows from these results.
+
+# 9. References
+
+Breiman, L. (2001). Random forests. Machine Learning, 45(1), 5–32. https://doi.org/10.1023/A:1010933404324
+
+Mnisi, V. N. (2026). DataQualiQ: Data quality-aware network intrusion detection [Computer software and unpublished project evaluation records]. Sol Plaatje University. https://github.com/NokubongaVee/DataQualiQ
+
+Moustafa, N., & Slay, J. (2015). UNSW-NB15: A comprehensive data set for network intrusion detection systems (UNSW-NB15 network data set). In 2015 Military Communications and Information Systems Conference (MilCIS) (pp. 1–6). IEEE. https://doi.org/10.1109/MILCIS.2015.7348942
+
+Pedregosa, F., Varoquaux, G., Gramfort, A., Michel, V., Thirion, B., Grisel, O., Blondel, M., Prettenhofer, P., Weiss, R., Dubourg, V., Vanderplas, J., Passos, A., Cournapeau, D., Brucher, M., Perrot, M., & Duchesnay, É. (2011). Scikit-learn: Machine learning in Python. Journal of Machine Learning Research, 12, 2825–2830. https://jmlr.org/papers/v12/pedregosa11a.html
+
+scikit-learn developers. (n.d.-a). Common pitfalls and recommended practices. scikit-learn documentation. Retrieved October 9, 2026, from https://scikit-learn.org/stable/common_pitfalls.html
+
+scikit-learn developers. (n.d.-b). Feature importances with a forest of trees. scikit-learn documentation. Retrieved October 9, 2026, from https://scikit-learn.org/stable/auto_examples/ensemble/plot_forest_importances.html
+
+Sommer, R., & Paxson, V. (2010). Outside the closed world: On using machine learning for network intrusion detection. In 2010 IEEE Symposium on Security and Privacy (pp. 305–316). IEEE. https://doi.org/10.1109/SP.2010.25
+
+UNSW. (n.d.). The UNSW-NB15 dataset. UNSW Research. Retrieved October 9, 2026, from https://research.unsw.edu.au/projects/unsw-nb15-dataset
+
+# 10. Appendix: Links and Evidence
+
+## 10.1 Code Repository and Reproduction Evidence
+
+Git repository configured for this project: https://github.com/NokubongaVee/DataQualiQ. This is the verified local origin URL; the report does not assert that every local phase file has already been pushed to the public repository. Implementation code should be submitted through the repository with the matching evaluation evidence.
+
+Primary evidence files: docs/phase5/evaluation.json; backend/models/model_metadata.json; docs/phase15/system_validation.json; docs/phase15/regression_results.json; docs/phase16/experiment_results.json and experiment_results.csv. The final narrative is consolidated in docs/phase17/README.md. Report-specific saved importance extraction and integrity checks are retained in docs/final-report/report_evidence.json.
+
+## 10.2 Complete Required Predictor Names
+
+Numeric predictors: dur, spkts, dpkts, sbytes, dbytes, rate, sttl, dttl, sload, dload, sloss, dloss, sinpkt, dinpkt, sjit, djit, swin, stcpb, dtcpb, dwin, tcprtt, synack, ackdat, smean, dmean, trans_depth, response_body_len, ct_srv_src, ct_state_ttl, ct_dst_ltm, ct_src_dport_ltm, ct_dst_sport_ltm, ct_dst_src_ltm, is_ftp_login, ct_ftp_cmd, ct_flw_http_mthd, ct_src_ltm, ct_srv_dst, is_sm_ips_ports.
+
+Categorical predictors: proto, service, state. Excluded fields: id, attack_cat, label. Input column order may differ, but the saved feature order is used for transformation.
+
+## 10.3 Additional Verified Figures and Report Evidence
+
+![Figure 8. Quality-score thresholds plateau while the number of missing cells continues to increase.](../phase16/plots/quality_score.png)
+Figure 8. Quality-score thresholds plateau while the number of missing cells continues to increase.
+
+![Figure 9. F1 decreases under both missingness mechanisms; formatting changes leave baseline performance unchanged.](../phase16/plots/f1.png)
+Figure 9. F1 decreases under both missingness mechanisms; formatting changes leave baseline performance unchanged.
+
+![Figure 10. Missed attacks decrease under the tested missingness conditions; the conclusion must include increased false positives.](../phase16/plots/false_negatives.png)
+Figure 10. Missed attacks decrease under the tested missingness conditions; the conclusion must include increased false positives.
+
+![Figure 11. Actual first page of the verified exported network PDF. The eight-page export is preserved in docs/phase15/DataQualiQ-network-report.pdf.](../phase15/page-1.png)
+Figure 11. Actual first page of the verified exported network PDF. The eight-page export is preserved in docs/phase15/DataQualiQ-network-report.pdf.
+
+## 10.4 Submission and Integrity Notes
+
+The original template, training/testing CSVs, selected model, saved preprocessor and metadata were preserved. The report adds no application logic and performs no training or new test-set model selection. References were checked online and numerical results traced to recorded project evidence. Institutional similarity checking has not been run by this report-generation process; no similarity percentage or plagiarism clearance is claimed. The template’s similarity-check requirement must be completed through the institution’s approved service before submission.

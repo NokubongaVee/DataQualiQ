@@ -1,8 +1,7 @@
 # validity_checks.py
 import pandas as pd
 from difflib import get_close_matches
-import numpy as np
-from value_utils import present_values
+from value_utils import present_values, decimal_number
 from type_inference import EMAIL_PATTERN, CURRENCY_PATTERN
 
 # ============== EXISTING CHECKS ==============
@@ -70,8 +69,10 @@ def check_currency_validity(df: pd.DataFrame, col: str) -> dict:
 def check_numeric_bounds(df: pd.DataFrame, col: str) -> dict:
     """Flag parsing/finiteness failures; headers cannot establish valid bounds."""
     values = present_values(df[col])
-    numeric = pd.to_numeric(values, errors="coerce")
-    invalid_mask = numeric.isna() | ~np.isfinite(numeric)
+    # Float64 overflow/rounding is a representation limit, not proof that a
+    # finite source number is invalid. Statistical profiling remains bounded
+    # by floating-point arithmetic and reports that limitation separately.
+    invalid_mask = values.map(lambda value: decimal_number(value) is None)
     invalid = values[invalid_mask]
     return {
         "check": "invalid_numeric", "column": col, "count": int(invalid_mask.sum()),
@@ -103,9 +104,8 @@ def check_text_quality(df: pd.DataFrame, col: str) -> dict:
 
 def check_categorical_consistency(df: pd.DataFrame, col: str) -> dict:
     """
-    Check categorical columns for:
-    - Values that appear rarely (potential typos)
-    - Values with unusual formatting (mixed case, special characters)
+    Find rare edit-distance spelling candidates, never established invalidity.
+    Case/whitespace variants belong to the separate representation check.
     """
     values = present_values(df[col]).astype(str)
     values = values[values.str.strip() != ""]
@@ -124,15 +124,16 @@ def check_categorical_consistency(df: pd.DataFrame, col: str) -> dict:
     if rare_pct > 5:
         rare_mask = pd.Series(False, index=values.index)
 
-    common = [str(value).casefold() for value, count in value_counts.items() if count > 1]
+    common = [str(value).strip().casefold() for value, count in value_counts.items() if count > 1]
     def likely_typo(value):
-        normalised = str(value).casefold()
+        normalised = str(value).strip().casefold()
         return len(normalised) >= 4 and normalised not in common and bool(get_close_matches(normalised, common, n=1, cutoff=0.85))
     invalid_mask = rare_mask & values.map(likely_typo)
     invalid = values[invalid_mask]
 
     return {
         "check": "invalid_categorical",
+        "review_only": True,
         "column": col,
         "count": int(invalid_mask.sum()),
         "pct": round(100 * invalid_mask.sum() / len(values), 1) if len(values) else 0,

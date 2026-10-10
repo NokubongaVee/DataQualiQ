@@ -1,0 +1,203 @@
+{
+  "sections": [
+    {
+      "title": "Executive summary",
+      "lines": [
+        "1000 network records were analysed. 183 were classified as Normal and 817 as Malicious. The uploaded data received a quality score of 100/100 (Grade A). 1 records require Review; 0 were rejected.",
+        "Current-upload findings below are separate from saved official model evaluation."
+      ]
+    },
+    {
+      "title": "Data quality",
+      "lines": [
+        "Quality score: 100/100; Grade A. Heuristic quality score, not prediction accuracy.",
+        "Data errors, quality issues and analytical/security anomalies are distinct. Counts can overlap; analytical anomalies are not automatically incorrect data or attacks.",
+        "Missing values (Quality issues): 0 affected records; 0 occurrences; 0 findings",
+        "Duplicate rows (Quality issues): 0 affected records; 0 occurrences; 0 findings",
+        "Invalid values (Data errors): 0 affected records; 0 occurrences; 0 findings",
+        "Inconsistencies (Quality issues): 0 affected records; 0 occurrences; 0 findings",
+        "Analytical/security anomalies (Analytical/security anomalies): 706 affected records; 2973 occurrences; 30 findings",
+        "Field dur: 163 occurrences",
+        "Field spkts: 67 occurrences",
+        "Field dpkts: 86 occurrences",
+        "Field sbytes: 109 occurrences",
+        "Field dbytes: 125 occurrences",
+        "Field rate: 94 occurrences",
+        "Field sttl: 181 occurrences",
+        "Field sload: 121 occurrences",
+        "Field dload: 126 occurrences",
+        "Field sloss: 129 occurrences",
+        "Field details truncated for this report.",
+        "Duplicate counts exclude the first occurrence.",
+        "Warning: Unseen categories use saved encoding and require Review; no categories were learned."
+      ]
+    },
+    {
+      "title": "Intrusion detection - current upload",
+      "lines": [
+        "Normal: 183; Malicious: 817; Rejected: 0",
+        "Normal percentage: 18.3%; Malicious percentage: 81.7%. Percentages use classified records only; rejected rows are excluded.",
+        "Average predicted-class probability: 90%",
+        "Model probabilities are estimates, not calibrated guarantees."
+      ]
+    },
+    {
+      "title": "Model Performance - Official Test Evaluation",
+      "lines": [
+        "Saved official test evaluation: Phase 5 results from the reserved test dataset; NOT calculated from the current uploaded file.",
+        "UNSW-NB15 reserved official testing split; 82332 evaluated records",
+        "Accuracy: 86.4%; Precision: 80.7%; Recall: 99%; F1-score: 88.9%",
+        "Confusion matrix: rows actual, columns predicted; order Normal, Malicious.",
+        "True Normal: 26256; False Alarm: 10744",
+        "Missed Attack: 444; Correctly Detected Attack: 44888",
+        "False positives are normal traffic classified as malicious. False negatives are missed malicious traffic."
+      ]
+    },
+    {
+      "title": "Reliability - predictive-input integrity",
+      "lines": [
+        "High: 999; Review: 1; Low: 0; Rejected: 0 (included in Low).",
+        "High: prediction produced with no unresolved predictive-input integrity issue.",
+        "Review: prediction produced, but input had a relevant handled quality issue.",
+        "Low: prediction could not be safely produced due to invalid required input; rejected records have no class or probability.",
+        "Reliability describes input integrity, separate from model probability; it is not guaranteed correctness."
+      ]
+    },
+    {
+      "title": "Suspicious / important records",
+      "lines": [
+        "Bounded selection: 20 important records, maximum 20, from 100 returned rows of 1000 total (offset 0). This is not a full-file ranking.",
+        "Order: Malicious + Review, Malicious + Low, rejected records, Malicious + High. Rejected status takes precedence over any supplied class.",
+        "Record numbers are original one-based CSV data-row positions, excluding the header. No extra pages were fetched.",
+        "Record 1: Malicious; predicted probability 86%; reliability High; Issue detected",
+        "Reliability reason: Prediction produced with no unresolved predictive-field integrity issue. Analytical anomalies and preserved duplicates do not invalidate the input.",
+        "smean: Requires five finite numbers, representable IQR fences, variation, and no identifier or binary-indicator interpretation.",
+        "Record 2: Malicious; predicted probability 84.5%; reliability High; Issue detected",
+        "Reliability reason: Prediction produced with no unresolved predictive-field integrity issue. Analytical anomalies and preserved duplicates do not invalidate the input.",
+        "sload: Requires five finite numbers, representable IQR fences, variation, and no identifier or binary-indicator interpretation.",
+        "smean: Requires five finite numbers, representable IQR fences, variation, and no identifier or binary-indicator interpretation.",
+        "Record 3: Malicious; predicted probability 78.2%; reliability High; Issue detected",
+        "Reliability reason: Prediction produced with no unresolved predictive-field integrity issue. Analytical anomalies and preserved duplicates do not invalidate the input.",
+        "sload: Requires five finite numbers, representable IQR fences, variation, and no identifier or binary-indicator interpretation.",
+        "smean: Requires five finite numbers, representable IQR fences, variation, and no identifier or binary-indicator interpretation.",
+        "Record 4: Malicious; predicted probability 73.1%; reliability High; Issue detected",
+        "Reliability reason: Prediction produced with no unresolved predictive-field integrity issue. Analytical anomalies and preserved duplicates do not invalidate the input.",
+        "sload: Requires five finite numbers, representable IQR fences, variation, and no identifier or binary-indicator interpretation.",
+        "smean: Requires five finite numbers, representable IQR fences, variation, and no identifier or binary-indicator interpretation.",
+        "Record 5: Malicious; predicted probability 74.8%; reliability High; Issue detected",
+        "Reliability reason: Prediction produced with no unresolved predictive-field integrity issue. Analytical anomalies and preserved duplicates do not invalidate the input.",
+        "sload: Requires five finite numbers, representable IQR fences, variation, and no identifier or binary-indicator interpretation.",
+        "smean: Requires five finite numbers, representable IQR fences, variation, and no identifier or binary-indicator interpretation.",
+        "Record 6: Malicious; predicted probability 79%; reliability High; Issue detected",
+        "Reliability reason: Prediction produced with no unresolved predictive-field integrity issue. Analytical anomalies and preserved duplicates do not invalidate the input.",
+        "rate: Requires five finite numbers, representable IQR fences, variation, and no identifier or binary-indicator interpretation.",
+        "sload: Requires five finite numbers, representable IQR fences, variation, and no identifier or binary-indicator interpretation.",
+        "smean: Requires five finite numbers, representable IQR fences, variation, and no identifier or binary-indicator interpretation.",
+        "Record 7: Malicious; predicted probability 76.5%; reliability High; Issue detected",
+        "Reliability reason: Prediction produced with no unresolved predictive-field integrity issue. Analytical anomalies and preserved duplicates do not invalidate the input.",
+        "sload: Requires five finite numbers, representable IQR fences, variation, and no identifier or binary-indicator interpretation.",
+        "smean: Requires five finite numbers, representable IQR fences, variation, and no identifier or binary-indicator interpretation.",
+        "Record 8: Malicious; predicted probability 74.2%; reliability High; Issue detected",
+        "Reliability reason: Prediction produced with no unresolved predictive-field integrity issue. Analytical anomalies and preserved duplicates do not invalidate the input.",
+        "smean: Requires five finite numbers, representable IQR fences, variation, and no identifier or binary-indicator interpretation.",
+        "Record 13: Malicious; predicted probability 80.1%; reliability High; Issue detected",
+        "Reliability reason: Prediction produced with no unresolved predictive-field integrity issue. Analytical anomalies and preserved duplicates do not invalidate the input.",
+        "sload: Requires five finite numbers, representable IQR fences, variation, and no identifier or binary-indicator interpretation.",
+        "smean: Requires five finite numbers, representable IQR fences, variation, and no identifier or binary-indicator interpretation.",
+        "Record 14: Malicious; predicted probability 76%; reliability High; Issue detected",
+        "Reliability reason: Prediction produced with no unresolved predictive-field integrity issue. Analytical anomalies and preserved duplicates do not invalidate the input.",
+        "sload: Requires five finite numbers, representable IQR fences, variation, and no identifier or binary-indicator interpretation.",
+        "smean: Requires five finite numbers, representable IQR fences, variation, and no identifier or binary-indicator interpretation.",
+        "Record 15: Malicious; predicted probability 85.5%; reliability High; Issue detected",
+        "Reliability reason: Prediction produced with no unresolved predictive-field integrity issue. Analytical anomalies and preserved duplicates do not invalidate the input.",
+        "sload: Requires five finite numbers, representable IQR fences, variation, and no identifier or binary-indicator interpretation.",
+        "smean: Requires five finite numbers, representable IQR fences, variation, and no identifier or binary-indicator interpretation.",
+        "Record 16: Malicious; predicted probability 76.9%; reliability High; Issue detected",
+        "Reliability reason: Prediction produced with no unresolved predictive-field integrity issue. Analytical anomalies and preserved duplicates do not invalidate the input.",
+        "sload: Requires five finite numbers, representable IQR fences, variation, and no identifier or binary-indicator interpretation.",
+        "smean: Requires five finite numbers, representable IQR fences, variation, and no identifier or binary-indicator interpretation.",
+        "Record 17: Malicious; predicted probability 93.4%; reliability High; Issue detected",
+        "Reliability reason: Prediction produced with no unresolved predictive-field integrity issue. Analytical anomalies and preserved duplicates do not invalidate the input.",
+        "rate: Requires five finite numbers, representable IQR fences, variation, and no identifier or binary-indicator interpretation.",
+        "sload: Requires five finite numbers, representable IQR fences, variation, and no identifier or binary-indicator interpretation.",
+        "Record 18: Malicious; predicted probability 77.9%; reliability High; Issue detected",
+        "Reliability reason: Prediction produced with no unresolved predictive-field integrity issue. Analytical anomalies and preserved duplicates do not invalidate the input.",
+        "sload: Requires five finite numbers, representable IQR fences, variation, and no identifier or binary-indicator interpretation.",
+        "smean: Requires five finite numbers, representable IQR fences, variation, and no identifier or binary-indicator interpretation.",
+        "Record 19: Malicious; predicted probability 84.2%; reliability High; Issue detected",
+        "Reliability reason: Prediction produced with no unresolved predictive-field integrity issue. Analytical anomalies and preserved duplicates do not invalidate the input.",
+        "rate: Requires five finite numbers, representable IQR fences, variation, and no identifier or binary-indicator interpretation.",
+        "sload: Requires five finite numbers, representable IQR fences, variation, and no identifier or binary-indicator interpretation.",
+        "smean: Requires five finite numbers, representable IQR fences, variation, and no identifier or binary-indicator interpretation.",
+        "Record 20: Malicious; predicted probability 84.1%; reliability High; Issue detected",
+        "Reliability reason: Prediction produced with no unresolved predictive-field integrity issue. Analytical anomalies and preserved duplicates do not invalidate the input.",
+        "sload: Requires five finite numbers, representable IQR fences, variation, and no identifier or binary-indicator interpretation.",
+        "smean: Requires five finite numbers, representable IQR fences, variation, and no identifier or binary-indicator interpretation.",
+        "Record 21: Malicious; predicted probability 77.6%; reliability High; Issue detected",
+        "Reliability reason: Prediction produced with no unresolved predictive-field integrity issue. Analytical anomalies and preserved duplicates do not invalidate the input.",
+        "sload: Requires five finite numbers, representable IQR fences, variation, and no identifier or binary-indicator interpretation.",
+        "smean: Requires five finite numbers, representable IQR fences, variation, and no identifier or binary-indicator interpretation.",
+        "Record 22: Malicious; predicted probability 95.4%; reliability High; No issue detected",
+        "Reliability reason: Prediction produced with no unresolved predictive-field integrity issue. Analytical anomalies and preserved duplicates do not invalidate the input.",
+        "Record 23: Malicious; predicted probability 71.3%; reliability High; Issue detected",
+        "Reliability reason: Prediction produced with no unresolved predictive-field integrity issue. Analytical anomalies and preserved duplicates do not invalidate the input.",
+        "sload: Requires five finite numbers, representable IQR fences, variation, and no identifier or binary-indicator interpretation.",
+        "smean: Requires five finite numbers, representable IQR fences, variation, and no identifier or binary-indicator interpretation.",
+        "Record 24: Malicious; predicted probability 78.3%; reliability High; Issue detected",
+        "Reliability reason: Prediction produced with no unresolved predictive-field integrity issue. Analytical anomalies and preserved duplicates do not invalidate the input.",
+        "sload: Requires five finite numbers, representable IQR fences, variation, and no identifier or binary-indicator interpretation.",
+        "smean: Requires five finite numbers, representable IQR fences, variation, and no identifier or binary-indicator interpretation."
+      ]
+    },
+    {
+      "title": "Security recommendations",
+      "lines": [
+        "Backend decision-support recommendations for human review and investigation.",
+        "high priority: Prioritise human review of malicious predictions with input-integrity issues.",
+        "Reason: Malicious predictions requiring Review: 1. Input issues may affect interpretation.",
+        "Affected records: 1",
+        "high priority: Investigate model-predicted malicious records using independent security evidence.",
+        "Reason: 817 records were predicted Malicious. A probability estimate does not establish a confirmed attack.",
+        "Affected records: 817",
+        "medium priority: Preserve analytical anomalies for contextual security investigation.",
+        "Reason: 706 distinct records have analytical findings; these are not automatically bad input or confirmed attacks.",
+        "Affected records: 706"
+      ]
+    },
+    {
+      "title": "Limitations",
+      "lines": [
+        "Model probabilities are estimates, not calibrated guarantees. Input reliability is not guaranteed prediction correctness.",
+        "Analytical anomalies are not automatically attacks. The model requires compatible network features.",
+        "This prototype analyses uploaded network records, not live packet capture.",
+        "Only the currently returned record window is available for selection. The PDF does not include all predictions, evidence arrays, anomaly occurrences or raw audit structures.",
+        "Official evaluation is saved Phase 5 performance; model selection used that testing split, so it is not a fresh independent evaluation of the selected winner.",
+        "Analysis date/time is not supplied by the current backend response; no analysis timestamp was inferred."
+      ]
+    }
+  ],
+  "selected_record_positions": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24
+  ],
+  "source": "Real frontend/backend upload; first 1000 testing rows; 100 returned records",
+  "filename": "real-network-sample.csv"
+}

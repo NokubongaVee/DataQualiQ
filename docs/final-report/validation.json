@@ -1,0 +1,11 @@
+{
+  "zip_xml_integrity": "passed",
+  "cover_details": "passed",
+  "section_order": "passed",
+  "verified_metric_values": "passed",
+  "a4_arial11_spacing_margins_footer": "passed",
+  "embedded_images": 12,
+  "original_files_unchanged": true,
+  "word_render_validation": "unavailable: no Word/LibreOffice installed",
+  "institutional_similarity_check": "not performed"
+}

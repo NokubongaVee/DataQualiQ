@@ -89,6 +89,10 @@ def infer_column_profile(series: pd.Series, column_name: str = '') -> dict:
         value_support = ratio >= .7
         if role == 'phone':
             value_support = ratio >= .7 and (sample['formatted_phone_ratio'] >= .5 or named)
+            if not named and full['numeric_parse_ratio'] >= .8:
+                # Long decimal measurements also match phone digit/separator
+                # syntax. A numeric representation alone is not contact data.
+                value_support = False
         if value_support or (named and ratio >= .4):
             add(role, .7 + .2 * ratio, [f'{ratio:.1%} of sampled values match {role} syntax'] +
                 ([f'header supports {role}'] if named else []))

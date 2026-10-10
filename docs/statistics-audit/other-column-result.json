@@ -1,0 +1,1723 @@
+{
+  "filename": "other_column.csv",
+  "total_rows": 21,
+  "total_columns": 4,
+  "column_profiles": {
+    "record_id": {
+      "type": "text",
+      "role": "identifier",
+      "confidence": 0.85,
+      "semantic_tags": [
+        "identifier"
+      ],
+      "evidence": [
+        "95.2% distinct present values",
+        "compact code pattern"
+      ],
+      "alternatives": [
+        {
+          "role": "identifier",
+          "confidence": 0.85,
+          "supporting_evidence": [
+            "95.2% distinct present values",
+            "compact code pattern"
+          ],
+          "contradicting_evidence": []
+        }
+      ],
+      "contradictions": [],
+      "measurements": {
+        "full": {
+          "row_count": 21,
+          "present_count": 21,
+          "missing_count": 0,
+          "missing_percentage": 0.0,
+          "blank_count": 0,
+          "unique_count": 20,
+          "uniqueness": 0.9523809523809523,
+          "repeated_occurrences": 2,
+          "excess_repetitions": 1,
+          "numeric_parse_ratio": 0.0,
+          "finite_numeric_ratio": 0.0,
+          "common_values": [
+            {
+              "value": "K019",
+              "count": 2
+            },
+            {
+              "value": "K000",
+              "count": 1
+            },
+            {
+              "value": "K001",
+              "count": 1
+            },
+            {
+              "value": "K002",
+              "count": 1
+            },
+            {
+              "value": "K003",
+              "count": 1
+            },
+            {
+              "value": "K004",
+              "count": 1
+            },
+            {
+              "value": "K005",
+              "count": 1
+            },
+            {
+              "value": "K006",
+              "count": 1
+            }
+          ],
+          "frequency_summary": {
+            "singleton_values": 19,
+            "repeated_values": 1
+          },
+          "numeric": null
+        },
+        "sample": {
+          "size": 21,
+          "population": 21,
+          "limit": 1000,
+          "method": "deterministic random sample, seed 0",
+          "email_ratio": 0.0,
+          "phone_ratio": 0.0,
+          "formatted_phone_ratio": 0.0,
+          "currency_ratio": 0.0,
+          "currency_symbol_ratio": 0.0,
+          "percentage_ratio": 0.0,
+          "date_parse_ratio": 0.0,
+          "date_shape_ratio": 0.0,
+          "date_range": {
+            "min": null,
+            "max": null
+          },
+          "code_ratio": 1.0,
+          "leading_zero_ratio": 0.0,
+          "prose_ratio": 0.0,
+          "length": {
+            "min": 4,
+            "max": 4,
+            "median": 4.0
+          },
+          "patterns": [
+            {
+              "value": "A9",
+              "count": 21
+            }
+          ],
+          "examples": [
+            "K008",
+            "K013",
+            "K019"
+          ]
+        }
+      },
+      "limitations": [
+        "Semantic confidence is heuristic support, not a calibrated probability.",
+        "Sampled patterns may miss rare representations; business meaning and units are unverified."
+      ],
+      "checks": {
+        "missing": {
+          "selected": true,
+          "reason": "Missingness is observable for every field."
+        },
+        "control_characters": {
+          "selected": true,
+          "reason": "Non-whitespace control characters are structural observations."
+        },
+        "validity": {
+          "selected": false,
+          "reason": "Skipped: Observed representation is text."
+        },
+        "category_format": {
+          "selected": false,
+          "reason": "Skipped: Repeated labels can be compared without assuming their meaning."
+        },
+        "numeric_format": {
+          "selected": false,
+          "reason": "Skipped: Values support a numeric representation."
+        },
+        "date_format": {
+          "selected": false,
+          "reason": "Skipped: Parseable dates can be compared for representation and ambiguity."
+        },
+        "outlier": {
+          "selected": false,
+          "reason": "Skipped: Requires five finite numbers, representable IQR fences, variation, and no identifier or binary-indicator interpretation."
+        },
+        "identifier_pattern": {
+          "selected": true,
+          "reason": "Candidate identifiers need sufficient support for a dominant shape."
+        },
+        "repeated_identifier": {
+          "selected": true,
+          "reason": "Compact identifiers may repeat; repetition does not establish an error."
+        },
+        "header_conflict": {
+          "selected": false,
+          "reason": "Skipped: Header interpretation contradicts observed value patterns."
+        },
+        "percentage": {
+          "selected": false,
+          "reason": "Skipped: Percent symbols support syntax checking, but do not establish a 0\u2013100 business bound."
+        }
+      }
+    },
+    "measurement": {
+      "type": "numeric",
+      "role": "measurement",
+      "confidence": 0.65,
+      "semantic_tags": [
+        "measurement"
+      ],
+      "evidence": [
+        "numeric values corroborate a header hint; units and business purpose remain unverified"
+      ],
+      "alternatives": [
+        {
+          "role": "measurement",
+          "confidence": 0.65,
+          "supporting_evidence": [
+            "numeric values corroborate a header hint; units and business purpose remain unverified"
+          ],
+          "contradicting_evidence": []
+        }
+      ],
+      "contradictions": [],
+      "measurements": {
+        "full": {
+          "row_count": 21,
+          "present_count": 20,
+          "missing_count": 1,
+          "missing_percentage": 4.76,
+          "blank_count": 0,
+          "unique_count": 19,
+          "uniqueness": 0.95,
+          "repeated_occurrences": 2,
+          "excess_repetitions": 1,
+          "numeric_parse_ratio": 1.0,
+          "finite_numeric_ratio": 1.0,
+          "common_values": [
+            {
+              "value": "39",
+              "count": 2
+            },
+            {
+              "value": "20",
+              "count": 1
+            },
+            {
+              "value": "21",
+              "count": 1
+            },
+            {
+              "value": "23",
+              "count": 1
+            },
+            {
+              "value": "24",
+              "count": 1
+            },
+            {
+              "value": "25",
+              "count": 1
+            },
+            {
+              "value": "26",
+              "count": 1
+            },
+            {
+              "value": "27",
+              "count": 1
+            }
+          ],
+          "frequency_summary": {
+            "singleton_values": 18,
+            "repeated_values": 1
+          },
+          "numeric": {
+            "min": 20.0,
+            "max": 39.0,
+            "mean": 30.35,
+            "median": 30.5,
+            "std": 5.850427334819227,
+            "q1": 25.75,
+            "q3": 35.25,
+            "skew": -0.12942881706853016,
+            "finite_count": 20,
+            "integer_ratio": 1.0,
+            "distinct_count": 19,
+            "arithmetic_limited": false
+          }
+        },
+        "sample": {
+          "size": 20,
+          "population": 20,
+          "limit": 1000,
+          "method": "deterministic random sample, seed 0",
+          "email_ratio": 0.0,
+          "phone_ratio": 0.0,
+          "formatted_phone_ratio": 0.0,
+          "currency_ratio": 1.0,
+          "currency_symbol_ratio": 0.0,
+          "percentage_ratio": 0.0,
+          "date_parse_ratio": 0.0,
+          "date_shape_ratio": 0.0,
+          "date_range": {
+            "min": null,
+            "max": null
+          },
+          "code_ratio": 0.0,
+          "leading_zero_ratio": 0.0,
+          "prose_ratio": 0.0,
+          "length": {
+            "min": 2,
+            "max": 2,
+            "median": 2.0
+          },
+          "patterns": [
+            {
+              "value": "9",
+              "count": 20
+            }
+          ],
+          "examples": [
+            "39",
+            "21",
+            "39"
+          ]
+        }
+      },
+      "limitations": [
+        "Semantic confidence is heuristic support, not a calibrated probability.",
+        "Sampled patterns may miss rare representations; business meaning and units are unverified."
+      ],
+      "checks": {
+        "missing": {
+          "selected": true,
+          "reason": "Missingness is observable for every field."
+        },
+        "control_characters": {
+          "selected": true,
+          "reason": "Non-whitespace control characters are structural observations."
+        },
+        "validity": {
+          "selected": true,
+          "reason": "Observed representation is numeric."
+        },
+        "category_format": {
+          "selected": false,
+          "reason": "Skipped: Repeated labels can be compared without assuming their meaning."
+        },
+        "numeric_format": {
+          "selected": true,
+          "reason": "Values support a numeric representation."
+        },
+        "date_format": {
+          "selected": false,
+          "reason": "Skipped: Parseable dates can be compared for representation and ambiguity."
+        },
+        "outlier": {
+          "selected": true,
+          "reason": "Requires five finite numbers, representable IQR fences, variation, and no identifier or binary-indicator interpretation."
+        },
+        "identifier_pattern": {
+          "selected": false,
+          "reason": "Skipped: Candidate identifiers need sufficient support for a dominant shape."
+        },
+        "repeated_identifier": {
+          "selected": false,
+          "reason": "Skipped: Compact identifiers may repeat; repetition does not establish an error."
+        },
+        "header_conflict": {
+          "selected": false,
+          "reason": "Skipped: Header interpretation contradicts observed value patterns."
+        },
+        "percentage": {
+          "selected": false,
+          "reason": "Skipped: Percent symbols support syntax checking, but do not establish a 0\u2013100 business bound."
+        }
+      }
+    },
+    "Other": {
+      "type": "email",
+      "role": "email",
+      "confidence": 0.85,
+      "semantic_tags": [
+        "email"
+      ],
+      "evidence": [
+        "100.0% of sampled values match email syntax"
+      ],
+      "alternatives": [
+        {
+          "role": "email",
+          "confidence": 0.85,
+          "supporting_evidence": [
+            "100.0% of sampled values match email syntax"
+          ],
+          "contradicting_evidence": []
+        }
+      ],
+      "contradictions": [],
+      "measurements": {
+        "full": {
+          "row_count": 21,
+          "present_count": 19,
+          "missing_count": 2,
+          "missing_percentage": 9.52,
+          "blank_count": 1,
+          "unique_count": 18,
+          "uniqueness": 0.9473684210526315,
+          "repeated_occurrences": 2,
+          "excess_repetitions": 1,
+          "numeric_parse_ratio": 0.0,
+          "finite_numeric_ratio": 0.0,
+          "common_values": [
+            {
+              "value": "person19@example.org",
+              "count": 2
+            },
+            {
+              "value": "person2@example.org",
+              "count": 1
+            },
+            {
+              "value": "person3@example.org",
+              "count": 1
+            },
+            {
+              "value": "person4@example.org",
+              "count": 1
+            },
+            {
+              "value": "person5@example.org",
+              "count": 1
+            },
+            {
+              "value": "person6@example.org",
+              "count": 1
+            },
+            {
+              "value": "person7@example.org",
+              "count": 1
+            },
+            {
+              "value": "person8@example.org",
+              "count": 1
+            }
+          ],
+          "frequency_summary": {
+            "singleton_values": 17,
+            "repeated_values": 1
+          },
+          "numeric": null
+        },
+        "sample": {
+          "size": 19,
+          "population": 19,
+          "limit": 1000,
+          "method": "deterministic random sample, seed 0",
+          "email_ratio": 1.0,
+          "phone_ratio": 0.0,
+          "formatted_phone_ratio": 0.0,
+          "currency_ratio": 0.0,
+          "currency_symbol_ratio": 0.0,
+          "percentage_ratio": 0.0,
+          "date_parse_ratio": 0.0,
+          "date_shape_ratio": 0.0,
+          "date_range": {
+            "min": null,
+            "max": null
+          },
+          "code_ratio": 0.0,
+          "leading_zero_ratio": 0.0,
+          "prose_ratio": 0.0,
+          "length": {
+            "min": 19,
+            "max": 20,
+            "median": 20.0
+          },
+          "patterns": [
+            {
+              "value": "A9@A.A",
+              "count": 19
+            }
+          ],
+          "examples": [
+            "person12@example.org",
+            "person3@example.org",
+            "person10@example.org"
+          ]
+        }
+      },
+      "limitations": [
+        "Semantic confidence is heuristic support, not a calibrated probability.",
+        "Sampled patterns may miss rare representations; business meaning and units are unverified."
+      ],
+      "checks": {
+        "missing": {
+          "selected": true,
+          "reason": "Missingness is observable for every field."
+        },
+        "control_characters": {
+          "selected": true,
+          "reason": "Non-whitespace control characters are structural observations."
+        },
+        "validity": {
+          "selected": true,
+          "reason": "Observed representation is email."
+        },
+        "category_format": {
+          "selected": false,
+          "reason": "Skipped: Repeated labels can be compared without assuming their meaning."
+        },
+        "numeric_format": {
+          "selected": false,
+          "reason": "Skipped: Values support a numeric representation."
+        },
+        "date_format": {
+          "selected": false,
+          "reason": "Skipped: Parseable dates can be compared for representation and ambiguity."
+        },
+        "outlier": {
+          "selected": false,
+          "reason": "Skipped: Requires five finite numbers, representable IQR fences, variation, and no identifier or binary-indicator interpretation."
+        },
+        "identifier_pattern": {
+          "selected": false,
+          "reason": "Skipped: Candidate identifiers need sufficient support for a dominant shape."
+        },
+        "repeated_identifier": {
+          "selected": false,
+          "reason": "Skipped: Compact identifiers may repeat; repetition does not establish an error."
+        },
+        "header_conflict": {
+          "selected": false,
+          "reason": "Skipped: Header interpretation contradicts observed value patterns."
+        },
+        "percentage": {
+          "selected": false,
+          "reason": "Skipped: Percent symbols support syntax checking, but do not establish a 0\u2013100 business bound."
+        }
+      }
+    },
+    "region": {
+      "type": "categorical",
+      "role": "category",
+      "confidence": 0.8,
+      "semantic_tags": [
+        "category"
+      ],
+      "evidence": [
+        "2 distinct labels among 21 present values"
+      ],
+      "alternatives": [
+        {
+          "role": "category",
+          "confidence": 0.8,
+          "supporting_evidence": [
+            "2 distinct labels among 21 present values"
+          ],
+          "contradicting_evidence": []
+        }
+      ],
+      "contradictions": [],
+      "measurements": {
+        "full": {
+          "row_count": 21,
+          "present_count": 21,
+          "missing_count": 0,
+          "missing_percentage": 0.0,
+          "blank_count": 0,
+          "unique_count": 2,
+          "uniqueness": 0.09523809523809523,
+          "repeated_occurrences": 21,
+          "excess_repetitions": 19,
+          "numeric_parse_ratio": 0.0,
+          "finite_numeric_ratio": 0.0,
+          "common_values": [
+            {
+              "value": "North",
+              "count": 11
+            },
+            {
+              "value": "South",
+              "count": 10
+            }
+          ],
+          "frequency_summary": {
+            "singleton_values": 0,
+            "repeated_values": 2
+          },
+          "numeric": null
+        },
+        "sample": {
+          "size": 21,
+          "population": 21,
+          "limit": 1000,
+          "method": "deterministic random sample, seed 0",
+          "email_ratio": 0.0,
+          "phone_ratio": 0.0,
+          "formatted_phone_ratio": 0.0,
+          "currency_ratio": 0.0,
+          "currency_symbol_ratio": 0.0,
+          "percentage_ratio": 0.0,
+          "date_parse_ratio": 0.0,
+          "date_shape_ratio": 0.0,
+          "date_range": {
+            "min": null,
+            "max": null
+          },
+          "code_ratio": 0.0,
+          "leading_zero_ratio": 0.0,
+          "prose_ratio": 0.0,
+          "length": {
+            "min": 5,
+            "max": 5,
+            "median": 5.0
+          },
+          "patterns": [
+            {
+              "value": "A",
+              "count": 21
+            }
+          ],
+          "examples": [
+            "South",
+            "North",
+            "North"
+          ]
+        }
+      },
+      "limitations": [
+        "Semantic confidence is heuristic support, not a calibrated probability.",
+        "Sampled patterns may miss rare representations; business meaning and units are unverified."
+      ],
+      "checks": {
+        "missing": {
+          "selected": true,
+          "reason": "Missingness is observable for every field."
+        },
+        "control_characters": {
+          "selected": true,
+          "reason": "Non-whitespace control characters are structural observations."
+        },
+        "validity": {
+          "selected": true,
+          "reason": "Observed representation is categorical."
+        },
+        "category_format": {
+          "selected": true,
+          "reason": "Repeated labels can be compared without assuming their meaning."
+        },
+        "numeric_format": {
+          "selected": false,
+          "reason": "Skipped: Values support a numeric representation."
+        },
+        "date_format": {
+          "selected": false,
+          "reason": "Skipped: Parseable dates can be compared for representation and ambiguity."
+        },
+        "outlier": {
+          "selected": false,
+          "reason": "Skipped: Requires five finite numbers, representable IQR fences, variation, and no identifier or binary-indicator interpretation."
+        },
+        "identifier_pattern": {
+          "selected": false,
+          "reason": "Skipped: Candidate identifiers need sufficient support for a dominant shape."
+        },
+        "repeated_identifier": {
+          "selected": false,
+          "reason": "Skipped: Compact identifiers may repeat; repetition does not establish an error."
+        },
+        "header_conflict": {
+          "selected": false,
+          "reason": "Skipped: Header interpretation contradicts observed value patterns."
+        },
+        "percentage": {
+          "selected": false,
+          "reason": "Skipped: Percent symbols support syntax checking, but do not establish a 0\u2013100 business bound."
+        }
+      }
+    }
+  },
+  "column_types": {
+    "record_id": "text",
+    "measurement": "numeric",
+    "Other": "email",
+    "region": "categorical"
+  },
+  "dataset_context": {
+    "name": "unknown",
+    "confidence": 0.3,
+    "evidence": [
+      "Insufficient domain-specific evidence"
+    ]
+  },
+  "relationships": {
+    "observations": [],
+    "coverage": {
+      "rows_examined_for_pairs": 21,
+      "columns_examined_for_pairs": [
+        "Other",
+        "measurement",
+        "record_id",
+        "region"
+      ],
+      "row_limit": 20000,
+      "column_limit": 24,
+      "sampled": false,
+      "columns_truncated": false
+    },
+    "limitations": [
+      "Associations are descriptive, not causal or established business constraints.",
+      "Only supported categorical mappings, missingness and candidate identifiers are examined."
+    ]
+  },
+  "score_policy": {
+    "name": "legacy_weighted_penalty",
+    "heuristic": true,
+    "description": "Heuristic score, not a percentage of correct data. New relationship and semantic review candidates do not reduce it."
+  },
+  "issues": [
+    {
+      "check": "duplicate",
+      "column": null,
+      "count": 1,
+      "pct": 4.8,
+      "row_indices": [
+        20
+      ],
+      "denominator": 21,
+      "id": "finding-1",
+      "priority": "medium",
+      "priority_score": 0.5,
+      "evidence": {
+        "denominator": 21,
+        "population": "all data records",
+        "row_indices": [
+          20
+        ],
+        "examples": [],
+        "observations": [
+          "These complete rows exactly repeat earlier rows; counts exclude the first occurrence."
+        ],
+        "statistics": null,
+        "format_evidence": [],
+        "relationship": null,
+        "context": [],
+        "semantic": {
+          "role": "unknown",
+          "confidence": 0,
+          "support": [],
+          "contradictions": [],
+          "alternatives": []
+        },
+        "observation_confidence": 1.0,
+        "observation_confidence_scope": "Exact counts under the implemented detector and stated population; not certainty of error.",
+        "interpretation_confidence": 0,
+        "candidate": false,
+        "limitations": [
+          "Field purpose is uncertain; units and business impact cannot be established from these values alone."
+        ],
+        "review_questions": [
+          "Compare event provenance or source record keys to establish whether these are repeated imports or legitimate identical events before merging or deleting anything."
+        ],
+        "potential_impact": [
+          "Counting every occurrence can increase record totals and aggregates."
+        ],
+        "priority_score": 0.5,
+        "priority_reason": "4.8% of the stated population is affected. The detector observed a structural or syntax failure.",
+        "selection_reason": "Selected from observed structural or relationship evidence.",
+        "explanation": {
+          "why": "1 records repeat an earlier row exactly. They could be repeated imports or separate events with identical details.",
+          "consequence": "Counting every occurrence can increase record totals and aggregates.",
+          "next_step": "Compare event provenance or source record keys to establish whether these are repeated imports or legitimate identical events before merging or deleting anything.",
+          "priority_reason": "4.8% of the stated population is affected. The detector observed a structural or syntax failure."
+        }
+      }
+    },
+    {
+      "check": "missing",
+      "column": "measurement",
+      "count": 1,
+      "pct": 4.8,
+      "row_indices": [
+        2
+      ],
+      "selection_reason": "Missingness is observable for every field.",
+      "denominator": 21,
+      "id": "finding-2",
+      "priority": "medium",
+      "priority_score": 0.5,
+      "evidence": {
+        "denominator": 21,
+        "population": "all data records",
+        "row_indices": [
+          2
+        ],
+        "examples": [
+          "null"
+        ],
+        "observations": [
+          "0 blank strings; 1 total missing values under the documented null-marker policy."
+        ],
+        "statistics": null,
+        "format_evidence": [],
+        "relationship": null,
+        "context": [],
+        "semantic": {
+          "role": "measurement",
+          "confidence": 0.65,
+          "support": [
+            "numeric values corroborate a header hint; units and business purpose remain unverified"
+          ],
+          "contradictions": [],
+          "alternatives": [
+            {
+              "role": "measurement",
+              "confidence": 0.65,
+              "supporting_evidence": [
+                "numeric values corroborate a header hint; units and business purpose remain unverified"
+              ],
+              "contradicting_evidence": []
+            }
+          ]
+        },
+        "observation_confidence": 1.0,
+        "observation_confidence_scope": "Exact counts under the implemented detector and stated population; not certainty of error.",
+        "interpretation_confidence": 0.65,
+        "candidate": false,
+        "limitations": [
+          "Null markers such as NA may be legitimate codes. Missingness is not proven random."
+        ],
+        "review_questions": [
+          "Inspect the listed missing records against source evidence; retain unknowns where the source cannot verify a value."
+        ],
+        "potential_impact": [
+          "Summaries using this field exclude or otherwise handle the missing records."
+        ],
+        "priority_score": 0.5,
+        "priority_reason": "4.8% of the stated population is affected. The detector observed a structural or syntax failure.",
+        "selection_reason": "Missingness is observable for every field.",
+        "explanation": {
+          "why": "1 of 21 records have no value in \u201cmeasurement\u201d. Blank cells and recognised missing-value markers are counted as missing.",
+          "consequence": "Summaries using this field exclude or otherwise handle the missing records.",
+          "next_step": "Inspect the listed missing records against source evidence; retain unknowns where the source cannot verify a value.",
+          "priority_reason": "4.8% of the stated population is affected. The detector observed a structural or syntax failure."
+        }
+      }
+    },
+    {
+      "check": "missing",
+      "column": "Other",
+      "count": 2,
+      "pct": 9.5,
+      "row_indices": [
+        0,
+        1
+      ],
+      "selection_reason": "Missingness is observable for every field.",
+      "denominator": 21,
+      "id": "finding-3",
+      "priority": "medium",
+      "priority_score": 0.5,
+      "evidence": {
+        "denominator": 21,
+        "population": "all data records",
+        "row_indices": [
+          0,
+          1
+        ],
+        "examples": [
+          "",
+          "NA"
+        ],
+        "observations": [
+          "1 blank strings; 2 total missing values under the documented null-marker policy."
+        ],
+        "statistics": null,
+        "format_evidence": [],
+        "relationship": null,
+        "context": [],
+        "semantic": {
+          "role": "email",
+          "confidence": 0.85,
+          "support": [
+            "100.0% of sampled values match email syntax"
+          ],
+          "contradictions": [],
+          "alternatives": [
+            {
+              "role": "email",
+              "confidence": 0.85,
+              "supporting_evidence": [
+                "100.0% of sampled values match email syntax"
+              ],
+              "contradicting_evidence": []
+            }
+          ]
+        },
+        "observation_confidence": 1.0,
+        "observation_confidence_scope": "Exact counts under the implemented detector and stated population; not certainty of error.",
+        "interpretation_confidence": 0.85,
+        "candidate": false,
+        "limitations": [
+          "Null markers such as NA may be legitimate codes. Missingness is not proven random."
+        ],
+        "review_questions": [
+          "Check the original source records; recover verified contact details, starting with records that have no alternative contact. Do not invent contact details or discard otherwise valid records."
+        ],
+        "potential_impact": [
+          "If this dataset is used to contact people, missing contact details can prevent messages from reaching them. 2 of the 2 affected records have no value in any recognised contact field. Other contact values, where present, still need to be checked for usability."
+        ],
+        "priority_score": 0.5,
+        "priority_reason": "2 records lack all recognised contact options; 0 have another populated contact field. Priority reflects contact coverage, not just the number of blank cells.",
+        "selection_reason": "Missingness is observable for every field.",
+        "contact_coverage": {
+          "without_alternative": 2,
+          "with_alternative": 0,
+          "columns": [
+            "Other"
+          ]
+        },
+        "explanation": {
+          "why": "2 of 21 records have no value in \u201cOther\u201d. Blank cells and recognised missing-value markers are counted as missing.",
+          "consequence": "If this dataset is used to contact people, missing contact details can prevent messages from reaching them. 2 of the 2 affected records have no value in any recognised contact field. Other contact values, where present, still need to be checked for usability.",
+          "next_step": "Check the original source records; recover verified contact details, starting with records that have no alternative contact. Do not invent contact details or discard otherwise valid records.",
+          "priority_reason": "2 records lack all recognised contact options; 0 have another populated contact field. Priority reflects contact coverage, not just the number of blank cells."
+        }
+      }
+    },
+    {
+      "check": "repeated_identifier",
+      "column": "record_id",
+      "count": 2,
+      "pct": 9.5,
+      "row_indices": [
+        19,
+        20
+      ],
+      "denominator": 21,
+      "review_only": true,
+      "relationship": {
+        "kind": "repeated_identifier",
+        "distinct_repeated_values": 1,
+        "conflicting_columns": [],
+        "conflicting_row_indices": [],
+        "associated_columns_checked": [
+          "Other",
+          "measurement",
+          "region"
+        ],
+        "associated_rows_checked": 2,
+        "complete": true,
+        "examples": [
+          "K019"
+        ]
+      },
+      "id": "finding-4",
+      "priority": "medium",
+      "priority_score": 0.5,
+      "evidence": {
+        "denominator": 21,
+        "population": "present values assessed",
+        "row_indices": [
+          19,
+          20
+        ],
+        "examples": [
+          "K019",
+          "K019"
+        ],
+        "observations": [
+          "1 candidate key values occur more than once.",
+          "No differences were observed in the associated fields examined."
+        ],
+        "statistics": null,
+        "format_evidence": [],
+        "relationship": {
+          "kind": "repeated_identifier",
+          "distinct_repeated_values": 1,
+          "conflicting_columns": [],
+          "conflicting_row_indices": [],
+          "associated_columns_checked": [
+            "Other",
+            "measurement",
+            "region"
+          ],
+          "associated_rows_checked": 2,
+          "complete": true,
+          "examples": [
+            "K019"
+          ]
+        },
+        "context": [],
+        "semantic": {
+          "role": "identifier",
+          "confidence": 0.85,
+          "support": [
+            "95.2% distinct present values",
+            "compact code pattern"
+          ],
+          "contradictions": [],
+          "alternatives": [
+            {
+              "role": "identifier",
+              "confidence": 0.85,
+              "supporting_evidence": [
+                "95.2% distinct present values",
+                "compact code pattern"
+              ],
+              "contradicting_evidence": []
+            }
+          ]
+        },
+        "observation_confidence": 1.0,
+        "observation_confidence_scope": "Exact counts under the implemented detector and stated population; not certainty of error.",
+        "interpretation_confidence": 0.85,
+        "candidate": true,
+        "limitations": [
+          "A repeated entity identifier is often legitimate in event data."
+        ],
+        "review_questions": [
+          "Check source event identity for these matching key groups; matching associated fields alone do not establish accidental duplication."
+        ],
+        "potential_impact": [
+          "A join assuming unique keys may multiply records."
+        ],
+        "priority_score": 0.5,
+        "priority_reason": "9.5% of the stated population is affected. Candidate-key evidence increases review priority. This is a review candidate, so its error status remains uncertain.",
+        "selection_reason": "Selected from observed structural or relationship evidence.",
+        "explanation": {
+          "why": "2 values in \u201crecord_id\u201d differ from the expected type or the patterns found in this file. Review the examples before deciding they are errors.",
+          "consequence": "A join assuming unique keys may multiply records.",
+          "next_step": "Check source event identity for these matching key groups; matching associated fields alone do not establish accidental duplication.",
+          "priority_reason": "9.5% of the stated population is affected. Candidate-key evidence increases review priority. This is a review candidate, so its error status remains uncertain."
+        }
+      }
+    }
+  ],
+  "translated_issues": [
+    {
+      "issue_to_review": {
+        "title": "Missing values detected",
+        "description": "2 values in 'Other' (9.5% of all data records) are missing.",
+        "impact": "If this dataset is used to contact people, missing contact details can prevent messages from reaching them. 2 of the 2 affected records have no value in any recognised contact field. Other contact values, where present, still need to be checked for usability.",
+        "severity": "medium",
+        "evidence": {
+          "denominator": 21,
+          "population": "all data records",
+          "row_indices": [
+            0,
+            1
+          ],
+          "examples": [
+            "",
+            "NA"
+          ],
+          "observations": [
+            "1 blank strings; 2 total missing values under the documented null-marker policy."
+          ],
+          "statistics": null,
+          "format_evidence": [],
+          "relationship": null,
+          "context": [],
+          "semantic": {
+            "role": "email",
+            "confidence": 0.85,
+            "support": [
+              "100.0% of sampled values match email syntax"
+            ],
+            "contradictions": [],
+            "alternatives": [
+              {
+                "role": "email",
+                "confidence": 0.85,
+                "supporting_evidence": [
+                  "100.0% of sampled values match email syntax"
+                ],
+                "contradicting_evidence": []
+              }
+            ]
+          },
+          "observation_confidence": 1.0,
+          "observation_confidence_scope": "Exact counts under the implemented detector and stated population; not certainty of error.",
+          "interpretation_confidence": 0.85,
+          "candidate": false,
+          "limitations": [
+            "Null markers such as NA may be legitimate codes. Missingness is not proven random."
+          ],
+          "review_questions": [
+            "Check the original source records; recover verified contact details, starting with records that have no alternative contact. Do not invent contact details or discard otherwise valid records."
+          ],
+          "potential_impact": [
+            "If this dataset is used to contact people, missing contact details can prevent messages from reaching them. 2 of the 2 affected records have no value in any recognised contact field. Other contact values, where present, still need to be checked for usability."
+          ],
+          "priority_score": 0.5,
+          "priority_reason": "2 records lack all recognised contact options; 0 have another populated contact field. Priority reflects contact coverage, not just the number of blank cells.",
+          "selection_reason": "Missingness is observable for every field.",
+          "contact_coverage": {
+            "without_alternative": 2,
+            "with_alternative": 0,
+            "columns": [
+              "Other"
+            ]
+          },
+          "explanation": {
+            "why": "2 of 21 records have no value in \u201cOther\u201d. Blank cells and recognised missing-value markers are counted as missing.",
+            "consequence": "If this dataset is used to contact people, missing contact details can prevent messages from reaching them. 2 of the 2 affected records have no value in any recognised contact field. Other contact values, where present, still need to be checked for usability.",
+            "next_step": "Check the original source records; recover verified contact details, starting with records that have no alternative contact. Do not invent contact details or discard otherwise valid records.",
+            "priority_reason": "2 records lack all recognised contact options; 0 have another populated contact field. Priority reflects contact coverage, not just the number of blank cells."
+          },
+          "issue_type": "missing",
+          "column": "Other",
+          "affected_records": 2,
+          "affected_percentage": 9.5,
+          "dataset_context": "unknown"
+        }
+      },
+      "recommendation": {
+        "title": "Review 'Other' (9.5% affected)",
+        "action": "Check the original source records; recover verified contact details, starting with records that have no alternative contact. Do not invent contact details or discard otherwise valid records.",
+        "reason": "2 records lack all recognised contact options; 0 have another populated contact field. Priority reflects contact coverage, not just the number of blank cells. This is a review priority, separate from the numerical quality-score penalty.",
+        "priority": "medium"
+      },
+      "legacy": {
+        "title": "Missing values detected",
+        "description": "2 values in 'Other' (9.5% of all data records) are missing.",
+        "suggestion": "Check the original source records; recover verified contact details, starting with records that have no alternative contact. Do not invent contact details or discard otherwise valid records.",
+        "severity": "medium",
+        "issue_type": "missing",
+        "column": "Other",
+        "count": 2,
+        "pct": 9.5
+      }
+    },
+    {
+      "issue_to_review": {
+        "title": "Repeated identifiers need review",
+        "description": "2 records in 'record_id' (9.5% of present values assessed) occur in repeated identifier groups; a repeated identifier is not necessarily a duplicate record.",
+        "impact": "If each identifier is expected to identify one record, repeats may cause double counting or link the wrong details when tables are combined. An identifier may legitimately appear in multiple events.",
+        "severity": "medium",
+        "evidence": {
+          "denominator": 21,
+          "population": "present values assessed",
+          "row_indices": [
+            19,
+            20
+          ],
+          "examples": [
+            "K019",
+            "K019"
+          ],
+          "observations": [
+            "1 candidate key values occur more than once.",
+            "No differences were observed in the associated fields examined."
+          ],
+          "statistics": null,
+          "format_evidence": [],
+          "relationship": {
+            "kind": "repeated_identifier",
+            "distinct_repeated_values": 1,
+            "conflicting_columns": [],
+            "conflicting_row_indices": [],
+            "associated_columns_checked": [
+              "Other",
+              "measurement",
+              "region"
+            ],
+            "associated_rows_checked": 2,
+            "complete": true,
+            "examples": [
+              "K019"
+            ]
+          },
+          "context": [],
+          "semantic": {
+            "role": "identifier",
+            "confidence": 0.85,
+            "support": [
+              "95.2% distinct present values",
+              "compact code pattern"
+            ],
+            "contradictions": [],
+            "alternatives": [
+              {
+                "role": "identifier",
+                "confidence": 0.85,
+                "supporting_evidence": [
+                  "95.2% distinct present values",
+                  "compact code pattern"
+                ],
+                "contradicting_evidence": []
+              }
+            ]
+          },
+          "observation_confidence": 1.0,
+          "observation_confidence_scope": "Exact counts under the implemented detector and stated population; not certainty of error.",
+          "interpretation_confidence": 0.85,
+          "candidate": true,
+          "limitations": [
+            "A repeated entity identifier is often legitimate in event data."
+          ],
+          "review_questions": [
+            "Check source event identity for these matching key groups; matching associated fields alone do not establish accidental duplication."
+          ],
+          "potential_impact": [
+            "A join assuming unique keys may multiply records."
+          ],
+          "priority_score": 0.5,
+          "priority_reason": "9.5% of the stated population is affected. Candidate-key evidence increases review priority. This is a review candidate, so its error status remains uncertain.",
+          "selection_reason": "Selected from observed structural or relationship evidence.",
+          "explanation": {
+            "why": "2 values in \u201crecord_id\u201d differ from the expected type or the patterns found in this file. Review the examples before deciding they are errors.",
+            "consequence": "A join assuming unique keys may multiply records.",
+            "next_step": "Check source event identity for these matching key groups; matching associated fields alone do not establish accidental duplication.",
+            "priority_reason": "9.5% of the stated population is affected. Candidate-key evidence increases review priority. This is a review candidate, so its error status remains uncertain."
+          },
+          "issue_type": "repeated_identifier",
+          "column": "record_id",
+          "affected_records": 2,
+          "affected_percentage": 9.5,
+          "dataset_context": "unknown"
+        }
+      },
+      "recommendation": {
+        "title": "Review 'record_id' (9.5% affected)",
+        "action": "Check source event identity for these matching key groups; matching associated fields alone do not establish accidental duplication. Confirm the intended record structure before merging or deleting rows.",
+        "reason": "9.5% of the stated population is affected. Candidate-key evidence increases review priority. This is a review candidate, so its error status remains uncertain. This is a review priority, separate from the numerical quality-score penalty.",
+        "priority": "medium"
+      },
+      "legacy": {
+        "title": "Repeated identifiers need review",
+        "description": "2 records in 'record_id' (9.5% of present values assessed) occur in repeated identifier groups; a repeated identifier is not necessarily a duplicate record.",
+        "suggestion": "Check source event identity for these matching key groups; matching associated fields alone do not establish accidental duplication. Confirm the intended record structure before merging or deleting rows.",
+        "severity": "medium",
+        "issue_type": "repeated_identifier",
+        "column": "record_id",
+        "count": 2,
+        "pct": 9.5
+      }
+    },
+    {
+      "issue_to_review": {
+        "title": "Duplicate records detected",
+        "description": "1 record in the dataset (4.8% of all data records) repeats an earlier row.",
+        "impact": "With the dataset context uncertain, repeated records may inflate record counts and aggregate summaries, potentially affecting downstream processing.",
+        "severity": "medium",
+        "evidence": {
+          "denominator": 21,
+          "population": "all data records",
+          "row_indices": [
+            20
+          ],
+          "examples": [],
+          "observations": [
+            "These complete rows exactly repeat earlier rows; counts exclude the first occurrence."
+          ],
+          "statistics": null,
+          "format_evidence": [],
+          "relationship": null,
+          "context": [],
+          "semantic": {
+            "role": "unknown",
+            "confidence": 0,
+            "support": [],
+            "contradictions": [],
+            "alternatives": []
+          },
+          "observation_confidence": 1.0,
+          "observation_confidence_scope": "Exact counts under the implemented detector and stated population; not certainty of error.",
+          "interpretation_confidence": 0,
+          "candidate": false,
+          "limitations": [
+            "Field purpose is uncertain; units and business impact cannot be established from these values alone."
+          ],
+          "review_questions": [
+            "Compare event provenance or source record keys to establish whether these are repeated imports or legitimate identical events before merging or deleting anything."
+          ],
+          "potential_impact": [
+            "Counting every occurrence can increase record totals and aggregates."
+          ],
+          "priority_score": 0.5,
+          "priority_reason": "4.8% of the stated population is affected. The detector observed a structural or syntax failure.",
+          "selection_reason": "Selected from observed structural or relationship evidence.",
+          "explanation": {
+            "why": "1 records repeat an earlier row exactly. They could be repeated imports or separate events with identical details.",
+            "consequence": "Counting every occurrence can increase record totals and aggregates.",
+            "next_step": "Compare event provenance or source record keys to establish whether these are repeated imports or legitimate identical events before merging or deleting anything.",
+            "priority_reason": "4.8% of the stated population is affected. The detector observed a structural or syntax failure."
+          },
+          "issue_type": "duplicate",
+          "column": null,
+          "affected_records": 1,
+          "affected_percentage": 4.8,
+          "dataset_context": "unknown"
+        }
+      },
+      "recommendation": {
+        "title": "Review the dataset (4.8% affected)",
+        "action": "Review the 1 repeated row against source records; establish whether they represent duplicate entries or legitimate repeated events before merging or deleting anything.",
+        "reason": "4.8% of the stated population is affected. The detector observed a structural or syntax failure. This is a review priority, separate from the numerical quality-score penalty.",
+        "priority": "medium"
+      },
+      "legacy": {
+        "title": "Duplicate records detected",
+        "description": "1 record in the dataset (4.8% of all data records) repeats an earlier row.",
+        "suggestion": "Review the 1 repeated row against source records; establish whether they represent duplicate entries or legitimate repeated events before merging or deleting anything.",
+        "severity": "medium",
+        "issue_type": "duplicate",
+        "column": null,
+        "count": 1,
+        "pct": 4.8
+      }
+    },
+    {
+      "issue_to_review": {
+        "title": "Missing values detected",
+        "description": "1 value in 'measurement' (4.8% of all data records) is missing.",
+        "impact": "Summaries using this field exclude or otherwise handle the missing records.",
+        "severity": "medium",
+        "evidence": {
+          "denominator": 21,
+          "population": "all data records",
+          "row_indices": [
+            2
+          ],
+          "examples": [
+            "null"
+          ],
+          "observations": [
+            "0 blank strings; 1 total missing values under the documented null-marker policy."
+          ],
+          "statistics": null,
+          "format_evidence": [],
+          "relationship": null,
+          "context": [],
+          "semantic": {
+            "role": "measurement",
+            "confidence": 0.65,
+            "support": [
+              "numeric values corroborate a header hint; units and business purpose remain unverified"
+            ],
+            "contradictions": [],
+            "alternatives": [
+              {
+                "role": "measurement",
+                "confidence": 0.65,
+                "supporting_evidence": [
+                  "numeric values corroborate a header hint; units and business purpose remain unverified"
+                ],
+                "contradicting_evidence": []
+              }
+            ]
+          },
+          "observation_confidence": 1.0,
+          "observation_confidence_scope": "Exact counts under the implemented detector and stated population; not certainty of error.",
+          "interpretation_confidence": 0.65,
+          "candidate": false,
+          "limitations": [
+            "Null markers such as NA may be legitimate codes. Missingness is not proven random."
+          ],
+          "review_questions": [
+            "Inspect the listed missing records against source evidence; retain unknowns where the source cannot verify a value."
+          ],
+          "potential_impact": [
+            "Summaries using this field exclude or otherwise handle the missing records."
+          ],
+          "priority_score": 0.5,
+          "priority_reason": "4.8% of the stated population is affected. The detector observed a structural or syntax failure.",
+          "selection_reason": "Missingness is observable for every field.",
+          "explanation": {
+            "why": "1 of 21 records have no value in \u201cmeasurement\u201d. Blank cells and recognised missing-value markers are counted as missing.",
+            "consequence": "Summaries using this field exclude or otherwise handle the missing records.",
+            "next_step": "Inspect the listed missing records against source evidence; retain unknowns where the source cannot verify a value.",
+            "priority_reason": "4.8% of the stated population is affected. The detector observed a structural or syntax failure."
+          },
+          "issue_type": "missing",
+          "column": "measurement",
+          "affected_records": 1,
+          "affected_percentage": 4.8,
+          "dataset_context": "unknown"
+        }
+      },
+      "recommendation": {
+        "title": "Review 'measurement' (4.8% affected)",
+        "action": "Inspect the listed missing records against source evidence; retain unknowns where the source cannot verify a value.",
+        "reason": "4.8% of the stated population is affected. The detector observed a structural or syntax failure. This is a review priority, separate from the numerical quality-score penalty.",
+        "priority": "medium"
+      },
+      "legacy": {
+        "title": "Missing values detected",
+        "description": "1 value in 'measurement' (4.8% of all data records) is missing.",
+        "suggestion": "Inspect the listed missing records against source evidence; retain unknowns where the source cannot verify a value.",
+        "severity": "medium",
+        "issue_type": "missing",
+        "column": "measurement",
+        "count": 1,
+        "pct": 4.8
+      }
+    }
+  ],
+  "issues_to_review": [
+    {
+      "title": "Missing values detected",
+      "description": "2 values in 'Other' (9.5% of all data records) are missing.",
+      "impact": "If this dataset is used to contact people, missing contact details can prevent messages from reaching them. 2 of the 2 affected records have no value in any recognised contact field. Other contact values, where present, still need to be checked for usability.",
+      "severity": "medium",
+      "evidence": {
+        "denominator": 21,
+        "population": "all data records",
+        "row_indices": [
+          0,
+          1
+        ],
+        "examples": [
+          "",
+          "NA"
+        ],
+        "observations": [
+          "1 blank strings; 2 total missing values under the documented null-marker policy."
+        ],
+        "statistics": null,
+        "format_evidence": [],
+        "relationship": null,
+        "context": [],
+        "semantic": {
+          "role": "email",
+          "confidence": 0.85,
+          "support": [
+            "100.0% of sampled values match email syntax"
+          ],
+          "contradictions": [],
+          "alternatives": [
+            {
+              "role": "email",
+              "confidence": 0.85,
+              "supporting_evidence": [
+                "100.0% of sampled values match email syntax"
+              ],
+              "contradicting_evidence": []
+            }
+          ]
+        },
+        "observation_confidence": 1.0,
+        "observation_confidence_scope": "Exact counts under the implemented detector and stated population; not certainty of error.",
+        "interpretation_confidence": 0.85,
+        "candidate": false,
+        "limitations": [
+          "Null markers such as NA may be legitimate codes. Missingness is not proven random."
+        ],
+        "review_questions": [
+          "Check the original source records; recover verified contact details, starting with records that have no alternative contact. Do not invent contact details or discard otherwise valid records."
+        ],
+        "potential_impact": [
+          "If this dataset is used to contact people, missing contact details can prevent messages from reaching them. 2 of the 2 affected records have no value in any recognised contact field. Other contact values, where present, still need to be checked for usability."
+        ],
+        "priority_score": 0.5,
+        "priority_reason": "2 records lack all recognised contact options; 0 have another populated contact field. Priority reflects contact coverage, not just the number of blank cells.",
+        "selection_reason": "Missingness is observable for every field.",
+        "contact_coverage": {
+          "without_alternative": 2,
+          "with_alternative": 0,
+          "columns": [
+            "Other"
+          ]
+        },
+        "explanation": {
+          "why": "2 of 21 records have no value in \u201cOther\u201d. Blank cells and recognised missing-value markers are counted as missing.",
+          "consequence": "If this dataset is used to contact people, missing contact details can prevent messages from reaching them. 2 of the 2 affected records have no value in any recognised contact field. Other contact values, where present, still need to be checked for usability.",
+          "next_step": "Check the original source records; recover verified contact details, starting with records that have no alternative contact. Do not invent contact details or discard otherwise valid records.",
+          "priority_reason": "2 records lack all recognised contact options; 0 have another populated contact field. Priority reflects contact coverage, not just the number of blank cells."
+        },
+        "issue_type": "missing",
+        "column": "Other",
+        "affected_records": 2,
+        "affected_percentage": 9.5,
+        "dataset_context": "unknown"
+      }
+    },
+    {
+      "title": "Repeated identifiers need review",
+      "description": "2 records in 'record_id' (9.5% of present values assessed) occur in repeated identifier groups; a repeated identifier is not necessarily a duplicate record.",
+      "impact": "If each identifier is expected to identify one record, repeats may cause double counting or link the wrong details when tables are combined. An identifier may legitimately appear in multiple events.",
+      "severity": "medium",
+      "evidence": {
+        "denominator": 21,
+        "population": "present values assessed",
+        "row_indices": [
+          19,
+          20
+        ],
+        "examples": [
+          "K019",
+          "K019"
+        ],
+        "observations": [
+          "1 candidate key values occur more than once.",
+          "No differences were observed in the associated fields examined."
+        ],
+        "statistics": null,
+        "format_evidence": [],
+        "relationship": {
+          "kind": "repeated_identifier",
+          "distinct_repeated_values": 1,
+          "conflicting_columns": [],
+          "conflicting_row_indices": [],
+          "associated_columns_checked": [
+            "Other",
+            "measurement",
+            "region"
+          ],
+          "associated_rows_checked": 2,
+          "complete": true,
+          "examples": [
+            "K019"
+          ]
+        },
+        "context": [],
+        "semantic": {
+          "role": "identifier",
+          "confidence": 0.85,
+          "support": [
+            "95.2% distinct present values",
+            "compact code pattern"
+          ],
+          "contradictions": [],
+          "alternatives": [
+            {
+              "role": "identifier",
+              "confidence": 0.85,
+              "supporting_evidence": [
+                "95.2% distinct present values",
+                "compact code pattern"
+              ],
+              "contradicting_evidence": []
+            }
+          ]
+        },
+        "observation_confidence": 1.0,
+        "observation_confidence_scope": "Exact counts under the implemented detector and stated population; not certainty of error.",
+        "interpretation_confidence": 0.85,
+        "candidate": true,
+        "limitations": [
+          "A repeated entity identifier is often legitimate in event data."
+        ],
+        "review_questions": [
+          "Check source event identity for these matching key groups; matching associated fields alone do not establish accidental duplication."
+        ],
+        "potential_impact": [
+          "A join assuming unique keys may multiply records."
+        ],
+        "priority_score": 0.5,
+        "priority_reason": "9.5% of the stated population is affected. Candidate-key evidence increases review priority. This is a review candidate, so its error status remains uncertain.",
+        "selection_reason": "Selected from observed structural or relationship evidence.",
+        "explanation": {
+          "why": "2 values in \u201crecord_id\u201d differ from the expected type or the patterns found in this file. Review the examples before deciding they are errors.",
+          "consequence": "A join assuming unique keys may multiply records.",
+          "next_step": "Check source event identity for these matching key groups; matching associated fields alone do not establish accidental duplication.",
+          "priority_reason": "9.5% of the stated population is affected. Candidate-key evidence increases review priority. This is a review candidate, so its error status remains uncertain."
+        },
+        "issue_type": "repeated_identifier",
+        "column": "record_id",
+        "affected_records": 2,
+        "affected_percentage": 9.5,
+        "dataset_context": "unknown"
+      }
+    },
+    {
+      "title": "Duplicate records detected",
+      "description": "1 record in the dataset (4.8% of all data records) repeats an earlier row.",
+      "impact": "With the dataset context uncertain, repeated records may inflate record counts and aggregate summaries, potentially affecting downstream processing.",
+      "severity": "medium",
+      "evidence": {
+        "denominator": 21,
+        "population": "all data records",
+        "row_indices": [
+          20
+        ],
+        "examples": [],
+        "observations": [
+          "These complete rows exactly repeat earlier rows; counts exclude the first occurrence."
+        ],
+        "statistics": null,
+        "format_evidence": [],
+        "relationship": null,
+        "context": [],
+        "semantic": {
+          "role": "unknown",
+          "confidence": 0,
+          "support": [],
+          "contradictions": [],
+          "alternatives": []
+        },
+        "observation_confidence": 1.0,
+        "observation_confidence_scope": "Exact counts under the implemented detector and stated population; not certainty of error.",
+        "interpretation_confidence": 0,
+        "candidate": false,
+        "limitations": [
+          "Field purpose is uncertain; units and business impact cannot be established from these values alone."
+        ],
+        "review_questions": [
+          "Compare event provenance or source record keys to establish whether these are repeated imports or legitimate identical events before merging or deleting anything."
+        ],
+        "potential_impact": [
+          "Counting every occurrence can increase record totals and aggregates."
+        ],
+        "priority_score": 0.5,
+        "priority_reason": "4.8% of the stated population is affected. The detector observed a structural or syntax failure.",
+        "selection_reason": "Selected from observed structural or relationship evidence.",
+        "explanation": {
+          "why": "1 records repeat an earlier row exactly. They could be repeated imports or separate events with identical details.",
+          "consequence": "Counting every occurrence can increase record totals and aggregates.",
+          "next_step": "Compare event provenance or source record keys to establish whether these are repeated imports or legitimate identical events before merging or deleting anything.",
+          "priority_reason": "4.8% of the stated population is affected. The detector observed a structural or syntax failure."
+        },
+        "issue_type": "duplicate",
+        "column": null,
+        "affected_records": 1,
+        "affected_percentage": 4.8,
+        "dataset_context": "unknown"
+      }
+    },
+    {
+      "title": "Missing values detected",
+      "description": "1 value in 'measurement' (4.8% of all data records) is missing.",
+      "impact": "Summaries using this field exclude or otherwise handle the missing records.",
+      "severity": "medium",
+      "evidence": {
+        "denominator": 21,
+        "population": "all data records",
+        "row_indices": [
+          2
+        ],
+        "examples": [
+          "null"
+        ],
+        "observations": [
+          "0 blank strings; 1 total missing values under the documented null-marker policy."
+        ],
+        "statistics": null,
+        "format_evidence": [],
+        "relationship": null,
+        "context": [],
+        "semantic": {
+          "role": "measurement",
+          "confidence": 0.65,
+          "support": [
+            "numeric values corroborate a header hint; units and business purpose remain unverified"
+          ],
+          "contradictions": [],
+          "alternatives": [
+            {
+              "role": "measurement",
+              "confidence": 0.65,
+              "supporting_evidence": [
+                "numeric values corroborate a header hint; units and business purpose remain unverified"
+              ],
+              "contradicting_evidence": []
+            }
+          ]
+        },
+        "observation_confidence": 1.0,
+        "observation_confidence_scope": "Exact counts under the implemented detector and stated population; not certainty of error.",
+        "interpretation_confidence": 0.65,
+        "candidate": false,
+        "limitations": [
+          "Null markers such as NA may be legitimate codes. Missingness is not proven random."
+        ],
+        "review_questions": [
+          "Inspect the listed missing records against source evidence; retain unknowns where the source cannot verify a value."
+        ],
+        "potential_impact": [
+          "Summaries using this field exclude or otherwise handle the missing records."
+        ],
+        "priority_score": 0.5,
+        "priority_reason": "4.8% of the stated population is affected. The detector observed a structural or syntax failure.",
+        "selection_reason": "Missingness is observable for every field.",
+        "explanation": {
+          "why": "1 of 21 records have no value in \u201cmeasurement\u201d. Blank cells and recognised missing-value markers are counted as missing.",
+          "consequence": "Summaries using this field exclude or otherwise handle the missing records.",
+          "next_step": "Inspect the listed missing records against source evidence; retain unknowns where the source cannot verify a value.",
+          "priority_reason": "4.8% of the stated population is affected. The detector observed a structural or syntax failure."
+        },
+        "issue_type": "missing",
+        "column": "measurement",
+        "affected_records": 1,
+        "affected_percentage": 4.8,
+        "dataset_context": "unknown"
+      }
+    }
+  ],
+  "recommendations": [
+    {
+      "title": "Review 'Other' (9.5% affected)",
+      "action": "Check the original source records; recover verified contact details, starting with records that have no alternative contact. Do not invent contact details or discard otherwise valid records.",
+      "reason": "2 records lack all recognised contact options; 0 have another populated contact field. Priority reflects contact coverage, not just the number of blank cells. This is a review priority, separate from the numerical quality-score penalty.",
+      "priority": "medium"
+    },
+    {
+      "title": "Review 'record_id' (9.5% affected)",
+      "action": "Check source event identity for these matching key groups; matching associated fields alone do not establish accidental duplication. Confirm the intended record structure before merging or deleting rows.",
+      "reason": "9.5% of the stated population is affected. Candidate-key evidence increases review priority. This is a review candidate, so its error status remains uncertain. This is a review priority, separate from the numerical quality-score penalty.",
+      "priority": "medium"
+    },
+    {
+      "title": "Review the dataset (4.8% affected)",
+      "action": "Review the 1 repeated row against source records; establish whether they represent duplicate entries or legitimate repeated events before merging or deleting anything.",
+      "reason": "4.8% of the stated population is affected. The detector observed a structural or syntax failure. This is a review priority, separate from the numerical quality-score penalty.",
+      "priority": "medium"
+    },
+    {
+      "title": "Review 'measurement' (4.8% affected)",
+      "action": "Inspect the listed missing records against source evidence; retain unknowns where the source cannot verify a value.",
+      "reason": "4.8% of the stated population is affected. The detector observed a structural or syntax failure. This is a review priority, separate from the numerical quality-score penalty.",
+      "priority": "medium"
+    }
+  ],
+  "issue_summary": {
+    "duplicate": 1,
+    "missing": 2,
+    "repeated_identifier": 1
+  },
+  "score": 52.5,
+  "grade": "D",
+  "label": "Poor",
+  "total_penalty": 47.5,
+  "issue_details": [
+    {
+      "type": "duplicate",
+      "column": null,
+      "count": 1,
+      "pct": 4.8,
+      "penalty": 10.0,
+      "weight": 10,
+      "severity": "Medium"
+    },
+    {
+      "type": "missing",
+      "column": "measurement",
+      "count": 1,
+      "pct": 4.8,
+      "penalty": 15.0,
+      "weight": 15,
+      "severity": "Medium"
+    },
+    {
+      "type": "missing",
+      "column": "Other",
+      "count": 2,
+      "pct": 9.5,
+      "penalty": 22.5,
+      "weight": 15,
+      "severity": "High"
+    }
+  ]
+}

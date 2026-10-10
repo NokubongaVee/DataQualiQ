@@ -12,7 +12,8 @@ def calculate_quality_score(issues: List[Dict[str, Any]], df: pd.DataFrame) -> D
     - Duplicate rows: 10 points
     - Invalid data (email, date, phone, currency): 8 points each
     - Format inconsistency: 5 points each
-    - Outliers: 3 points each
+    - Analytical anomalies and uncertain review candidates: no penalty
+    - Explicit network-schema violations: 8 points before extent modifier
     """
     
     # Define weights
@@ -38,6 +39,10 @@ def calculate_quality_score(issues: List[Dict[str, Any]], df: pd.DataFrame) -> D
     
     for issue in issues:
         check_type = issue["check"]
+        if issue.get('review_only') or check_type in {'outlier', 'invalid_categorical',
+                'header_conflict', 'repeated_identifier', 'relationship_deviation',
+                'pattern_deviation', 'ambiguous_date'}:
+            continue
         column = issue.get("column")
         count = issue["count"]
         if count <= 0:
@@ -45,7 +50,7 @@ def calculate_quality_score(issues: List[Dict[str, Any]], df: pd.DataFrame) -> D
         pct = issue.get("pct", 0)
         
         # Get weight for this issue type
-        weight = WEIGHTS.get(check_type, 5)
+        weight = issue.get('score_weight', WEIGHTS.get(check_type, 5))
         
         # Apply severity modifier based on percentage of rows affected
         if pct > 5:

@@ -12,11 +12,14 @@ from finding_evidence import enrich_findings
 from contextual_guidance import add_contextual_guidance
 from scoring import calculate_quality_score, get_issue_summary_by_type
 from translator import translate_all_issues
+from finding_categories import classify_findings, category_summary
+from domains.network.schema import apply_schema_profiles
+from domains.network.validators import validate_network
 
 logger = logging.getLogger(__name__)
 
 
-def _run_pipeline_on_dataframe(df: pd.DataFrame, filename: str) -> dict:
+def _run_pipeline_on_dataframe(df: pd.DataFrame, filename: str, network_schema=None) -> dict:
     """Run all existing checks on an already-loaded DataFrame."""
     if df.empty:
         raise ValueError("The dataset has no data rows or columns.")
@@ -29,21 +32,37 @@ def _run_pipeline_on_dataframe(df: pd.DataFrame, filename: str) -> dict:
     df = df.reset_index(drop=True)
 
     column_profiles = infer_all_column_profiles(df)
+    if network_schema is not None:
+        apply_schema_profiles(column_profiles, network_schema)
     column_types = {col: profile["type"] for col, profile in column_profiles.items()}
 
     dataset_context = infer_dataset_context(df, column_profiles)
+    if network_schema is not None:
+        dataset_context = {'name': 'network_traffic', 'confidence': 1.0,
+                           'evidence': ['Explicit network schema: ' + network_schema.name],
+                           'limitations': ['Configured domain; verify schema semantics against the exporter.']}
 
     all_issues = run_selected_checks(df, column_profiles)
-    relationship_issues, relationships = analyse_relationships(df, column_profiles)
+    relationship_frame = df if network_schema is None else df.drop(columns=list(network_schema.protected_fields), errors='ignore')
+    relationship_profiles = {col: column_profiles[col] for col in relationship_frame.columns}
+    relationship_issues, relationships = analyse_relationships(relationship_frame, relationship_profiles)
     all_issues = enrich_findings(df, all_issues + relationship_issues, column_profiles, relationships)
     all_issues = add_contextual_guidance(df, all_issues, column_profiles, dataset_context)
-    # New semantic/relationship review candidates do not silently acquire the
-    # legacy scorer's default error penalty. Existing scored check types retain
-    # their original formula, including historical IQR penalties.
-    scored = [i for i in all_issues if i['check'] not in {
-        'header_conflict', 'repeated_identifier', 'relationship_deviation',
-        'pattern_deviation', 'ambiguous_date'}]
-    score_result = calculate_quality_score(scored, df)
+    domain_warnings = []
+    if network_schema is not None:
+        domain_issues, domain_warnings = validate_network(df, network_schema)
+        for issue in domain_issues:
+            issue.update(id=f'finding-{len(all_issues) + 1}', priority='high', priority_score=.8)
+            issue['evidence'] = {'denominator': issue['denominator'], 'population': 'schema-assessed records',
+                'row_indices': issue['row_indices'], 'examples': issue.get('examples', []),
+                'observations': [issue['reason']], 'candidate': False,
+                'potential_impact': ['This field violates the supplied structural schema.'],
+                'review_questions': ['Verify the original source and schema. Preserve raw values; use an explicit preprocessing policy to mark invalid features as unknown. Never infer replacement labels.'],
+                'limitations': ['Validity depends on the supplied schema matching the exporter.'],
+                'priority_reason': 'Explicit schema violation; priority is separate from the heuristic score.'}
+            all_issues.append(issue)
+    all_issues = classify_findings(all_issues)
+    score_result = calculate_quality_score(all_issues, df)
 
     translated_issues = translate_all_issues(
         all_issues,
@@ -81,8 +100,12 @@ def _run_pipeline_on_dataframe(df: pd.DataFrame, filename: str) -> dict:
         "column_types": column_types,
         "dataset_context": dataset_context,
         "relationships": relationships,
-        "score_policy": {"name": "legacy_weighted_penalty", "heuristic": True,
-                         "description": "Heuristic score, not a percentage of correct data. New relationship and semantic review candidates do not reduce it."},
+        "score_policy": {"name": "quality_errors_weighted_penalty_v2", "heuristic": True,
+                         "description": "Heuristic score, not a percentage of correct data. Analytical anomalies and uncertain semantic/category candidates do not reduce it."},
+        "finding_summary": category_summary(all_issues),
+        "domain_validation": {"enabled": network_schema is not None,
+                              "schema": network_schema.to_dict() if network_schema else None,
+                              "warnings": domain_warnings},
         "issues": all_issues,
         "translated_issues": translated_issues,
         "issues_to_review": issues_to_review,
@@ -99,14 +122,14 @@ def _run_pipeline_on_dataframe(df: pd.DataFrame, filename: str) -> dict:
     return result
 
 
-def run_full_pipeline(file_path: str) -> dict:
+def run_full_pipeline(file_path: str, network_schema=None) -> dict:
     """Run all checks on a CSV file and return complete results."""
     path = Path(file_path)
     df = load_csv(path.read_bytes())
     filename = path.name
-    return _run_pipeline_on_dataframe(df, filename)
+    return _run_pipeline_on_dataframe(df, filename, network_schema)
 
 
-def run_pipeline_from_dataframe(df: pd.DataFrame, filename: str = "uploaded.csv") -> dict:
+def run_pipeline_from_dataframe(df: pd.DataFrame, filename: str = "uploaded.csv", network_schema=None) -> dict:
     """Run the pipeline directly on a DataFrame (for API use)."""
-    return _run_pipeline_on_dataframe(df, filename)
+    return _run_pipeline_on_dataframe(df, filename, network_schema)

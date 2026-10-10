@@ -1,0 +1,1247 @@
+{
+  "phase": 15,
+  "summary": {
+    "total_scenarios": 28,
+    "passed_scenarios": 28,
+    "failed_scenarios": 0
+  },
+  "bugs_found": [],
+  "bugs_fixed": [],
+  "application_code_changed": false,
+  "backend_test_count": 274,
+  "frontend_test_count": 49,
+  "scenarios": [
+    {
+      "name": "good_csv",
+      "input": "20 official testing rows without target labels",
+      "expected": "20 predictions; real quality, probability and reliability",
+      "actual": {
+        "summary": {
+          "records_analysed": 20,
+          "records_predicted": 20,
+          "rejected_count": 0,
+          "normal_count": 4,
+          "malicious_count": 16,
+          "average_predicted_class_probability": 0.8414665484963063,
+          "processing_seconds": 2.6032840000116266,
+          "probability_description": "Model probability estimate, not calibrated certainty or input-data reliability."
+        },
+        "reliability": {
+          "high_count": 20,
+          "review_count": 0,
+          "low_count": 0,
+          "rejected_count": 0,
+          "prediction_by_reliability": {
+            "High": {
+              "normal_count": 4,
+              "malicious_count": 16
+            },
+            "Review": {
+              "normal_count": 0,
+              "malicious_count": 0
+            }
+          },
+          "policy": {
+            "version": "input_integrity_v1",
+            "duplicate_review": false,
+            "probability_thresholds_used": false,
+            "low_means": "Rejected due to invalid required input; no prediction was fabricated"
+          },
+          "interpretation": "Input integrity, separate from model probability and dataset quality score; Low rows were rejected."
+        },
+        "quality_score": 100,
+        "missing": {
+          "finding_count": 0,
+          "occurrences": 0,
+          "affected_records": 0,
+          "by_column": [],
+          "columns_truncated": false
+        },
+        "duplicates": {
+          "finding_count": 0,
+          "occurrences": 0,
+          "affected_records": 0,
+          "by_column": [],
+          "columns_truncated": false,
+          "policy": "preserved; counts exclude first occurrence under existing detector"
+        },
+        "invalid": {
+          "finding_count": 0,
+          "occurrences": 0,
+          "affected_records": 0,
+          "by_column": [],
+          "columns_truncated": false
+        },
+        "anomalies": {
+          "finding_count": 6,
+          "occurrences": 18,
+          "affected_records": 6,
+          "by_column": [
+            {
+              "column": "dur",
+              "occurrences": 1
+            },
+            {
+              "column": "spkts",
+              "occurrences": 4
+            },
+            {
+              "column": "sttl",
+              "occurrences": 4
+            },
+            {
+              "column": "sload",
+              "occurrences": 1
+            },
+            {
+              "column": "sinpkt",
+              "occurrences": 4
+            },
+            {
+              "column": "ct_dst_sport_ltm",
+              "occurrences": 4
+            }
+          ],
+          "columns_truncated": false,
+          "meaning": "Analytical/statistical findings, not model-predicted attacks; occurrences can overlap across fields."
+        },
+        "changed_records": [
+          {
+            "record_index": 19,
+            "prediction": 1,
+            "label": "Malicious",
+            "probability_normal": 0.1586379687698102,
+            "probability_malicious": 0.8413620312301897,
+            "predicted_class_probability": 0.8413620312301897,
+            "prediction_status": "Predicted",
+            "quality_status": "No issue detected",
+            "quality_findings": [],
+            "quality_finding_count": 0,
+            "quality_finding_categories": [],
+            "quality_findings_truncated": false,
+            "missing_predictive_fields": [],
+            "preprocessing_handled_missing": [],
+            "reliability": "High",
+            "reliability_reason": "Prediction produced with no unresolved predictive-field integrity issue. Analytical anomalies and preserved duplicates do not invalidate the input.",
+            "rejection_reason": null
+          }
+        ]
+      },
+      "passed": true,
+      "notes": ""
+    },
+    {
+      "name": "malformed_csv",
+      "input": "Unclosed quoted CSV field",
+      "expected": "Clear error; no active/stale result; retry enabled",
+      "actual": {
+        "error": "Unable to analyse this network dataset. Could not parse CSV near line 2: unexpected end of data",
+        "active_result": false
+      },
+      "passed": true,
+      "notes": ""
+    },
+    {
+      "name": "missing_features",
+      "input": "Required dur, proto, spkts removed",
+      "expected": "Clear error; no active/stale result; retry enabled",
+      "actual": {
+        "error": "Unable to analyse this network dataset. Missing required features: dur, proto, spkts.",
+        "active_result": false
+      },
+      "passed": true,
+      "notes": ""
+    },
+    {
+      "name": "missing_values",
+      "input": "Missing dur numeric and service categorical cells",
+      "expected": "Missing findings, saved handling and Review; predictions retained",
+      "actual": {
+        "summary": {
+          "records_analysed": 20,
+          "records_predicted": 20,
+          "rejected_count": 0,
+          "normal_count": 4,
+          "malicious_count": 16,
+          "average_predicted_class_probability": 0.838259989265125,
+          "processing_seconds": 3.00229939998826,
+          "probability_description": "Model probability estimate, not calibrated certainty or input-data reliability."
+        },
+        "reliability": {
+          "high_count": 18,
+          "review_count": 2,
+          "low_count": 0,
+          "rejected_count": 0,
+          "prediction_by_reliability": {
+            "High": {
+              "normal_count": 4,
+              "malicious_count": 14
+            },
+            "Review": {
+              "normal_count": 0,
+              "malicious_count": 2
+            }
+          },
+          "policy": {
+            "version": "input_integrity_v1",
+            "duplicate_review": false,
+            "probability_thresholds_used": false,
+            "low_means": "Rejected due to invalid required input; no prediction was fabricated"
+          },
+          "interpretation": "Input integrity, separate from model probability and dataset quality score; Low rows were rejected."
+        },
+        "quality_score": 70,
+        "missing": {
+          "finding_count": 2,
+          "occurrences": 2,
+          "affected_records": 2,
+          "by_column": [
+            {
+              "column": "dur",
+              "occurrences": 1
+            },
+            {
+              "column": "service",
+              "occurrences": 1
+            }
+          ],
+          "columns_truncated": false
+        },
+        "duplicates": {
+          "finding_count": 0,
+          "occurrences": 0,
+          "affected_records": 0,
+          "by_column": [],
+          "columns_truncated": false,
+          "policy": "preserved; counts exclude first occurrence under existing detector"
+        },
+        "invalid": {
+          "finding_count": 0,
+          "occurrences": 0,
+          "affected_records": 0,
+          "by_column": [],
+          "columns_truncated": false
+        },
+        "anomalies": {
+          "finding_count": 6,
+          "occurrences": 18,
+          "affected_records": 6,
+          "by_column": [
+            {
+              "column": "dur",
+              "occurrences": 1
+            },
+            {
+              "column": "spkts",
+              "occurrences": 4
+            },
+            {
+              "column": "sttl",
+              "occurrences": 4
+            },
+            {
+              "column": "sload",
+              "occurrences": 1
+            },
+            {
+              "column": "sinpkt",
+              "occurrences": 4
+            },
+            {
+              "column": "ct_dst_sport_ltm",
+              "occurrences": 4
+            }
+          ],
+          "columns_truncated": false,
+          "meaning": "Analytical/statistical findings, not model-predicted attacks; occurrences can overlap across fields."
+        },
+        "changed_records": [
+          {
+            "record_index": 0,
+            "prediction": 1,
+            "label": "Malicious",
+            "probability_normal": 0.2474044159058605,
+            "probability_malicious": 0.7525955840941394,
+            "predicted_class_probability": 0.7525955840941394,
+            "prediction_status": "Predicted",
+            "quality_status": "Issue detected",
+            "quality_findings": [
+              {
+                "id": "finding-1",
+                "check": "missing",
+                "column": "dur",
+                "category": "quality_issue",
+                "reason": "Missingness is observable for every field."
+              }
+            ],
+            "quality_finding_count": 1,
+            "quality_finding_categories": [
+              "quality_issue"
+            ],
+            "quality_findings_truncated": false,
+            "missing_predictive_fields": [
+              "dur"
+            ],
+            "preprocessing_handled_missing": [
+              {
+                "column": "dur",
+                "method": "saved training median"
+              }
+            ],
+            "reliability": "Review",
+            "reliability_reason": "Prediction produced; review input integrity: missing in dur; Missing dur handled by saved training median",
+            "rejection_reason": null
+          },
+          {
+            "record_index": 1,
+            "prediction": 1,
+            "label": "Malicious",
+            "probability_normal": 0.1121938357029016,
+            "probability_malicious": 0.8878061642970982,
+            "predicted_class_probability": 0.8878061642970982,
+            "prediction_status": "Predicted",
+            "quality_status": "Issue detected",
+            "quality_findings": [
+              {
+                "id": "finding-3",
+                "check": "missing",
+                "column": "service",
+                "category": "quality_issue",
+                "reason": "Missingness is observable for every field."
+              }
+            ],
+            "quality_finding_count": 1,
+            "quality_finding_categories": [
+              "quality_issue"
+            ],
+            "quality_findings_truncated": false,
+            "missing_predictive_fields": [
+              "service"
+            ],
+            "preprocessing_handled_missing": [
+              {
+                "column": "service",
+                "method": "saved missing-category indicator"
+              }
+            ],
+            "reliability": "Review",
+            "reliability_reason": "Prediction produced; review input integrity: missing in service; Missing service handled by saved missing-category indicator",
+            "rejection_reason": null
+          },
+          {
+            "record_index": 19,
+            "prediction": 1,
+            "label": "Malicious",
+            "probability_normal": 0.1586379687698102,
+            "probability_malicious": 0.8413620312301897,
+            "predicted_class_probability": 0.8413620312301897,
+            "prediction_status": "Predicted",
+            "quality_status": "No issue detected",
+            "quality_findings": [],
+            "quality_finding_count": 0,
+            "quality_finding_categories": [],
+            "quality_findings_truncated": false,
+            "missing_predictive_fields": [],
+            "preprocessing_handled_missing": [],
+            "reliability": "High",
+            "reliability_reason": "Prediction produced with no unresolved predictive-field integrity issue. Analytical anomalies and preserved duplicates do not invalidate the input.",
+            "rejection_reason": null
+          }
+        ]
+      },
+      "passed": true,
+      "notes": ""
+    },
+    {
+      "name": "invalid_numeric",
+      "input": "Negative duration violates structural nonnegative rule",
+      "expected": "Invalid finding, rejected row with null class/probability",
+      "actual": {
+        "summary": {
+          "records_analysed": 20,
+          "records_predicted": 19,
+          "rejected_count": 1,
+          "normal_count": 4,
+          "malicious_count": 15,
+          "average_predicted_class_probability": 0.8405045451627318,
+          "processing_seconds": 2.5081014999886975,
+          "probability_description": "Model probability estimate, not calibrated certainty or input-data reliability."
+        },
+        "reliability": {
+          "high_count": 19,
+          "review_count": 0,
+          "low_count": 1,
+          "rejected_count": 1,
+          "prediction_by_reliability": {
+            "High": {
+              "normal_count": 4,
+              "malicious_count": 15
+            },
+            "Review": {
+              "normal_count": 0,
+              "malicious_count": 0
+            }
+          },
+          "policy": {
+            "version": "input_integrity_v1",
+            "duplicate_review": false,
+            "probability_thresholds_used": false,
+            "low_means": "Rejected due to invalid required input; no prediction was fabricated"
+          },
+          "interpretation": "Input integrity, separate from model probability and dataset quality score; Low rows were rejected."
+        },
+        "quality_score": 92,
+        "missing": {
+          "finding_count": 0,
+          "occurrences": 0,
+          "affected_records": 0,
+          "by_column": [],
+          "columns_truncated": false
+        },
+        "duplicates": {
+          "finding_count": 0,
+          "occurrences": 0,
+          "affected_records": 0,
+          "by_column": [],
+          "columns_truncated": false,
+          "policy": "preserved; counts exclude first occurrence under existing detector"
+        },
+        "invalid": {
+          "finding_count": 1,
+          "occurrences": 1,
+          "affected_records": 1,
+          "by_column": [
+            {
+              "column": "dur",
+              "occurrences": 1
+            }
+          ],
+          "columns_truncated": false
+        },
+        "anomalies": {
+          "finding_count": 6,
+          "occurrences": 19,
+          "affected_records": 7,
+          "by_column": [
+            {
+              "column": "dur",
+              "occurrences": 2
+            },
+            {
+              "column": "spkts",
+              "occurrences": 4
+            },
+            {
+              "column": "sttl",
+              "occurrences": 4
+            },
+            {
+              "column": "sload",
+              "occurrences": 1
+            },
+            {
+              "column": "sinpkt",
+              "occurrences": 4
+            },
+            {
+              "column": "ct_dst_sport_ltm",
+              "occurrences": 4
+            }
+          ],
+          "columns_truncated": false,
+          "meaning": "Analytical/statistical findings, not model-predicted attacks; occurrences can overlap across fields."
+        },
+        "changed_records": [
+          {
+            "record_index": 0,
+            "prediction": null,
+            "label": null,
+            "probability_normal": null,
+            "probability_malicious": null,
+            "predicted_class_probability": null,
+            "prediction_status": "Rejected",
+            "quality_status": "Issue detected",
+            "quality_findings": [
+              {
+                "id": "finding-1",
+                "check": "outlier",
+                "column": "dur",
+                "category": "analytical_security_anomaly",
+                "reason": "Requires five finite numbers, representable IQR fences, variation, and no identifier or binary-indicator interpretation."
+              },
+              {
+                "id": "finding-7",
+                "check": "network_invalid_nonnegative",
+                "column": "dur",
+                "category": "data_error",
+                "reason": "Violates explicit nonnegative structural/domain rule."
+              }
+            ],
+            "quality_finding_count": 2,
+            "quality_finding_categories": [
+              "analytical_security_anomaly",
+              "data_error"
+            ],
+            "quality_findings_truncated": false,
+            "missing_predictive_fields": [],
+            "preprocessing_handled_missing": [],
+            "reliability": "Low",
+            "reliability_reason": "Prediction rejected: network invalid nonnegative in dur",
+            "rejection_reason": "Prediction rejected: network invalid nonnegative in dur"
+          },
+          {
+            "record_index": 19,
+            "prediction": 1,
+            "label": "Malicious",
+            "probability_normal": 0.1586379687698102,
+            "probability_malicious": 0.8413620312301897,
+            "predicted_class_probability": 0.8413620312301897,
+            "prediction_status": "Predicted",
+            "quality_status": "No issue detected",
+            "quality_findings": [],
+            "quality_finding_count": 0,
+            "quality_finding_categories": [],
+            "quality_findings_truncated": false,
+            "missing_predictive_fields": [],
+            "preprocessing_handled_missing": [],
+            "reliability": "High",
+            "reliability_reason": "Prediction produced with no unresolved predictive-field integrity issue. Analytical anomalies and preserved duplicates do not invalidate the input.",
+            "rejection_reason": null
+          }
+        ]
+      },
+      "passed": true,
+      "notes": ""
+    },
+    {
+      "name": "unseen_category",
+      "input": "Structurally valid unseen protocol token",
+      "expected": "Unseen audit, saved encoding, Review without retraining",
+      "actual": {
+        "summary": {
+          "records_analysed": 20,
+          "records_predicted": 20,
+          "rejected_count": 0,
+          "normal_count": 4,
+          "malicious_count": 16,
+          "average_predicted_class_probability": 0.8462724839108287,
+          "processing_seconds": 3.736369000049308,
+          "probability_description": "Model probability estimate, not calibrated certainty or input-data reliability."
+        },
+        "reliability": {
+          "high_count": 19,
+          "review_count": 1,
+          "low_count": 0,
+          "rejected_count": 0,
+          "prediction_by_reliability": {
+            "High": {
+              "normal_count": 4,
+              "malicious_count": 15
+            },
+            "Review": {
+              "normal_count": 0,
+              "malicious_count": 1
+            }
+          },
+          "policy": {
+            "version": "input_integrity_v1",
+            "duplicate_review": false,
+            "probability_thresholds_used": false,
+            "low_means": "Rejected due to invalid required input; no prediction was fabricated"
+          },
+          "interpretation": "Input integrity, separate from model probability and dataset quality score; Low rows were rejected."
+        },
+        "quality_score": 100,
+        "missing": {
+          "finding_count": 0,
+          "occurrences": 0,
+          "affected_records": 0,
+          "by_column": [],
+          "columns_truncated": false
+        },
+        "duplicates": {
+          "finding_count": 0,
+          "occurrences": 0,
+          "affected_records": 0,
+          "by_column": [],
+          "columns_truncated": false,
+          "policy": "preserved; counts exclude first occurrence under existing detector"
+        },
+        "invalid": {
+          "finding_count": 0,
+          "occurrences": 0,
+          "affected_records": 0,
+          "by_column": [],
+          "columns_truncated": false
+        },
+        "anomalies": {
+          "finding_count": 6,
+          "occurrences": 18,
+          "affected_records": 6,
+          "by_column": [
+            {
+              "column": "dur",
+              "occurrences": 1
+            },
+            {
+              "column": "spkts",
+              "occurrences": 4
+            },
+            {
+              "column": "sttl",
+              "occurrences": 4
+            },
+            {
+              "column": "sload",
+              "occurrences": 1
+            },
+            {
+              "column": "sinpkt",
+              "occurrences": 4
+            },
+            {
+              "column": "ct_dst_sport_ltm",
+              "occurrences": 4
+            }
+          ],
+          "columns_truncated": false,
+          "meaning": "Analytical/statistical findings, not model-predicted attacks; occurrences can overlap across fields."
+        },
+        "changed_records": [
+          {
+            "record_index": 0,
+            "prediction": 1,
+            "label": "Malicious",
+            "probability_normal": 0.04413667987533166,
+            "probability_malicious": 0.9558633201246682,
+            "predicted_class_probability": 0.9558633201246682,
+            "prediction_status": "Predicted",
+            "quality_status": "Issue detected",
+            "quality_findings": [],
+            "quality_finding_count": 0,
+            "quality_finding_categories": [],
+            "quality_findings_truncated": false,
+            "missing_predictive_fields": [],
+            "preprocessing_handled_missing": [],
+            "reliability": "Review",
+            "reliability_reason": "Prediction produced; review input integrity: Unseen proto uses saved all-zero encoding; training category information is unavailable",
+            "rejection_reason": null
+          },
+          {
+            "record_index": 19,
+            "prediction": 1,
+            "label": "Malicious",
+            "probability_normal": 0.1586379687698102,
+            "probability_malicious": 0.8413620312301897,
+            "predicted_class_probability": 0.8413620312301897,
+            "prediction_status": "Predicted",
+            "quality_status": "No issue detected",
+            "quality_findings": [],
+            "quality_finding_count": 0,
+            "quality_finding_categories": [],
+            "quality_findings_truncated": false,
+            "missing_predictive_fields": [],
+            "preprocessing_handled_missing": [],
+            "reliability": "High",
+            "reliability_reason": "Prediction produced with no unresolved predictive-field integrity issue. Analytical anomalies and preserved duplicates do not invalidate the input.",
+            "rejection_reason": null
+          }
+        ]
+      },
+      "passed": true,
+      "notes": ""
+    },
+    {
+      "name": "analytical_outlier",
+      "input": "Valid extreme duration in last row",
+      "expected": "Analytical finding; no rejection or reliability downgrade solely for outlier",
+      "actual": {
+        "summary": {
+          "records_analysed": 20,
+          "records_predicted": 20,
+          "rejected_count": 0,
+          "normal_count": 4,
+          "malicious_count": 16,
+          "average_predicted_class_probability": 0.8390235302973122,
+          "processing_seconds": 3.2040402999846265,
+          "probability_description": "Model probability estimate, not calibrated certainty or input-data reliability."
+        },
+        "reliability": {
+          "high_count": 20,
+          "review_count": 0,
+          "low_count": 0,
+          "rejected_count": 0,
+          "prediction_by_reliability": {
+            "High": {
+              "normal_count": 4,
+              "malicious_count": 16
+            },
+            "Review": {
+              "normal_count": 0,
+              "malicious_count": 0
+            }
+          },
+          "policy": {
+            "version": "input_integrity_v1",
+            "duplicate_review": false,
+            "probability_thresholds_used": false,
+            "low_means": "Rejected due to invalid required input; no prediction was fabricated"
+          },
+          "interpretation": "Input integrity, separate from model probability and dataset quality score; Low rows were rejected."
+        },
+        "quality_score": 100,
+        "missing": {
+          "finding_count": 0,
+          "occurrences": 0,
+          "affected_records": 0,
+          "by_column": [],
+          "columns_truncated": false
+        },
+        "duplicates": {
+          "finding_count": 0,
+          "occurrences": 0,
+          "affected_records": 0,
+          "by_column": [],
+          "columns_truncated": false,
+          "policy": "preserved; counts exclude first occurrence under existing detector"
+        },
+        "invalid": {
+          "finding_count": 0,
+          "occurrences": 0,
+          "affected_records": 0,
+          "by_column": [],
+          "columns_truncated": false
+        },
+        "anomalies": {
+          "finding_count": 6,
+          "occurrences": 19,
+          "affected_records": 7,
+          "by_column": [
+            {
+              "column": "dur",
+              "occurrences": 2
+            },
+            {
+              "column": "spkts",
+              "occurrences": 4
+            },
+            {
+              "column": "sttl",
+              "occurrences": 4
+            },
+            {
+              "column": "sload",
+              "occurrences": 1
+            },
+            {
+              "column": "sinpkt",
+              "occurrences": 4
+            },
+            {
+              "column": "ct_dst_sport_ltm",
+              "occurrences": 4
+            }
+          ],
+          "columns_truncated": false,
+          "meaning": "Analytical/statistical findings, not model-predicted attacks; occurrences can overlap across fields."
+        },
+        "changed_records": [
+          {
+            "record_index": 19,
+            "prediction": 1,
+            "label": "Malicious",
+            "probability_normal": 0.20749833274968918,
+            "probability_malicious": 0.7925016672503109,
+            "predicted_class_probability": 0.7925016672503109,
+            "prediction_status": "Predicted",
+            "quality_status": "Issue detected",
+            "quality_findings": [
+              {
+                "id": "finding-1",
+                "check": "outlier",
+                "column": "dur",
+                "category": "analytical_security_anomaly",
+                "reason": "Requires five finite numbers, representable IQR fences, variation, and no identifier or binary-indicator interpretation."
+              }
+            ],
+            "quality_finding_count": 1,
+            "quality_finding_categories": [
+              "analytical_security_anomaly"
+            ],
+            "quality_findings_truncated": false,
+            "missing_predictive_fields": [],
+            "preprocessing_handled_missing": [],
+            "reliability": "High",
+            "reliability_reason": "Prediction produced with no unresolved predictive-field integrity issue. Analytical anomalies and preserved duplicates do not invalidate the input.",
+            "rejection_reason": null
+          }
+        ]
+      },
+      "passed": true,
+      "notes": ""
+    },
+    {
+      "name": "duplicates",
+      "input": "One exact repeated row including same identifier",
+      "expected": "Duplicate detected, records preserved, no automatic Low",
+      "actual": {
+        "summary": {
+          "records_analysed": 21,
+          "records_predicted": 21,
+          "rejected_count": 0,
+          "normal_count": 4,
+          "malicious_count": 17,
+          "average_predicted_class_probability": 0.8423369324647785,
+          "processing_seconds": 3.534422299999278,
+          "probability_description": "Model probability estimate, not calibrated certainty or input-data reliability."
+        },
+        "reliability": {
+          "high_count": 21,
+          "review_count": 0,
+          "low_count": 0,
+          "rejected_count": 0,
+          "prediction_by_reliability": {
+            "High": {
+              "normal_count": 4,
+              "malicious_count": 17
+            },
+            "Review": {
+              "normal_count": 0,
+              "malicious_count": 0
+            }
+          },
+          "policy": {
+            "version": "input_integrity_v1",
+            "duplicate_review": false,
+            "probability_thresholds_used": false,
+            "low_means": "Rejected due to invalid required input; no prediction was fabricated"
+          },
+          "interpretation": "Input integrity, separate from model probability and dataset quality score; Low rows were rejected."
+        },
+        "quality_score": 90,
+        "missing": {
+          "finding_count": 0,
+          "occurrences": 0,
+          "affected_records": 0,
+          "by_column": [],
+          "columns_truncated": false
+        },
+        "duplicates": {
+          "finding_count": 1,
+          "occurrences": 1,
+          "affected_records": 1,
+          "by_column": [],
+          "columns_truncated": false,
+          "policy": "preserved; counts exclude first occurrence under existing detector"
+        },
+        "invalid": {
+          "finding_count": 0,
+          "occurrences": 0,
+          "affected_records": 0,
+          "by_column": [],
+          "columns_truncated": false
+        },
+        "anomalies": {
+          "finding_count": 7,
+          "occurrences": 20,
+          "affected_records": 6,
+          "by_column": [
+            {
+              "column": "dur",
+              "occurrences": 1
+            },
+            {
+              "column": "spkts",
+              "occurrences": 4
+            },
+            {
+              "column": "rate",
+              "occurrences": 1
+            },
+            {
+              "column": "sttl",
+              "occurrences": 4
+            },
+            {
+              "column": "sload",
+              "occurrences": 1
+            },
+            {
+              "column": "sinpkt",
+              "occurrences": 5
+            },
+            {
+              "column": "ct_dst_sport_ltm",
+              "occurrences": 4
+            }
+          ],
+          "columns_truncated": false,
+          "meaning": "Analytical/statistical findings, not model-predicted attacks; occurrences can overlap across fields."
+        },
+        "changed_records": [
+          {
+            "record_index": 20,
+            "prediction": 1,
+            "label": "Malicious",
+            "probability_normal": 0.14025538816577743,
+            "probability_malicious": 0.8597446118342225,
+            "predicted_class_probability": 0.8597446118342225,
+            "prediction_status": "Predicted",
+            "quality_status": "Issue detected",
+            "quality_findings": [
+              {
+                "id": "finding-1",
+                "check": "duplicate",
+                "column": null,
+                "category": "quality_issue",
+                "reason": "duplicate"
+              }
+            ],
+            "quality_finding_count": 1,
+            "quality_finding_categories": [
+              "quality_issue"
+            ],
+            "quality_findings_truncated": false,
+            "missing_predictive_fields": [],
+            "preprocessing_handled_missing": [],
+            "reliability": "High",
+            "reliability_reason": "Prediction produced with no unresolved predictive-field integrity issue. Analytical anomalies and preserved duplicates do not invalidate the input.",
+            "rejection_reason": null
+          }
+        ]
+      },
+      "passed": true,
+      "notes": ""
+    },
+    {
+      "name": "backend_unavailable",
+      "input": "Mocked connection rejection",
+      "expected": "Clear connection message, no results, retry enabled",
+      "actual": "Unable to analyse this network dataset. The backend is unavailable. Check the connection and try again.",
+      "passed": true,
+      "notes": ""
+    },
+    {
+      "name": "large_file",
+      "input": "Full official UNSW_NB15_testing-set.csv",
+      "expected": "82332 analysed, 100 returned rows, bounded response, safe summary persistence",
+      "actual": {
+        "summary": {
+          "records_analysed": 82332,
+          "records_predicted": 82332,
+          "rejected_count": 0,
+          "normal_count": 26700,
+          "malicious_count": 55632,
+          "average_predicted_class_probability": 0.9079187748526718,
+          "processing_seconds": 239.47992339998018,
+          "probability_description": "Model probability estimate, not calibrated certainty or input-data reliability."
+        },
+        "reliability": {
+          "high_count": 82327,
+          "review_count": 5,
+          "low_count": 0,
+          "rejected_count": 0,
+          "prediction_by_reliability": {
+            "High": {
+              "normal_count": 26698,
+              "malicious_count": 55629
+            },
+            "Review": {
+              "normal_count": 2,
+              "malicious_count": 3
+            }
+          },
+          "policy": {
+            "version": "input_integrity_v1",
+            "duplicate_review": false,
+            "probability_thresholds_used": false,
+            "low_means": "Rejected due to invalid required input; no prediction was fabricated"
+          },
+          "interpretation": "Input integrity, separate from model probability and dataset quality score; Low rows were rejected."
+        },
+        "pagination": {
+          "offset": 0,
+          "limit": 100,
+          "returned_records": 100,
+          "total_records": 82332,
+          "next_offset": 100,
+          "has_more": true
+        },
+        "response_bytes": 149930,
+        "browser_js_heap": {
+          "usedSize": 27371448,
+          "totalSize": 39305216,
+          "embedderHeapUsedSize": 25213496,
+          "backingStorageSize": 10826011
+        },
+        "storage_bytes": 266
+      },
+      "passed": true,
+      "notes": ""
+    },
+    {
+      "name": "returned_page_filters",
+      "input": "Current 100-row page; Malicious filter",
+      "expected": "Only supplied Malicious rows shown",
+      "actual": {
+        "displayed": 43
+      },
+      "passed": true,
+      "notes": ""
+    },
+    {
+      "name": "saved_inference_and_checksums",
+      "input": "Real API process; fit and fit_transform forbidden",
+      "expected": "No fitting, saved artifacts unchanged",
+      "actual": {
+        "fit_methods_forbidden": true,
+        "hashes": {
+          "intrusion_model.joblib": "a6be0a645b2c01f497c406f8daf02bfc3c85e98662ff61b90068cd1f2343067d",
+          "preprocessor.joblib": "414c4ca98cfb3799096512fca901ab02dca32c7517801a4b2721aca1d0a726c9"
+        }
+      },
+      "passed": true,
+      "notes": ""
+    },
+    {
+      "name": "backend_tests",
+      "input": "Existing full suite or dependency check",
+      "expected": "Exit status 0",
+      "actual": {
+        "exit_code": 0,
+        "log": "backend_tests.log"
+      },
+      "passed": true
+    },
+    {
+      "name": "backend_dependencies",
+      "input": "Existing full suite or dependency check",
+      "expected": "Exit status 0",
+      "actual": {
+        "exit_code": 0,
+        "log": "backend_dependencies.log"
+      },
+      "passed": true
+    },
+    {
+      "name": "active_environment_dependencies",
+      "input": "Existing full suite or dependency check",
+      "expected": "Exit status 0",
+      "actual": {
+        "exit_code": 0,
+        "log": "active_environment_dependencies.log"
+      },
+      "passed": true
+    },
+    {
+      "name": "frontend_tests",
+      "input": "Existing full suite or dependency check",
+      "expected": "Exit status 0",
+      "actual": {
+        "exit_code": 0,
+        "log": "frontend_tests.log"
+      },
+      "passed": true
+    },
+    {
+      "name": "lint",
+      "input": "Existing full suite or dependency check",
+      "expected": "Exit status 0",
+      "actual": {
+        "exit_code": 0,
+        "log": "lint.log"
+      },
+      "passed": true
+    },
+    {
+      "name": "production_build",
+      "input": "Existing full suite or dependency check",
+      "expected": "Exit status 0",
+      "actual": {
+        "exit_code": 0,
+        "log": "production_build.log"
+      },
+      "passed": true
+    },
+    {
+      "name": "dashboard",
+      "input": "Real Edge frontend/FastAPI upload or explicitly mocked boundary",
+      "expected": "Actual response mapped to page; no runtime exception",
+      "actual": {
+        "checked_marker": "Security Analysis Overview",
+        "records_analysed": 82332,
+        "official_source": "official_test_evaluation"
+      },
+      "passed": true,
+      "notes": "Real-browser checks plus full frontend rendering regression suite. Probability and reliability remain separate."
+    },
+    {
+      "name": "data_quality_page",
+      "input": "Real Edge frontend/FastAPI upload or explicitly mocked boundary",
+      "expected": "Actual response mapped to page; no runtime exception",
+      "actual": {
+        "checked_marker": "Returned record finding evidence",
+        "records_analysed": 82332,
+        "official_source": "official_test_evaluation"
+      },
+      "passed": true,
+      "notes": "Real-browser checks plus full frontend rendering regression suite. Probability and reliability remain separate."
+    },
+    {
+      "name": "intrusion_detection_page",
+      "input": "Real Edge frontend/FastAPI upload or explicitly mocked boundary",
+      "expected": "Actual response mapped to page; no runtime exception",
+      "actual": {
+        "checked_marker": "Missed Attack",
+        "records_analysed": 82332,
+        "official_source": "official_test_evaluation"
+      },
+      "passed": true,
+      "notes": "Real-browser checks plus full frontend rendering regression suite. Probability and reliability remain separate."
+    },
+    {
+      "name": "results_page",
+      "input": "Real Edge frontend/FastAPI upload or explicitly mocked boundary",
+      "expected": "Actual response mapped to page; no runtime exception",
+      "actual": {
+        "checked_marker": "Inspect record",
+        "records_analysed": 82332,
+        "official_source": "official_test_evaluation"
+      },
+      "passed": true,
+      "notes": "Real-browser checks plus full frontend rendering regression suite. Probability and reliability remain separate."
+    },
+    {
+      "name": "reports_page",
+      "input": "Real Edge frontend/FastAPI upload or explicitly mocked boundary",
+      "expected": "Actual response mapped to page; no runtime exception",
+      "actual": {
+        "checked_marker": "Export report PDF",
+        "records_analysed": 82332,
+        "official_source": "official_test_evaluation"
+      },
+      "passed": true,
+      "notes": "Real-browser checks plus full frontend rendering regression suite. Probability and reliability remain separate."
+    },
+    {
+      "name": "pdf_export",
+      "input": "Real Edge frontend/FastAPI upload or explicitly mocked boundary",
+      "expected": "Actual Reports button downloads bounded PDF; reader values/layout pass",
+      "actual": {
+        "reader": "PyMuPDF temporary validation tool; not a project dependency",
+        "pdf_opens": true,
+        "pages": 8,
+        "bytes": 50707,
+        "all_expected_sections_and_values_match": true,
+        "important_records": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ],
+        "clipped_text": [],
+        "overlapping_text": []
+      },
+      "passed": true,
+      "notes": "Full-file report opened/rendered in temporary PyMuPDF; rendered pages visually inspected."
+    },
+    {
+      "name": "refresh_empty_state",
+      "input": "Real Edge frontend/FastAPI upload or explicitly mocked boundary",
+      "expected": "App result null; summary-only state; upload action; no fake reports",
+      "actual": {
+        "result_after_refresh": null,
+        "summary_label": "Previous analysis summary only"
+      },
+      "passed": true,
+      "notes": "Explicit browser assertions after refresh; every route empty state covered by frontend tests."
+    },
+    {
+      "name": "storage_quota_failure",
+      "input": "Real Edge frontend/FastAPI upload or explicitly mocked boundary",
+      "expected": "Successful result and navigation survive forced Storage.setItem exception",
+      "actual": {
+        "forced_error": "QuotaExceededError",
+        "in_memory_mocked_findings": 100000,
+        "dashboard_navigation": true
+      },
+      "passed": true,
+      "notes": "Boundary is intentionally mocked; real large-file persistence separately measured."
+    },
+    {
+      "name": "duplicate_submission_and_controls",
+      "input": "Real Edge frontend/FastAPI upload or explicitly mocked boundary",
+      "expected": "Two synchronous handler calls make one request; native input/button disabled",
+      "actual": {
+        "requests": 1,
+        "input_disabled": true,
+        "button_disabled": true
+      },
+      "passed": true,
+      "notes": "Explicit same-turn React handler assertions; no backend telemetry inferred from illustrative processing stages."
+    },
+    {
+      "name": "all_results_filters_and_record_detail",
+      "input": "Real Edge frontend/FastAPI upload or explicitly mocked boundary",
+      "expected": "All/Malicious/Normal and High/Review/Low filter current page; details readable",
+      "actual": [
+        {
+          "prediction": "all",
+          "displayed": 100
+        },
+        {
+          "prediction": "Malicious",
+          "displayed": 43
+        },
+        {
+          "prediction": "Normal",
+          "displayed": 57
+        },
+        {
+          "reliability": "High",
+          "displayed": 100
+        },
+        {
+          "reliability": "Review",
+          "displayed": 0
+        },
+        {
+          "reliability": "Low",
+          "displayed": 0
+        },
+        {
+          "reliability": "all",
+          "displayed": 100
+        }
+      ],
+      "passed": true,
+      "notes": "Sample returned page has 100 High records, 43 Malicious and 57 Normal. Review/Low filters correctly return zero; nonempty Review/Low details separately covered by altered-input and frontend regression tests."
+    }
+  ],
+  "remaining_limitations": [
+    "Only the current returned record page is available; no reusable analysis ID/pagination.",
+    "Refresh intentionally loses full in-memory results.",
+    "PDF selection is page-local and bounded, not a complete event archive.",
+    "Large-file processing took 239.48 seconds on this machine while regression jobs were also active; no throughput SLA claimed.",
+    "Browser JS heap was sampled, not peak browser/backend process RSS.",
+    "Existing reporting bundle large-chunk advisory remains.",
+    "Headless Edge plus responsive checks do not constitute testing every browser/device."
+  ],
+  "ready_for_phase16": true
+}

@@ -1,0 +1,20 @@
+{
+  "rows": 32,
+  "encoded_features": 197,
+  "transform_identical": true,
+  "predictions_identical": true,
+  "probabilities_identical": true,
+  "feature_information_identical": true,
+  "target_required": false,
+  "verification_prediction_backend": "sequential for deterministic floating-point accumulation; saved n_jobs unchanged",
+  "fingerprints_before_save": {
+    "matrix_data": "a3d5287e7f9810d839dab7cc5ae88b03f5d662ad268b9e7f03a1a2c6d1e4d596",
+    "matrix_indices": "6dc5d9a25da5b85d51df9b60a662893614fc313c539fa0db14667ed55679d261",
+    "matrix_indptr": "73450550a9699374f5cb9b9135b80da8faa0b0aa7d3a7ca2d7b116523edd52ed",
+    "predictions": "cbe9d045280a54c33dbdcc758c79611ba9752fd36b169cdc0bac499a12594b9f",
+    "probabilities": "ec697008d0330bbdfa16e11cc2fc7720ab579cb6c6ffa9cd631786891e7ceede"
+  },
+  "existing_fitted_artifacts_resaved_without_retraining": true,
+  "fresh_process_reload_identical": true,
+  "fresh_process_fit_calls_forbidden": true
+}

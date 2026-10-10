@@ -1,30 +1,39 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import UploadPage from './pages/UploadPage'
 import OverviewPage from './pages/OverviewPage'
-import IssuesPage from './pages/IssuesPage'
-import ByFieldPage from './pages/ByFieldPage'
-import ActionsPage from './pages/ActionsPage'
+import AnalysisPages from './pages/AnalysisPages'
+import { clearStoredAssessment, getSessionStorage, normalizeAssessmentResult, persistAssessmentSummary, readAssessmentSummary } from './utils/assessmentResult'
 import { restorePage, rememberPage } from './utils/navigation'
-
-const DASHBOARD_PAGES = {
-  overview: OverviewPage,
-  issues: IssuesPage,
-  'by-field': ByFieldPage,
-  actions: ActionsPage,
-}
+import { clearNetworkSummary, normalizeNetworkAnalysis, persistNetworkSummary, readNetworkSummary } from './utils/networkAnalysis'
 
 function App() {
-  const [page, setPage] = useState(() => restorePage(sessionStorage))
-  const navigate = (nextPage) => {
-    setPage(rememberPage(sessionStorage, nextPage))
+  // Full responses live only here. Navigation never reads a persisted response.
+  const [result, setResult] = useState(null)
+  const [summary, setSummary] = useState(() => readNetworkSummary(getSessionStorage()) || readAssessmentSummary(getSessionStorage()))
+  const [page, setPage] = useState(() => {
+    const refreshing = performance.getEntriesByType('navigation')[0]?.type === 'reload'
+    return refreshing ? restorePage(getSessionStorage()) : 'upload'
+  })
+  useEffect(() => {
+    try { getSessionStorage()?.removeItem('assessmentResult') } catch { /* Remove legacy payload when possible. */ }
+  }, [])
+  const navigate = nextPage => setPage(rememberPage(getSessionStorage(), nextPage))
+  const completeAssessment = response => {
+    const networkResult = normalizeNetworkAnalysis(response)
+    setResult(networkResult || normalizeAssessmentResult(response))
+    setSummary(networkResult ? persistNetworkSummary(getSessionStorage(), response) : persistAssessmentSummary(getSessionStorage(), response))
+    navigate('overview')
+  }
+  const clearAssessment = () => {
+    setResult(null)
+    setSummary(null)
+    clearStoredAssessment(getSessionStorage())
+    clearNetworkSummary(getSessionStorage())
   }
 
-  if (page === 'upload') {
-    return <UploadPage onNavigate={navigate} />
-  }
-
-  const DashboardSubPage = DASHBOARD_PAGES[page] || OverviewPage
-  return <DashboardSubPage onNavigate={navigate} />
+  if (page === 'upload') return <UploadPage onNavigate={navigate} onAssessmentComplete={completeAssessment} onAssessmentClear={clearAssessment} />
+  if (page === 'overview') return <OverviewPage result={result} summary={summary} onNavigate={navigate} />
+  return <AnalysisPages key={page} page={page} result={result} summary={summary} onNavigate={navigate} />
 }
 
 export default App

@@ -1,0 +1,1634 @@
+{
+  "method": "Saved Random Forest mean decrease in impurity; categorical indicator importances summed by raw feature; no fitting or predictions performed",
+  "parameters": {
+    "bootstrap": true,
+    "ccp_alpha": 0.0,
+    "class_weight": null,
+    "criterion": "gini",
+    "max_depth": 20,
+    "max_features": "sqrt",
+    "max_leaf_nodes": null,
+    "max_samples": null,
+    "min_impurity_decrease": 0.0,
+    "min_samples_leaf": 2,
+    "min_samples_split": 10,
+    "min_weight_fraction_leaf": 0.0,
+    "monotonic_cst": null,
+    "n_estimators": 100,
+    "n_jobs": 2,
+    "oob_score": false,
+    "random_state": 42,
+    "verbose": 0,
+    "warm_start": false
+  },
+  "raw_feature_ranking": [
+    {
+      "feature": "ct_state_ttl",
+      "importance": 0.10279955737174731
+    },
+    {
+      "feature": "sttl",
+      "importance": 0.0955959499168149
+    },
+    {
+      "feature": "dttl",
+      "importance": 0.0719174952128525
+    },
+    {
+      "feature": "dload",
+      "importance": 0.06246638894694046
+    },
+    {
+      "feature": "dmean",
+      "importance": 0.05390720734654221
+    },
+    {
+      "feature": "rate",
+      "importance": 0.044827165520584016
+    },
+    {
+      "feature": "sload",
+      "importance": 0.035047287237512145
+    },
+    {
+      "feature": "state",
+      "importance": 0.034480237304831365
+    },
+    {
+      "feature": "sbytes",
+      "importance": 0.0303898577960816
+    },
+    {
+      "feature": "dbytes",
+      "importance": 0.030375630772190916
+    },
+    {
+      "feature": "tcprtt",
+      "importance": 0.02893436131390203
+    },
+    {
+      "feature": "dpkts",
+      "importance": 0.028139816025117094
+    },
+    {
+      "feature": "ackdat",
+      "importance": 0.028104213911790358
+    },
+    {
+      "feature": "sinpkt",
+      "importance": 0.027242830949387266
+    },
+    {
+      "feature": "dinpkt",
+      "importance": 0.0256577310026043
+    },
+    {
+      "feature": "dur",
+      "importance": 0.025212350506497967
+    },
+    {
+      "feature": "smean",
+      "importance": 0.023691661722781858
+    },
+    {
+      "feature": "ct_srv_dst",
+      "importance": 0.023165066641106163
+    },
+    {
+      "feature": "synack",
+      "importance": 0.02152240868909548
+    },
+    {
+      "feature": "proto",
+      "importance": 0.021110013749735132
+    },
+    {
+      "feature": "ct_dst_src_ltm",
+      "importance": 0.019869969325405183
+    },
+    {
+      "feature": "spkts",
+      "importance": 0.01819117405993682
+    },
+    {
+      "feature": "ct_srv_src",
+      "importance": 0.01686841094486845
+    },
+    {
+      "feature": "sjit",
+      "importance": 0.016343093008274665
+    },
+    {
+      "feature": "dloss",
+      "importance": 0.013281593666757765
+    },
+    {
+      "feature": "ct_dst_sport_ltm",
+      "importance": 0.013202425437880964
+    },
+    {
+      "feature": "djit",
+      "importance": 0.012667439555297366
+    },
+    {
+      "feature": "sloss",
+      "importance": 0.01006153968408701
+    },
+    {
+      "feature": "ct_dst_ltm",
+      "importance": 0.010046594797358312
+    },
+    {
+      "feature": "service",
+      "importance": 0.009688547845812554
+    },
+    {
+      "feature": "ct_src_ltm",
+      "importance": 0.007762860948776425
+    },
+    {
+      "feature": "is_sm_ips_ports",
+      "importance": 0.007059329535761618
+    },
+    {
+      "feature": "ct_src_dport_ltm",
+      "importance": 0.006848342573231168
+    },
+    {
+      "feature": "dtcpb",
+      "importance": 0.006559944099761527
+    },
+    {
+      "feature": "swin",
+      "importance": 0.00465858599181102
+    },
+    {
+      "feature": "dwin",
+      "importance": 0.0046082654879743175
+    },
+    {
+      "feature": "stcpb",
+      "importance": 0.0035257928835903353
+    },
+    {
+      "feature": "trans_depth",
+      "importance": 0.00151741814679084
+    },
+    {
+      "feature": "ct_flw_http_mthd",
+      "importance": 0.0012202231550326665
+    },
+    {
+      "feature": "response_body_len",
+      "importance": 0.0011744262590702727
+    },
+    {
+      "feature": "ct_ftp_cmd",
+      "importance": 0.00013422214371476898
+    },
+    {
+      "feature": "is_ftp_login",
+      "importance": 0.0001225685106908957
+    }
+  ],
+  "encoded_feature_ranking": [
+    {
+      "encoded_feature": "ct_state_ttl",
+      "importance": 0.10279955737174731,
+      "raw_feature": "ct_state_ttl"
+    },
+    {
+      "encoded_feature": "sttl",
+      "importance": 0.0955959499168149,
+      "raw_feature": "sttl"
+    },
+    {
+      "encoded_feature": "dttl",
+      "importance": 0.0719174952128525,
+      "raw_feature": "dttl"
+    },
+    {
+      "encoded_feature": "dload",
+      "importance": 0.06246638894694046,
+      "raw_feature": "dload"
+    },
+    {
+      "encoded_feature": "dmean",
+      "importance": 0.05390720734654221,
+      "raw_feature": "dmean"
+    },
+    {
+      "encoded_feature": "rate",
+      "importance": 0.044827165520584016,
+      "raw_feature": "rate"
+    },
+    {
+      "encoded_feature": "sload",
+      "importance": 0.035047287237512145,
+      "raw_feature": "sload"
+    },
+    {
+      "encoded_feature": "sbytes",
+      "importance": 0.0303898577960816,
+      "raw_feature": "sbytes"
+    },
+    {
+      "encoded_feature": "dbytes",
+      "importance": 0.030375630772190916,
+      "raw_feature": "dbytes"
+    },
+    {
+      "encoded_feature": "tcprtt",
+      "importance": 0.02893436131390203,
+      "raw_feature": "tcprtt"
+    },
+    {
+      "encoded_feature": "dpkts",
+      "importance": 0.028139816025117094,
+      "raw_feature": "dpkts"
+    },
+    {
+      "encoded_feature": "ackdat",
+      "importance": 0.028104213911790358,
+      "raw_feature": "ackdat"
+    },
+    {
+      "encoded_feature": "sinpkt",
+      "importance": 0.027242830949387266,
+      "raw_feature": "sinpkt"
+    },
+    {
+      "encoded_feature": "dinpkt",
+      "importance": 0.0256577310026043,
+      "raw_feature": "dinpkt"
+    },
+    {
+      "encoded_feature": "dur",
+      "importance": 0.025212350506497967,
+      "raw_feature": "dur"
+    },
+    {
+      "encoded_feature": "smean",
+      "importance": 0.023691661722781858,
+      "raw_feature": "smean"
+    },
+    {
+      "encoded_feature": "ct_srv_dst",
+      "importance": 0.023165066641106163,
+      "raw_feature": "ct_srv_dst"
+    },
+    {
+      "encoded_feature": "synack",
+      "importance": 0.02152240868909548,
+      "raw_feature": "synack"
+    },
+    {
+      "encoded_feature": "ct_dst_src_ltm",
+      "importance": 0.019869969325405183,
+      "raw_feature": "ct_dst_src_ltm"
+    },
+    {
+      "encoded_feature": "spkts",
+      "importance": 0.01819117405993682,
+      "raw_feature": "spkts"
+    },
+    {
+      "encoded_feature": "ct_srv_src",
+      "importance": 0.01686841094486845,
+      "raw_feature": "ct_srv_src"
+    },
+    {
+      "encoded_feature": "state_INT",
+      "importance": 0.016635377510057878,
+      "raw_feature": "state"
+    },
+    {
+      "encoded_feature": "sjit",
+      "importance": 0.016343093008274665,
+      "raw_feature": "sjit"
+    },
+    {
+      "encoded_feature": "state_CON",
+      "importance": 0.013799567538796386,
+      "raw_feature": "state"
+    },
+    {
+      "encoded_feature": "dloss",
+      "importance": 0.013281593666757765,
+      "raw_feature": "dloss"
+    },
+    {
+      "encoded_feature": "ct_dst_sport_ltm",
+      "importance": 0.013202425437880964,
+      "raw_feature": "ct_dst_sport_ltm"
+    },
+    {
+      "encoded_feature": "djit",
+      "importance": 0.012667439555297366,
+      "raw_feature": "djit"
+    },
+    {
+      "encoded_feature": "sloss",
+      "importance": 0.01006153968408701,
+      "raw_feature": "sloss"
+    },
+    {
+      "encoded_feature": "ct_dst_ltm",
+      "importance": 0.010046594797358312,
+      "raw_feature": "ct_dst_ltm"
+    },
+    {
+      "encoded_feature": "proto_arp",
+      "importance": 0.008728087255896067,
+      "raw_feature": "proto"
+    },
+    {
+      "encoded_feature": "ct_src_ltm",
+      "importance": 0.007762860948776425,
+      "raw_feature": "ct_src_ltm"
+    },
+    {
+      "encoded_feature": "is_sm_ips_ports",
+      "importance": 0.007059329535761618,
+      "raw_feature": "is_sm_ips_ports"
+    },
+    {
+      "encoded_feature": "ct_src_dport_ltm",
+      "importance": 0.006848342573231168,
+      "raw_feature": "ct_src_dport_ltm"
+    },
+    {
+      "encoded_feature": "dtcpb",
+      "importance": 0.006559944099761527,
+      "raw_feature": "dtcpb"
+    },
+    {
+      "encoded_feature": "proto_tcp",
+      "importance": 0.005492128693845872,
+      "raw_feature": "proto"
+    },
+    {
+      "encoded_feature": "swin",
+      "importance": 0.00465858599181102,
+      "raw_feature": "swin"
+    },
+    {
+      "encoded_feature": "dwin",
+      "importance": 0.0046082654879743175,
+      "raw_feature": "dwin"
+    },
+    {
+      "encoded_feature": "service_-",
+      "importance": 0.0036554287873672236,
+      "raw_feature": "service"
+    },
+    {
+      "encoded_feature": "stcpb",
+      "importance": 0.0035257928835903353,
+      "raw_feature": "stcpb"
+    },
+    {
+      "encoded_feature": "proto_udp",
+      "importance": 0.0033988812099067316,
+      "raw_feature": "proto"
+    },
+    {
+      "encoded_feature": "state_FIN",
+      "importance": 0.002626426483429318,
+      "raw_feature": "state"
+    },
+    {
+      "encoded_feature": "service_http",
+      "importance": 0.0023161839355058922,
+      "raw_feature": "service"
+    },
+    {
+      "encoded_feature": "service_dns",
+      "importance": 0.0021739042617755764,
+      "raw_feature": "service"
+    },
+    {
+      "encoded_feature": "trans_depth",
+      "importance": 0.00151741814679084,
+      "raw_feature": "trans_depth"
+    },
+    {
+      "encoded_feature": "state_REQ",
+      "importance": 0.001309208865239233,
+      "raw_feature": "state"
+    },
+    {
+      "encoded_feature": "ct_flw_http_mthd",
+      "importance": 0.0012202231550326665,
+      "raw_feature": "ct_flw_http_mthd"
+    },
+    {
+      "encoded_feature": "response_body_len",
+      "importance": 0.0011744262590702727,
+      "raw_feature": "response_body_len"
+    },
+    {
+      "encoded_feature": "proto_unas",
+      "importance": 0.000916412386628724,
+      "raw_feature": "proto"
+    },
+    {
+      "encoded_feature": "proto_sctp",
+      "importance": 0.000841231144963084,
+      "raw_feature": "proto"
+    },
+    {
+      "encoded_feature": "proto_ospf",
+      "importance": 0.0007645752496670828,
+      "raw_feature": "proto"
+    },
+    {
+      "encoded_feature": "service_smtp",
+      "importance": 0.00040547776290232915,
+      "raw_feature": "service"
+    },
+    {
+      "encoded_feature": "service_ftp-data",
+      "importance": 0.00038631733328317445,
+      "raw_feature": "service"
+    },
+    {
+      "encoded_feature": "service_ftp",
+      "importance": 0.0002890374123670335,
+      "raw_feature": "service"
+    },
+    {
+      "encoded_feature": "service_pop3",
+      "importance": 0.0002560233960601299,
+      "raw_feature": "service"
+    },
+    {
+      "encoded_feature": "proto_mobile",
+      "importance": 0.00021066082291382518,
+      "raw_feature": "proto"
+    },
+    {
+      "encoded_feature": "proto_igmp",
+      "importance": 0.00017526212420276407,
+      "raw_feature": "proto"
+    },
+    {
+      "encoded_feature": "proto_sun-nd",
+      "importance": 0.00017486936922086628,
+      "raw_feature": "proto"
+    },
+    {
+      "encoded_feature": "service_ssh",
+      "importance": 0.00014219606201706431,
+      "raw_feature": "service"
+    },
+    {
+      "encoded_feature": "ct_ftp_cmd",
+      "importance": 0.00013422214371476898,
+      "raw_feature": "ct_ftp_cmd"
+    },
+    {
+      "encoded_feature": "proto_swipe",
+      "importance": 0.00013190937422180506,
+      "raw_feature": "proto"
+    },
+    {
+      "encoded_feature": "is_ftp_login",
+      "importance": 0.0001225685106908957,
+      "raw_feature": "is_ftp_login"
+    },
+    {
+      "encoded_feature": "proto_ipv6",
+      "importance": 7.576834312932471e-05,
+      "raw_feature": "proto"
+    },
+    {
+      "encoded_feature": "state_RST",
+      "importance": 5.7666722996004726e-05,
+      "raw_feature": "state"
+    },
+    {
+      "encoded_feature": "proto_icmp",
+      "importance": 5.4488136409569564e-05,
+      "raw_feature": "proto"
+    },
+    {
+      "encoded_feature": "state_ECO",
+      "importance": 5.1990184312545066e-05,
+      "raw_feature": "state"
+    },
+    {
+      "encoded_feature": "service_dhcp",
+      "importance": 4.407891553845448e-05,
+      "raw_feature": "service"
+    },
+    {
+      "encoded_feature": "proto_sep",
+      "importance": 3.083802501493047e-05,
+      "raw_feature": "proto"
+    },
+    {
+      "encoded_feature": "proto_pim",
+      "importance": 2.7316320343058748e-05,
+      "raw_feature": "proto"
+    },
+    {
+      "encoded_feature": "service_radius",
+      "importance": 1.4328410961621888e-05,
+      "raw_feature": "service"
+    },
+    {
+      "encoded_feature": "proto_cbt",
+      "importance": 1.2905400138460007e-05,
+      "raw_feature": "proto"
+    },
+    {
+      "encoded_feature": "proto_mux",
+      "importance": 1.097434998918538e-05,
+      "raw_feature": "proto"
+    },
+    {
+      "encoded_feature": "proto_dcn",
+      "importance": 4.487967259507255e-06,
+      "raw_feature": "proto"
+    },
+    {
+      "encoded_feature": "proto_prm",
+      "importance": 4.429090881704021e-06,
+      "raw_feature": "proto"
+    },
+    {
+      "encoded_feature": "proto_il",
+      "importance": 3.2073239433283336e-06,
+      "raw_feature": "proto"
+    },
+    {
+      "encoded_feature": "service_irc",
+      "importance": 2.6903342088845598e-06,
+      "raw_feature": "service"
+    },
+    {
+      "encoded_feature": "proto_chaos",
+      "importance": 2.6493221316984423e-06,
+      "raw_feature": "proto"
+    },
+    {
+      "encoded_feature": "proto_rvd",
+      "importance": 2.48427451380159e-06,
+      "raw_feature": "proto"
+    },
+    {
+      "encoded_feature": "proto_3pc",
+      "importance": 2.4405063963156503e-06,
+      "raw_feature": "proto"
+    },
+    {
+      "encoded_feature": "proto_pgm",
+      "importance": 2.1372990016602935e-06,
+      "raw_feature": "proto"
+    },
+    {
+      "encoded_feature": "proto_secure-vmtp",
+      "importance": 2.0742336686011953e-06,
+      "raw_feature": "proto"
+    },
+    {
+      "encoded_feature": "proto_ip",
+      "importance": 1.8834147390880754e-06,
+      "raw_feature": "proto"
+    },
+    {
+      "encoded_feature": "proto_mhrp",
+      "importance": 1.8610677593366927e-06,
+      "raw_feature": "proto"
+    },
+    {
+      "encoded_feature": "proto_tp++",
+      "importance": 1.8184550337539411e-06,
+      "raw_feature": "proto"
+    },
+    {
+      "encoded_feature": "proto_i-nlsp",
+      "importance": 1.8048792185118695e-06,
+      "raw_feature": "proto"
+    },
+    {
+      "encoded_feature": "proto_scps",
+      "importance": 1.8013282997327348e-06,
+      "raw_feature": "proto"
+    },
+    {
+      "encoded_feature": "proto_vrrp",
+      "importance": 1.7109887187815232e-06,
+      "raw_feature": "proto"
+    },
+    {
+      "encoded_feature": "service_snmp",
+      "importance": 1.6422634970892984e-06,
+      "raw_feature": "service"
+    },
+    {
+      "encoded_feature": "proto_st2",
+      "importance": 1.630498828339524e-06,
+      "raw_feature": "proto"
+    },
+    {
+      "encoded_feature": "proto_bna",
+      "importance": 1.6303183594034391e-06,
+      "raw_feature": "proto"
+    },
+    {
+      "encoded_feature": "proto_idpr-cmtp",
+      "importance": 1.5949816535543863e-06,
+      "raw_feature": "proto"
+    },
+    {
+      "encoded_feature": "proto_ippc",
+      "importance": 1.5814535329741718e-06,
+      "raw_feature": "proto"
+    },
+    {
+      "encoded_feature": "proto_netblt",
+      "importance": 1.4275875826107848e-06,
+      "raw_feature": "proto"
+    },
+    {
+      "encoded_feature": "proto_visa",
+      "importance": 1.4212791641610376e-06,
+      "raw_feature": "proto"
+    },
+    {
+      "encoded_feature": "service_ssl",
+      "importance": 1.2389703280800396e-06,
+      "raw_feature": "service"
+    },
+    {
+      "encoded_feature": "proto_ddp",
+      "importance": 1.2300006601269263e-06,
+      "raw_feature": "proto"
+    },
+    {
+      "encoded_feature": "proto_gre",
+      "importance": 1.1260055382939457e-06,
+      "raw_feature": "proto"
+    },
+    {
+      "encoded_feature": "proto_any",
+      "importance": 1.0621877853620484e-06,
+      "raw_feature": "proto"
+    },
+    {
+      "encoded_feature": "proto_ipnip",
+      "importance": 1.0612287595695087e-06,
+      "raw_feature": "proto"
+    },
+    {
+      "encoded_feature": "proto_ipv6-frag",
+      "importance": 1.0316496131988216e-06,
+      "raw_feature": "proto"
+    },
+    {
+      "encoded_feature": "proto_idpr",
+      "importance": 9.446720877159023e-07,
+      "raw_feature": "proto"
+    },
+    {
+      "encoded_feature": "proto_fire",
+      "importance": 8.551225665304827e-07,
+      "raw_feature": "proto"
+    },
+    {
+      "encoded_feature": "proto_nvp",
+      "importance": 8.021026544000078e-07,
+      "raw_feature": "proto"
+    },
+    {
+      "encoded_feature": "proto_leaf-2",
+      "importance": 7.819405758671519e-07,
+      "raw_feature": "proto"
+    },
+    {
+      "encoded_feature": "proto_rsvp",
+      "importance": 6.669178005805034e-07,
+      "raw_feature": "proto"
+    },
+    {
+      "encoded_feature": "proto_ipcv",
+      "importance": 5.831365172350054e-07,
+      "raw_feature": "proto"
+    },
+    {
+      "encoded_feature": "proto_mfe-nsp",
+      "importance": 5.515148836250921e-07,
+      "raw_feature": "proto"
+    },
+    {
+      "encoded_feature": "proto_iso-tp4",
+      "importance": 5.164322984065106e-07,
+      "raw_feature": "proto"
+    },
+    {
+      "encoded_feature": "proto_ggp",
+      "importance": 5.079521877570357e-07,
+      "raw_feature": "proto"
+    },
+    {
+      "encoded_feature": "proto_aris",
+      "importance": 4.973450805481324e-07,
+      "raw_feature": "proto"
+    },
+    {
+      "encoded_feature": "proto_mtp",
+      "importance": 4.753692167416432e-07,
+      "raw_feature": "proto"
+    },
+    {
+      "encoded_feature": "proto_kryptolan",
+      "importance": 4.564842043643839e-07,
+      "raw_feature": "proto"
+    },
+    {
+      "encoded_feature": "proto_sat-mon",
+      "importance": 3.7431927086400747e-07,
+      "raw_feature": "proto"
+    },
+    {
+      "encoded_feature": "proto_smp",
+      "importance": 3.258669234140966e-07,
+      "raw_feature": "proto"
+    },
+    {
+      "encoded_feature": "proto_a/n",
+      "importance": 3.151954161055685e-07,
+      "raw_feature": "proto"
+    },
+    {
+      "encoded_feature": "proto_rdp",
+      "importance": 3.124282858144328e-07,
+      "raw_feature": "proto"
+    },
+    {
+      "encoded_feature": "proto_etherip",
+      "importance": 2.958486869079684e-07,
+      "raw_feature": "proto"
+    },
+    {
+      "encoded_feature": "proto_sprite-rpc",
+      "importance": 2.9022246830757955e-07,
+      "raw_feature": "proto"
+    },
+    {
+      "encoded_feature": "proto_micp",
+      "importance": 2.851741162034247e-07,
+      "raw_feature": "proto"
+    },
+    {
+      "encoded_feature": "proto_trunk-2",
+      "importance": 2.552043710831695e-07,
+      "raw_feature": "proto"
+    },
+    {
+      "encoded_feature": "proto_ipv6-route",
+      "importance": 2.5122620727233805e-07,
+      "raw_feature": "proto"
+    },
+    {
+      "encoded_feature": "proto_wsn",
+      "importance": 2.289645251109733e-07,
+      "raw_feature": "proto"
+    },
+    {
+      "encoded_feature": "proto_xnet",
+      "importance": 2.27790990592398e-07,
+      "raw_feature": "proto"
+    },
+    {
+      "encoded_feature": "proto_iplt",
+      "importance": 2.264274063370315e-07,
+      "raw_feature": "proto"
+    },
+    {
+      "encoded_feature": "proto_igp",
+      "importance": 2.2068498800913824e-07,
+      "raw_feature": "proto"
+    },
+    {
+      "encoded_feature": "proto_merit-inp",
+      "importance": 2.0003538586058613e-07,
+      "raw_feature": "proto"
+    },
+    {
+      "encoded_feature": "proto_xtp",
+      "importance": 1.650602371385845e-07,
+      "raw_feature": "proto"
+    },
+    {
+      "encoded_feature": "proto_trunk-1",
+      "importance": 1.633781205093627e-07,
+      "raw_feature": "proto"
+    },
+    {
+      "encoded_feature": "proto_wb-expak",
+      "importance": 1.573151871400153e-07,
+      "raw_feature": "proto"
+    },
+    {
+      "encoded_feature": "proto_cphb",
+      "importance": 1.5661325420527136e-07,
+      "raw_feature": "proto"
+    },
+    {
+      "encoded_feature": "proto_pvp",
+      "importance": 1.4039620272107362e-07,
+      "raw_feature": "proto"
+    },
+    {
+      "encoded_feature": "proto_vmtp",
+      "importance": 1.3656536654866735e-07,
+      "raw_feature": "proto"
+    },
+    {
+      "encoded_feature": "proto_narp",
+      "importance": 1.3227808467772387e-07,
+      "raw_feature": "proto"
+    },
+    {
+      "encoded_feature": "proto_iatp",
+      "importance": 1.2616355908431655e-07,
+      "raw_feature": "proto"
+    },
+    {
+      "encoded_feature": "proto_wb-mon",
+      "importance": 1.1830393090006365e-07,
+      "raw_feature": "proto"
+    },
+    {
+      "encoded_feature": "proto_cpnx",
+      "importance": 1.1019229770982498e-07,
+      "raw_feature": "proto"
+    },
+    {
+      "encoded_feature": "proto_crtp",
+      "importance": 1.0504892416390964e-07,
+      "raw_feature": "proto"
+    },
+    {
+      "encoded_feature": "proto_zero",
+      "importance": 1.0064951395566043e-07,
+      "raw_feature": "proto"
+    },
+    {
+      "encoded_feature": "proto_uti",
+      "importance": 8.78235216421668e-08,
+      "raw_feature": "proto"
+    },
+    {
+      "encoded_feature": "proto_egp",
+      "importance": 7.538486900060074e-08,
+      "raw_feature": "proto"
+    },
+    {
+      "encoded_feature": "proto_ipcomp",
+      "importance": 7.499705389835032e-08,
+      "raw_feature": "proto"
+    },
+    {
+      "encoded_feature": "proto_ptp",
+      "importance": 7.248307358832683e-08,
+      "raw_feature": "proto"
+    },
+    {
+      "encoded_feature": "proto_br-sat-mon",
+      "importance": 6.688049508175265e-08,
+      "raw_feature": "proto"
+    },
+    {
+      "encoded_feature": "proto_dgp",
+      "importance": 6.259721315049889e-08,
+      "raw_feature": "proto"
+    },
+    {
+      "encoded_feature": "proto_snp",
+      "importance": 6.259430741739454e-08,
+      "raw_feature": "proto"
+    },
+    {
+      "encoded_feature": "proto_sat-expak",
+      "importance": 5.6069151511537506e-08,
+      "raw_feature": "proto"
+    },
+    {
+      "encoded_feature": "proto_pup",
+      "importance": 4.7397072852635396e-08,
+      "raw_feature": "proto"
+    },
+    {
+      "encoded_feature": "proto_sps",
+      "importance": 3.948150034793819e-08,
+      "raw_feature": "proto"
+    },
+    {
+      "encoded_feature": "proto_ddx",
+      "importance": 3.630728387068038e-08,
+      "raw_feature": "proto"
+    },
+    {
+      "encoded_feature": "proto_ipx-n-ip",
+      "importance": 3.382777062313933e-08,
+      "raw_feature": "proto"
+    },
+    {
+      "encoded_feature": "proto_encap",
+      "importance": 3.136956931441672e-08,
+      "raw_feature": "proto"
+    },
+    {
+      "encoded_feature": "proto_pnni",
+      "importance": 3.051410816407862e-08,
+      "raw_feature": "proto"
+    },
+    {
+      "encoded_feature": "proto_aes-sp3-d",
+      "importance": 2.9021198045790342e-08,
+      "raw_feature": "proto"
+    },
+    {
+      "encoded_feature": "proto_eigrp",
+      "importance": 2.7638439146731895e-08,
+      "raw_feature": "proto"
+    },
+    {
+      "encoded_feature": "proto_ttp",
+      "importance": 2.603553828774957e-08,
+      "raw_feature": "proto"
+    },
+    {
+      "encoded_feature": "proto_tlsp",
+      "importance": 2.5749914069880355e-08,
+      "raw_feature": "proto"
+    },
+    {
+      "encoded_feature": "proto_xns-idp",
+      "importance": 1.8363739943849724e-08,
+      "raw_feature": "proto"
+    },
+    {
+      "encoded_feature": "proto_irtp",
+      "importance": 1.5148608829491454e-08,
+      "raw_feature": "proto"
+    },
+    {
+      "encoded_feature": "proto_ipv6-no",
+      "importance": 1.4952649416998968e-08,
+      "raw_feature": "proto"
+    },
+    {
+      "encoded_feature": "proto_sdrp",
+      "importance": 1.4740568613591675e-08,
+      "raw_feature": "proto"
+    },
+    {
+      "encoded_feature": "proto_sm",
+      "importance": 1.0381963849061037e-08,
+      "raw_feature": "proto"
+    },
+    {
+      "encoded_feature": "proto_tcf",
+      "importance": 9.937803463060625e-09,
+      "raw_feature": "proto"
+    },
+    {
+      "encoded_feature": "proto_pipe",
+      "importance": 8.94523635076882e-09,
+      "raw_feature": "proto"
+    },
+    {
+      "encoded_feature": "proto_compaq-peer",
+      "importance": 8.6625790600962e-09,
+      "raw_feature": "proto"
+    },
+    {
+      "encoded_feature": "proto_sccopmce",
+      "importance": 6.148346875063954e-09,
+      "raw_feature": "proto"
+    },
+    {
+      "encoded_feature": "proto_gmtp",
+      "importance": 6.135624028488522e-09,
+      "raw_feature": "proto"
+    },
+    {
+      "encoded_feature": "proto_srp",
+      "importance": 6.019891229729832e-09,
+      "raw_feature": "proto"
+    },
+    {
+      "encoded_feature": "proto_nsfnet-igp",
+      "importance": 5.983876883143876e-09,
+      "raw_feature": "proto"
+    },
+    {
+      "encoded_feature": "proto_cftp",
+      "importance": 5.337245139105875e-09,
+      "raw_feature": "proto"
+    },
+    {
+      "encoded_feature": "proto_vines",
+      "importance": 4.734802899148624e-09,
+      "raw_feature": "proto"
+    },
+    {
+      "encoded_feature": "proto_argus",
+      "importance": 4.538617231330916e-09,
+      "raw_feature": "proto"
+    },
+    {
+      "encoded_feature": "proto_ipv6-opts",
+      "importance": 4.488064957575616e-09,
+      "raw_feature": "proto"
+    },
+    {
+      "encoded_feature": "proto_bbn-rcc",
+      "importance": 4.095896543262197e-09,
+      "raw_feature": "proto"
+    },
+    {
+      "encoded_feature": "proto_skip",
+      "importance": 3.819487611522949e-09,
+      "raw_feature": "proto"
+    },
+    {
+      "encoded_feature": "proto_idrp",
+      "importance": 3.4213470310065487e-09,
+      "raw_feature": "proto"
+    },
+    {
+      "encoded_feature": "proto_qnx",
+      "importance": 2.6350132357606067e-09,
+      "raw_feature": "proto"
+    },
+    {
+      "encoded_feature": "proto_ax.25",
+      "importance": 2.6229114397032512e-09,
+      "raw_feature": "proto"
+    },
+    {
+      "encoded_feature": "proto_leaf-1",
+      "importance": 1.7010201463047735e-09,
+      "raw_feature": "proto"
+    },
+    {
+      "encoded_feature": "proto_isis",
+      "importance": 1.5225592979834323e-09,
+      "raw_feature": "proto"
+    },
+    {
+      "encoded_feature": "proto_ipip",
+      "importance": 1.4919611232660241e-09,
+      "raw_feature": "proto"
+    },
+    {
+      "encoded_feature": "proto_stp",
+      "importance": 1.2474609125001334e-09,
+      "raw_feature": "proto"
+    },
+    {
+      "encoded_feature": "proto_fc",
+      "importance": 1.2107710933729405e-09,
+      "raw_feature": "proto"
+    },
+    {
+      "encoded_feature": "proto_pri-enc",
+      "importance": 1.1238273777302246e-09,
+      "raw_feature": "proto"
+    },
+    {
+      "encoded_feature": "proto_ifmp",
+      "importance": 5.964361167705897e-10,
+      "raw_feature": "proto"
+    },
+    {
+      "encoded_feature": "proto_iso-ip",
+      "importance": 5.674688838903968e-10,
+      "raw_feature": "proto"
+    },
+    {
+      "encoded_feature": "proto_emcon",
+      "importance": 3.6897892597453056e-10,
+      "raw_feature": "proto"
+    },
+    {
+      "encoded_feature": "proto_crudp",
+      "importance": 2.5939111766196795e-10,
+      "raw_feature": "proto"
+    },
+    {
+      "encoded_feature": "proto_ib",
+      "importance": 2.4207861175607313e-10,
+      "raw_feature": "proto"
+    },
+    {
+      "encoded_feature": "proto_larp",
+      "importance": 2.051428713054283e-10,
+      "raw_feature": "proto"
+    },
+    {
+      "encoded_feature": "proto_l2tp",
+      "importance": 2.6603942713892255e-11,
+      "raw_feature": "proto"
+    },
+    {
+      "encoded_feature": "proto_hmp",
+      "importance": 6.350883465900305e-12,
+      "raw_feature": "proto"
+    },
+    {
+      "encoded_feature": "proto___dataqualiq_missing__",
+      "importance": 0.0,
+      "raw_feature": "proto"
+    },
+    {
+      "encoded_feature": "proto_rtp",
+      "importance": 0.0,
+      "raw_feature": "proto"
+    },
+    {
+      "encoded_feature": "service___dataqualiq_missing__",
+      "importance": 0.0,
+      "raw_feature": "service"
+    },
+    {
+      "encoded_feature": "state_PAR",
+      "importance": 0.0,
+      "raw_feature": "state"
+    },
+    {
+      "encoded_feature": "state_URN",
+      "importance": 0.0,
+      "raw_feature": "state"
+    },
+    {
+      "encoded_feature": "state___dataqualiq_missing__",
+      "importance": 0.0,
+      "raw_feature": "state"
+    },
+    {
+      "encoded_feature": "state_no",
+      "importance": 0.0,
+      "raw_feature": "state"
+    }
+  ],
+  "files_before": {
+    "C:\\Users\\Admin\\Desktop\\Second Semester\\Special Topics in Computer Science\\DataQualiQ\\backend\\models\\intrusion_model.joblib": "a6be0a645b2c01f497c406f8daf02bfc3c85e98662ff61b90068cd1f2343067d",
+    "C:\\Users\\Admin\\Desktop\\Second Semester\\Special Topics in Computer Science\\DataQualiQ\\backend\\models\\preprocessor.joblib": "414c4ca98cfb3799096512fca901ab02dca32c7517801a4b2721aca1d0a726c9",
+    "C:\\Users\\Admin\\Desktop\\Second Semester\\Special Topics in Computer Science\\DataQualiQ\\backend\\models\\model_metadata.json": "fe31966d283da719bc856fa389dfdab951b748de9adce121b5b38350f3436f9a",
+    "C:\\Users\\Admin\\Desktop\\Second Semester\\Special Topics in Computer Science\\DataQualiQ\\data\\UNSW_NB15_training-set.csv": "bec7dd5ec88dc2a0ccc7a07879d338395ed7421750f675fd0339e07dfe0648fa",
+    "C:\\Users\\Admin\\Desktop\\Second Semester\\Special Topics in Computer Science\\DataQualiQ\\data\\UNSW_NB15_testing-set.csv": "734fe6642edf758f7c94d7d9149426b49d202fe8e7bf0bef47392489c3c0a559",
+    "C:\\Users\\Admin\\Desktop\\Second Semester\\Special Topics in Computer Science\\Capstone Final Project Template.docx": "e06ee6e89ba4221e582d967e11860f9a8d16866617130d2f7cca8ea2735994ed"
+  },
+  "dataset_descriptions": [
+    {
+      "dataset": "training",
+      "original_rows": 175341,
+      "final_rows": 175341,
+      "missing_values_detected": {
+        "id": 0,
+        "dur": 0,
+        "proto": 0,
+        "service": 0,
+        "state": 0,
+        "spkts": 0,
+        "dpkts": 0,
+        "sbytes": 0,
+        "dbytes": 0,
+        "rate": 0,
+        "sttl": 0,
+        "dttl": 0,
+        "sload": 0,
+        "dload": 0,
+        "sloss": 0,
+        "dloss": 0,
+        "sinpkt": 0,
+        "dinpkt": 0,
+        "sjit": 0,
+        "djit": 0,
+        "swin": 0,
+        "stcpb": 0,
+        "dtcpb": 0,
+        "dwin": 0,
+        "tcprtt": 0,
+        "synack": 0,
+        "ackdat": 0,
+        "smean": 0,
+        "dmean": 0,
+        "trans_depth": 0,
+        "response_body_len": 0,
+        "ct_srv_src": 0,
+        "ct_state_ttl": 0,
+        "ct_dst_ltm": 0,
+        "ct_src_dport_ltm": 0,
+        "ct_dst_sport_ltm": 0,
+        "ct_dst_src_ltm": 0,
+        "is_ftp_login": 0,
+        "ct_ftp_cmd": 0,
+        "ct_flw_http_mthd": 0,
+        "ct_src_ltm": 0,
+        "ct_srv_dst": 0,
+        "is_sm_ips_ports": 0,
+        "attack_cat": 0,
+        "label": 0
+      },
+      "duplicate_policy": "detect_only",
+      "duplicates_detected": 0,
+      "duplicates_removed": 0,
+      "normalizations": [],
+      "protected_fields": [
+        "attack_cat",
+        "id",
+        "label"
+      ],
+      "target_validation": {
+        "column": "label",
+        "missing": 0,
+        "invalid": 0,
+        "excluded": 0,
+        "imputed": 0,
+        "missing_source_rows": [],
+        "invalid_source_rows": [],
+        "expected_values": {
+          "0": "Normal",
+          "1": "Malicious / Attack"
+        }
+      },
+      "class_distribution": {
+        "total_records": 175341,
+        "normal": 56000,
+        "malicious": 119341,
+        "normal_percent": 31.9378,
+        "malicious_percent": 68.0622
+      },
+      "quality_assessment": {
+        "filename": "UNSW_NB15_training-set.csv",
+        "total_rows": 175341,
+        "total_columns": 45,
+        "score": 100,
+        "grade": "A",
+        "finding_summary": {
+          "data_error": {
+            "findings": 0,
+            "occurrences": 0
+          },
+          "quality_issue": {
+            "findings": 0,
+            "occurrences": 0
+          },
+          "analytical_security_anomaly": {
+            "findings": 32,
+            "occurrences": 604884
+          }
+        },
+        "issue_summary": {
+          "outlier": 32
+        }
+      },
+      "ml_preprocessing": {
+        "rows": 175341,
+        "normalizations": [],
+        "missing_detected": {
+          "dur": 0,
+          "proto": 0,
+          "service": 0,
+          "state": 0,
+          "spkts": 0,
+          "dpkts": 0,
+          "sbytes": 0,
+          "dbytes": 0,
+          "rate": 0,
+          "sttl": 0,
+          "dttl": 0,
+          "sload": 0,
+          "dload": 0,
+          "sloss": 0,
+          "dloss": 0,
+          "sinpkt": 0,
+          "dinpkt": 0,
+          "sjit": 0,
+          "djit": 0,
+          "swin": 0,
+          "stcpb": 0,
+          "dtcpb": 0,
+          "dwin": 0,
+          "tcprtt": 0,
+          "synack": 0,
+          "ackdat": 0,
+          "smean": 0,
+          "dmean": 0,
+          "trans_depth": 0,
+          "response_body_len": 0,
+          "ct_srv_src": 0,
+          "ct_state_ttl": 0,
+          "ct_dst_ltm": 0,
+          "ct_src_dport_ltm": 0,
+          "ct_dst_sport_ltm": 0,
+          "ct_dst_src_ltm": 0,
+          "is_ftp_login": 0,
+          "ct_ftp_cmd": 0,
+          "ct_flw_http_mthd": 0,
+          "ct_src_ltm": 0,
+          "ct_srv_dst": 0,
+          "is_sm_ips_ports": 0
+        },
+        "missing_handled": {
+          "dur": 0,
+          "proto": 0,
+          "service": 0,
+          "state": 0,
+          "spkts": 0,
+          "dpkts": 0,
+          "sbytes": 0,
+          "dbytes": 0,
+          "rate": 0,
+          "sttl": 0,
+          "dttl": 0,
+          "sload": 0,
+          "dload": 0,
+          "sloss": 0,
+          "dloss": 0,
+          "sinpkt": 0,
+          "dinpkt": 0,
+          "sjit": 0,
+          "djit": 0,
+          "swin": 0,
+          "stcpb": 0,
+          "dtcpb": 0,
+          "dwin": 0,
+          "tcprtt": 0,
+          "synack": 0,
+          "ackdat": 0,
+          "smean": 0,
+          "dmean": 0,
+          "trans_depth": 0,
+          "response_body_len": 0,
+          "ct_srv_src": 0,
+          "ct_state_ttl": 0,
+          "ct_dst_ltm": 0,
+          "ct_src_dport_ltm": 0,
+          "ct_dst_sport_ltm": 0,
+          "ct_dst_src_ltm": 0,
+          "is_ftp_login": 0,
+          "ct_ftp_cmd": 0,
+          "ct_flw_http_mthd": 0,
+          "ct_src_ltm": 0,
+          "ct_srv_dst": 0,
+          "is_sm_ips_ports": 0
+        },
+        "unseen_categories": {
+          "proto": 0,
+          "service": 0,
+          "state": 0
+        },
+        "missing_operations": [],
+        "fit_source": "existing_training_state",
+        "shape": [
+          175341,
+          197
+        ],
+        "numeric_imputation": "training median",
+        "categorical_imputation": "__dataqualiq_missing__",
+        "encoder": "OneHotEncoder(handle_unknown=ignore)",
+        "scaling": null
+      },
+      "source_path": "C:\\Users\\Admin\\Desktop\\Second Semester\\Special Topics in Computer Science\\DataQualiQ\\data\\UNSW_NB15_training-set.csv",
+      "source_sha256": "bec7dd5ec88dc2a0ccc7a07879d338395ed7421750f675fd0339e07dfe0648fa",
+      "source_unchanged": true,
+      "retained_source_row_count": 175341
+    },
+    {
+      "dataset": "testing",
+      "original_rows": 82332,
+      "final_rows": 82332,
+      "missing_values_detected": {
+        "id": 0,
+        "dur": 0,
+        "proto": 0,
+        "service": 0,
+        "state": 0,
+        "spkts": 0,
+        "dpkts": 0,
+        "sbytes": 0,
+        "dbytes": 0,
+        "rate": 0,
+        "sttl": 0,
+        "dttl": 0,
+        "sload": 0,
+        "dload": 0,
+        "sloss": 0,
+        "dloss": 0,
+        "sinpkt": 0,
+        "dinpkt": 0,
+        "sjit": 0,
+        "djit": 0,
+        "swin": 0,
+        "stcpb": 0,
+        "dtcpb": 0,
+        "dwin": 0,
+        "tcprtt": 0,
+        "synack": 0,
+        "ackdat": 0,
+        "smean": 0,
+        "dmean": 0,
+        "trans_depth": 0,
+        "response_body_len": 0,
+        "ct_srv_src": 0,
+        "ct_state_ttl": 0,
+        "ct_dst_ltm": 0,
+        "ct_src_dport_ltm": 0,
+        "ct_dst_sport_ltm": 0,
+        "ct_dst_src_ltm": 0,
+        "is_ftp_login": 0,
+        "ct_ftp_cmd": 0,
+        "ct_flw_http_mthd": 0,
+        "ct_src_ltm": 0,
+        "ct_srv_dst": 0,
+        "is_sm_ips_ports": 0,
+        "attack_cat": 0,
+        "label": 0
+      },
+      "duplicate_policy": "detect_only",
+      "duplicates_detected": 0,
+      "duplicates_removed": 0,
+      "normalizations": [],
+      "protected_fields": [
+        "attack_cat",
+        "id",
+        "label"
+      ],
+      "target_validation": {
+        "column": "label",
+        "missing": 0,
+        "invalid": 0,
+        "excluded": 0,
+        "imputed": 0,
+        "missing_source_rows": [],
+        "invalid_source_rows": [],
+        "expected_values": {
+          "0": "Normal",
+          "1": "Malicious / Attack"
+        }
+      },
+      "class_distribution": {
+        "total_records": 82332,
+        "normal": 37000,
+        "malicious": 45332,
+        "normal_percent": 44.94,
+        "malicious_percent": 55.06
+      },
+      "quality_assessment": {
+        "filename": "UNSW_NB15_testing-set.csv",
+        "total_rows": 82332,
+        "total_columns": 45,
+        "score": 100,
+        "grade": "A",
+        "finding_summary": {
+          "data_error": {
+            "findings": 0,
+            "occurrences": 0
+          },
+          "quality_issue": {
+            "findings": 0,
+            "occurrences": 0
+          },
+          "analytical_security_anomaly": {
+            "findings": 32,
+            "occurrences": 248284
+          }
+        },
+        "issue_summary": {
+          "outlier": 32
+        }
+      },
+      "ml_preprocessing": {
+        "rows": 82332,
+        "normalizations": [],
+        "missing_detected": {
+          "dur": 0,
+          "proto": 0,
+          "service": 0,
+          "state": 0,
+          "spkts": 0,
+          "dpkts": 0,
+          "sbytes": 0,
+          "dbytes": 0,
+          "rate": 0,
+          "sttl": 0,
+          "dttl": 0,
+          "sload": 0,
+          "dload": 0,
+          "sloss": 0,
+          "dloss": 0,
+          "sinpkt": 0,
+          "dinpkt": 0,
+          "sjit": 0,
+          "djit": 0,
+          "swin": 0,
+          "stcpb": 0,
+          "dtcpb": 0,
+          "dwin": 0,
+          "tcprtt": 0,
+          "synack": 0,
+          "ackdat": 0,
+          "smean": 0,
+          "dmean": 0,
+          "trans_depth": 0,
+          "response_body_len": 0,
+          "ct_srv_src": 0,
+          "ct_state_ttl": 0,
+          "ct_dst_ltm": 0,
+          "ct_src_dport_ltm": 0,
+          "ct_dst_sport_ltm": 0,
+          "ct_dst_src_ltm": 0,
+          "is_ftp_login": 0,
+          "ct_ftp_cmd": 0,
+          "ct_flw_http_mthd": 0,
+          "ct_src_ltm": 0,
+          "ct_srv_dst": 0,
+          "is_sm_ips_ports": 0
+        },
+        "missing_handled": {
+          "dur": 0,
+          "proto": 0,
+          "service": 0,
+          "state": 0,
+          "spkts": 0,
+          "dpkts": 0,
+          "sbytes": 0,
+          "dbytes": 0,
+          "rate": 0,
+          "sttl": 0,
+          "dttl": 0,
+          "sload": 0,
+          "dload": 0,
+          "sloss": 0,
+          "dloss": 0,
+          "sinpkt": 0,
+          "dinpkt": 0,
+          "sjit": 0,
+          "djit": 0,
+          "swin": 0,
+          "stcpb": 0,
+          "dtcpb": 0,
+          "dwin": 0,
+          "tcprtt": 0,
+          "synack": 0,
+          "ackdat": 0,
+          "smean": 0,
+          "dmean": 0,
+          "trans_depth": 0,
+          "response_body_len": 0,
+          "ct_srv_src": 0,
+          "ct_state_ttl": 0,
+          "ct_dst_ltm": 0,
+          "ct_src_dport_ltm": 0,
+          "ct_dst_sport_ltm": 0,
+          "ct_dst_src_ltm": 0,
+          "is_ftp_login": 0,
+          "ct_ftp_cmd": 0,
+          "ct_flw_http_mthd": 0,
+          "ct_src_ltm": 0,
+          "ct_srv_dst": 0,
+          "is_sm_ips_ports": 0
+        },
+        "unseen_categories": {
+          "proto": 0,
+          "service": 0,
+          "state": 5
+        },
+        "missing_operations": [],
+        "fit_source": "existing_training_state",
+        "shape": [
+          82332,
+          197
+        ],
+        "numeric_imputation": "training median",
+        "categorical_imputation": "__dataqualiq_missing__",
+        "encoder": "OneHotEncoder(handle_unknown=ignore)",
+        "scaling": null
+      },
+      "source_path": "C:\\Users\\Admin\\Desktop\\Second Semester\\Special Topics in Computer Science\\DataQualiQ\\data\\UNSW_NB15_testing-set.csv",
+      "source_sha256": "734fe6642edf758f7c94d7d9149426b49d202fe8e7bf0bef47392489c3c0a559",
+      "source_unchanged": true,
+      "retained_source_row_count": 82332
+    }
+  ],
+  "files_after": {
+    "C:\\Users\\Admin\\Desktop\\Second Semester\\Special Topics in Computer Science\\DataQualiQ\\backend\\models\\intrusion_model.joblib": "a6be0a645b2c01f497c406f8daf02bfc3c85e98662ff61b90068cd1f2343067d",
+    "C:\\Users\\Admin\\Desktop\\Second Semester\\Special Topics in Computer Science\\DataQualiQ\\backend\\models\\preprocessor.joblib": "414c4ca98cfb3799096512fca901ab02dca32c7517801a4b2721aca1d0a726c9",
+    "C:\\Users\\Admin\\Desktop\\Second Semester\\Special Topics in Computer Science\\DataQualiQ\\backend\\models\\model_metadata.json": "fe31966d283da719bc856fa389dfdab951b748de9adce121b5b38350f3436f9a",
+    "C:\\Users\\Admin\\Desktop\\Second Semester\\Special Topics in Computer Science\\DataQualiQ\\data\\UNSW_NB15_training-set.csv": "bec7dd5ec88dc2a0ccc7a07879d338395ed7421750f675fd0339e07dfe0648fa",
+    "C:\\Users\\Admin\\Desktop\\Second Semester\\Special Topics in Computer Science\\DataQualiQ\\data\\UNSW_NB15_testing-set.csv": "734fe6642edf758f7c94d7d9149426b49d202fe8e7bf0bef47392489c3c0a559",
+    "C:\\Users\\Admin\\Desktop\\Second Semester\\Special Topics in Computer Science\\Capstone Final Project Template.docx": "e06ee6e89ba4221e582d967e11860f9a8d16866617130d2f7cca8ea2735994ed"
+  },
+  "files_unchanged": true,
+  "report_path": "docs\\final-report\\DataQualiQ_Capstone_Final_Report_Victoria_Mnisi.docx",
+  "report_sha256": "1a4f50bc2e604789c2f030058b66523fa3c596ddad6ede5973f8d3d31e50cd95"
+}

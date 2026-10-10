@@ -1,11 +1,12 @@
 """Presentation adapter retaining the public review/recommendation/legacy contract."""
 from recommendation_policy import build_recommendation
+from plain_language import TITLES
 
 
 def translate_issue(issue, domain='generic', dataset_context=None, column_profile=None):
     policy = build_recommendation(issue, column_profile, dataset_context)
     check, col = issue.get('check', 'unknown'), issue.get('column')
-    title = check.replace('_', ' ').capitalize() + (f': {col}' if col is not None else ': complete records')
+    title = TITLES.get(check, check.replace('_', ' ').capitalize())
     evidence = {**issue.get('evidence', {}), 'issue_type': check, 'column': col,
                 'affected_records': issue.get('count', 0), 'affected_percentage': issue.get('pct', 0),
                 'dataset_context': (dataset_context or {}).get('name', 'unknown'),

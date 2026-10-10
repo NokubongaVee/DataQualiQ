@@ -1,0 +1,31 @@
+{
+  "reader": "PyMuPDF temporary validation tool; not a project dependency",
+  "pdf_opens": true,
+  "pages": 8,
+  "bytes": 49965,
+  "all_expected_sections_and_values_match": true,
+  "important_records": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24
+  ],
+  "clipped_text": [],
+  "overlapping_text": []
+}

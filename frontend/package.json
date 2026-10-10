@@ -7,7 +7,9 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test": "node --test src/components/IssueCard.test.js src/utils/affectedValues.test.js src/utils/reviewOrder.test.js src/utils/navigation.test.js src/utils/assessmentResult.test.js src/utils/networkAnalysis.test.js statistics_audit.test.mjs",
+    "test:browser": "node network_browser_audit.mjs"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.3.3",

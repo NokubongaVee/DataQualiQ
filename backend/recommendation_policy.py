@@ -1,4 +1,5 @@
-"""Render an evidence-derived review plan; no domain or field-name action maps."""
+"""Render measured findings as clear, contextual review guidance."""
+from plain_language import readable_guidance
 
 
 def build_recommendation(issue, column_profile=None, dataset_context=None):
@@ -24,6 +25,8 @@ def build_recommendation(issue, column_profile=None, dataset_context=None):
     if evidence.get('explanation'):
         description = evidence['explanation']['why']
     action = f"Review the {count:,} affected records in {target}. " + ' '.join(questions)
+    if evidence.get('explanation'):
+        description, impact, action = readable_guidance(issue, profile, dataset_context or {})
     reason = evidence.get('priority_reason', 'Insufficient evidence for contextual prioritisation.')
     reason += ' This is a review priority, separate from the numerical quality-score penalty.'
     return {'description': description.strip(), 'impact': impact, 'severity': priority,
