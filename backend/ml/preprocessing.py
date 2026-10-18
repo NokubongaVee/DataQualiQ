@@ -105,8 +105,8 @@ class NetworkMLPreprocessor:
         # Project BEFORE normalization. Labels, identifiers and leakage fields
         # never enter either a fitted transformer or its learned statistics.
         features = frame.loc[:, self.feature_columns_].copy(deep=True)
-        features, phase2_audit = preprocess_network(features, self.schema, self.normalization_policy)
-        audit = {'rows': len(features), 'normalizations': phase2_audit['automatic_corrections'],
+        features, normalization_audit = preprocess_network(features, self.schema, self.normalization_policy)
+        audit = {'rows': len(features), 'normalizations': normalization_audit['automatic_corrections'],
                  'missing_detected': {}, 'missing_handled': {}, 'unseen_categories': {}, 'missing_operations': []}
         numeric = pd.DataFrame(index=features.index)
         categorical = pd.DataFrame(index=features.index)

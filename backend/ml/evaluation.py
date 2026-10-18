@@ -156,7 +156,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--training', type=Path, default=root / 'data/UNSW_NB15_training-set.csv')
     parser.add_argument('--testing', type=Path, default=root / 'data/UNSW_NB15_testing-set.csv')
-    parser.add_argument('--output', type=Path, default=root / 'docs/phase5/evaluation.json')
+    parser.add_argument('--output', type=Path, default=root / 'artifacts/model_evaluation.json')
     args = parser.parse_args()
     report = run_official_evaluation(args.training, args.testing)
     args.output.parent.mkdir(parents=True, exist_ok=True)

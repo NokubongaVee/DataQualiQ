@@ -6,7 +6,7 @@ import unittest
 from unittest.mock import patch
 import pandas as pd
 import main
-import test_combined_analysis as phase8
+import test_combined_analysis as combined_fixtures
 from finding_categories import ANALYTICAL, ERROR, QUALITY
 from ml.analysis_response import format_combined_api_response
 from ml.combined_analysis import quality_overview
@@ -15,7 +15,7 @@ from ml.prediction import PredictionError
 
 def fixture_result():
     metadata = json.loads((Path(__file__).parent / 'models/model_metadata.json').read_text())
-    empty_quality = phase8.quality_fixture([])
+    empty_quality = combined_fixtures.quality_fixture([])
     return {'filename': 'fixture.csv',
         'summary': {'records_analysed': 10, 'records_predicted': 9, 'rejected_count': 1,
             'normal_count': 5, 'malicious_count': 4, 'average_predicted_class_probability': .7,
@@ -58,11 +58,11 @@ class ResponseTests(unittest.TestCase):
             self.assertEqual(result['model_performance']['accuracy'], self.raw['saved_evaluation']['metrics']['accuracy'])
 
     def test_quality_summary_occurrences_vs_distinct_rows(self):
-        issues = [phase8.finding('missing', QUALITY, [0, 1], 'dur'),
-            phase8.finding('missing', QUALITY, [1, 2], 'rate'), phase8.finding('duplicate', QUALITY, [3], None),
-            phase8.finding('network_invalid_count', ERROR, [2], 'spkts'), phase8.finding('format', QUALITY, [4], 'proto'),
-            phase8.finding('outlier', ANALYTICAL, [0, 2], 'rate'), phase8.finding('outlier', ANALYTICAL, [2], 'dur')]
-        overview = quality_overview(phase8.quality_fixture(issues), 5)
+        issues = [combined_fixtures.finding('missing', QUALITY, [0, 1], 'dur'),
+            combined_fixtures.finding('missing', QUALITY, [1, 2], 'rate'), combined_fixtures.finding('duplicate', QUALITY, [3], None),
+            combined_fixtures.finding('network_invalid_count', ERROR, [2], 'spkts'), combined_fixtures.finding('format', QUALITY, [4], 'proto'),
+            combined_fixtures.finding('outlier', ANALYTICAL, [0, 2], 'rate'), combined_fixtures.finding('outlier', ANALYTICAL, [2], 'dur')]
+        overview = quality_overview(combined_fixtures.quality_fixture(issues), 5)
         self.assertEqual(overview['missing_values']['occurrences'], 4)
         self.assertEqual(overview['missing_values']['affected_records'], 3)
         self.assertEqual(overview['duplicates']['affected_records'], 1)
@@ -136,8 +136,8 @@ class ResponseTests(unittest.TestCase):
         self.assertEqual(self.raw, original)
 
     def test_summary_column_details_bounded(self):
-        issues = [phase8.finding('missing', QUALITY, [0], 'column' + str(i)) for i in range(200)]
-        result = quality_overview(phase8.quality_fixture(issues), 1)
+        issues = [combined_fixtures.finding('missing', QUALITY, [0], 'column' + str(i)) for i in range(200)]
+        result = quality_overview(combined_fixtures.quality_fixture(issues), 1)
         self.assertEqual(result['missing_values']['occurrences'], 200)
         self.assertEqual(len(result['missing_values']['by_column']), 100)
         self.assertTrue(result['missing_values']['columns_truncated'])

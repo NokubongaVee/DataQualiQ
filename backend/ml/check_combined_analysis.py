@@ -22,7 +22,7 @@ def main():
         'schema_audit': result['schema_audit'], 'policy': result['reliability_policy'],
         'sample_records': result['records'], 'response_bytes': len(json.dumps(result).encode()),
         'no_fit_methods_called': True}
-    output = root / 'docs/phase8/functional_validation.json'
+    output = root / 'artifacts/combined_analysis_validation.json'
     output.parent.mkdir(parents=True, exist_ok=True)
     output.write_text(json.dumps(report, indent=2, allow_nan=False), encoding='utf-8')
     print(json.dumps(report['summary']), flush=True)

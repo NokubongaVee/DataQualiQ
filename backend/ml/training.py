@@ -132,7 +132,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--training', type=Path, default=root / 'data/UNSW_NB15_training-set.csv')
     parser.add_argument('--testing', type=Path, default=root / 'data/UNSW_NB15_testing-set.csv')
-    parser.add_argument('--summary', type=Path, default=root / 'docs/phase4/training.json')
+    parser.add_argument('--summary', type=Path, default=root / 'artifacts/model_training.json')
     args = parser.parse_args()
     run = run_official_training(args.training, args.testing)
     args.summary.parent.mkdir(parents=True, exist_ok=True)

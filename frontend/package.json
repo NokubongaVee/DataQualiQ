@@ -9,7 +9,10 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "test": "node --test src/components/IssueCard.test.js src/utils/affectedValues.test.js src/utils/reviewOrder.test.js src/utils/navigation.test.js src/utils/assessmentResult.test.js src/utils/networkAnalysis.test.js statistics_audit.test.mjs",
-    "test:browser": "node network_browser_audit.mjs"
+    "test:browser": "node network_browser_audit.mjs",
+    "test:browser:system": "node system_audit.mjs",
+    "test:browser:pages": "node page_checks.mjs",
+    "test:browser:statistics": "node statistics_browser_audit.mjs"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.3.3",

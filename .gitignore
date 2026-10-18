@@ -33,3 +33,6 @@ credentials*.json
 github-publication/
 .DS_Store
 Thumbs.db
+
+# Generated model validation and experiment output
+/artifacts/

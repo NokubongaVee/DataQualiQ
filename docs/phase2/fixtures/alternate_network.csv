@@ -1,9 +1,0 @@
-protocol,duration_seconds,packets_sent,packets_received,bytes_sent,bytes_received
-tcp,0.1,2,1,100,50
-tcp,0.2,3,1,150,50
-tcp,0.1,2,1,100,50
- TCP ,0.1,2,1,100,50
-udp,0.5,4,0,200,0
-icmp,0.1,1,1,40,40
-newproto,999999,1000000,0,999999999,0
-udp,-1,bad,1.5,-10,0

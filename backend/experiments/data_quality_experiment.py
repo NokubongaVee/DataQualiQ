@@ -145,7 +145,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--dataset', type=Path, default=root / 'data/UNSW_NB15_testing-set.csv')
     parser.add_argument('--artifacts', type=Path, default=root / 'backend/models')
-    parser.add_argument('--output', type=Path, default=root / 'docs/phase16')
+    parser.add_argument('--output', type=Path, default=root / 'artifacts/controlled_experiment')
     parser.add_argument('--only-kind', choices=list(GROUPS))
     parser.add_argument('--baseline-results', type=Path)
     args = parser.parse_args()

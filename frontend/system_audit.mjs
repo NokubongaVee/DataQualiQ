@@ -1,4 +1,4 @@
-// Phases 10?11: real React/Edge upload checks, mocked boundaries and real backend.
+// Network integration: real React/Edge upload checks, mocked boundaries and real backend.
 import assert from 'node:assert/strict'
 import { createHash } from 'node:crypto'
 import { spawn, spawnSync } from 'node:child_process'
@@ -11,7 +11,7 @@ import { createServer } from 'vite'
 
 const frontend = path.dirname(fileURLToPath(import.meta.url))
 const project = path.resolve(frontend, '..')
-const temporary = await mkdtemp(path.join(tmpdir(), 'dataqualiq-phase10-'))
+const temporary = await mkdtemp(path.join(tmpdir(), 'dataqualiq-network-'))
 const delay = ms => new Promise(resolve => setTimeout(resolve, ms))
 async function until(fn, label) {
   const deadline = Date.now() + 600000
@@ -41,9 +41,9 @@ try {
   backend.stdout.on('data', data => { backendLog += data.toString() })
   backend.stderr.on('data', data => { backendLog += data.toString() })
   await until(async () => { try { return (await fetch(`http://127.0.0.1:${apiPort}/health`)).ok } catch { return false } }, 'backend startup')
-  process.env.VITE_API_BASE_URL = '/phase10-api'
+  process.env.VITE_API_BASE_URL = '/network-test-api'
   server = await createServer({ root: frontend, server: { host: '127.0.0.1', port: await freePort(), strictPort: true,
-    proxy: { '/phase10-api': { target: `http://127.0.0.1:${apiPort}`, changeOrigin: true, rewrite: value => value.replace(/^\/phase10-api/, '') } } } })
+    proxy: { '/network-test-api': { target: `http://127.0.0.1:${apiPort}`, changeOrigin: true, rewrite: value => value.replace(/^\/network-test-api/, '') } } } })
   await server.listen()
   browser = spawn(process.env.EDGE_PATH || 'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe', ['--headless=new', '--no-first-run', '--disable-gpu', '--remote-debugging-port=0', '--user-data-dir=' + temporary, 'about:blank'], { windowsHide: true, stdio: 'ignore' })
   const browserPort = await until(async () => { try { return (await readFile(path.join(temporary, 'DevToolsActivePort'), 'utf8')).split('\n')[0] } catch { return false } }, 'Edge startup')
@@ -84,7 +84,7 @@ try {
   await until(() => evaluate('!!document.querySelector("input[type=file]")'), 'upload screen')
   const mockPath = path.join(temporary, 'mock.csv')
   await writeFile(mockPath, 'a\n1\n')
-  const fixture = JSON.parse(await readFile(path.join(project, 'docs/phase9/functional_validation.json'), 'utf8')).response
+  const fixture = JSON.parse(await readFile(path.join(project, 'backend/test_data/network_analysis.json'), 'utf8')).response
   fixture.filename = 'mock.csv'
   await evaluate(`window.__originalFetch=window.fetch;window.__payload=${JSON.stringify(fixture)};window.__calls=[];window.__writes=[];window.__originalSetItem=Storage.prototype.setItem;Storage.prototype.setItem=function(key,value){window.__writes.push({key,length:value.length});return window.__originalSetItem.call(this,key,value)};window.fetch=(url,options)=>{window.__calls.push({url,file:options.body.get('file').name});return new Promise(resolve=>{window.__resolve=resolve})}`)
   for (const [width, height] of [[320, 667], [390, 844], [768, 1024], [1024, 768], [1366, 768], [1440, 900], [1920, 1080]]) {
@@ -93,9 +93,9 @@ try {
     assert.ok(await evaluate(`document.documentElement.scrollHeight <= ${height}`), `Upload vertical overflow at ${width}x${height}: ${await evaluate("document.documentElement.scrollHeight")}`)
     assert.ok(await evaluate('!!document.querySelector(".traffic-entry-layout") && !!document.querySelector("input[type=file]")'))
   }
-  await mkdir(path.join(project, 'docs/upload-design'), { recursive: true })
+  await mkdir(path.join(temporary, 'upload'), { recursive: true })
   const entryScreenshot = await call('Page.captureScreenshot', { format: 'png' })
-  await writeFile(path.join(project, 'docs/upload-design/desktop.png'), Buffer.from(entryScreenshot.data, 'base64'))
+  await writeFile(path.join(temporary, 'upload/desktop.png'), Buffer.from(entryScreenshot.data, 'base64'))
   await select(mockPath)
   // Invoke the actual React handler twice in one turn, before rendering can disable it.
   await evaluate(`(()=>{const b=[...document.querySelectorAll('button')].find(b=>b.textContent.trim()==='Analyse Network Traffic');const p=b[Object.keys(b).find(k=>k.startsWith('__reactProps'))];p.onClick();p.onClick()})()`)
@@ -136,14 +136,14 @@ try {
   const realPath = path.join(project, 'data/UNSW_NB15_testing-set.csv')
 
   await evaluate('window.fetch=window.__originalFetch;Storage.prototype.setItem=window.__originalSetItem;window.__realCalls=[];const realFetch=window.fetch;window.fetch=(url,options)=>{window.__realCalls.push(url);return realFetch(url,options)}')
-  const fixtureRun = spawnSync(path.join(project, 'backend/venv/Scripts/python.exe'), ['-B', path.join(project, 'docs/phase15/create_fixtures.py'), temporary], { cwd: project, encoding: 'utf8', windowsHide: true })
+  const fixtureRun = spawnSync(path.join(project, 'backend/venv/Scripts/python.exe'), ['-B', path.join(project, 'backend/test_data/create_network_fixtures.py'), temporary], { cwd: project, encoding: 'utf8', windowsHide: true })
   assert.equal(fixtureRun.status, 0, fixtureRun.stderr)
   const inputs = JSON.parse(fixtureRun.stdout)
   const cases = []
   const official = JSON.parse(await readFile(path.join(project, 'backend/models/model_metadata.json'), 'utf8'))
   const hashes = async () => Object.fromEntries(await Promise.all(Object.values(official.files).map(async info => [info.filename, createHash('sha256').update(await readFile(path.join(project, 'backend/models', info.filename))).digest('hex')])))
   const beforeHashes = await hashes()
-  const output = path.join(project, 'docs/phase15')
+  const output = path.join(temporary, 'system-validation')
   await mkdir(output, { recursive: true })
   const recordCase = async (name, input, expected, actual, passed = true, notes = '') => {
     cases.push({ name, input, expected, actual, passed, notes })
@@ -209,7 +209,7 @@ try {
   assert.equal(displayed, largeActive.records.filter(row => row.label === 'Malicious' && row.prediction_status !== 'Rejected').length)
   await recordCase('returned_page_filters', 'Current 100-row page; Malicious filter', 'Only supplied Malicious rows shown', { displayed })
   await click('Reports')
-  const exportDirectory = path.join(project, 'docs/phase15')
+  const exportDirectory = path.join(temporary, 'system-validation')
   await mkdir(exportDirectory, { recursive: true })
   await call('Browser.setDownloadBehavior', { behavior: 'allow', downloadPath: exportDirectory })
   await click('Export report PDF')
@@ -233,10 +233,10 @@ try {
   await recordCase('saved_inference_and_checksums', 'Real API process; fit and fit_transform forbidden', 'No fitting, saved artifacts unchanged', { fit_methods_forbidden: true, hashes: afterHashes })
   await writeFile(path.join(output, 'backend.log'), backendLog)
   const report = { browser: 'Headless Microsoft Edge, real React UI', checks: ['file selection', 'multipart request', 'approximate processing states', 'controls disabled', 'synchronous duplicate guard', 'structured memory state', 'summary-only storage', 'Dashboard and route navigation', 'refresh empty state', 'schema errors and retry', 'large result and forced storage quota failure', 'real backend upload'], real_backend_result: result, persisted_summary_bytes: summaryBytes, runtime_exceptions: exceptions }
-  await mkdir(path.join(project, 'docs/phase15'), { recursive: true })
-  await writeFile(path.join(project, 'docs/phase15/browser_validation.json'), JSON.stringify(report, null, 2))
+  await mkdir(path.join(temporary, 'system-validation'), { recursive: true })
+  await writeFile(path.join(temporary, 'system-validation/browser_validation.json'), JSON.stringify(report, null, 2))
   const screenshot = await call('Page.captureScreenshot', { format: 'png' })
-  await writeFile(path.join(project, 'docs/phase15/dashboard.png'), Buffer.from(screenshot.data, 'base64'))
+  await writeFile(path.join(temporary, 'system-validation/dashboard.png'), Buffer.from(screenshot.data, 'base64'))
   console.log('PASS: mocked UI boundaries, quota-safe memory/navigation, refresh and real frontend/backend upload')
   console.log(JSON.stringify({ real_backend_result: result, persisted_summary_bytes: summaryBytes }))
 } finally {

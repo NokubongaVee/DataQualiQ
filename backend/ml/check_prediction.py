@@ -30,7 +30,7 @@ def main():
             raise ValueError('Official artifact width differs.')
         training = load_csv((root / 'data/UNSW_NB15_training-set.csv').read_bytes()).iloc[:32].loc[:, features].copy()
         roundtrip = service.predict(training, limit=32)
-        reference = json.loads((root / 'docs/phase6/reload_verification.json').read_text(encoding='utf-8'))
+        reference = json.loads((root / 'backend/test_data/model_reload_reference.json').read_text(encoding='utf-8'))
         records = roundtrip['records']
         predictions = np.array([r['prediction'] for r in records], dtype=model.classes_.dtype)
         probabilities = np.array([[r['probability_normal'], r['probability_malicious']] for r in records])
@@ -42,7 +42,7 @@ def main():
         'sample_predictions': result['records'], 'response_bytes': len(json.dumps(result).encode()),
         'no_fit_methods_called': True, 'phase6_fingerprints_match': True,
         'model_probability_note': result['probability_description']}
-    output = root / 'docs/phase7/functional_validation.json'
+    output = root / 'artifacts/prediction_validation.json'
     output.parent.mkdir(parents=True, exist_ok=True)
     output.write_text(json.dumps(report, indent=2, allow_nan=False), encoding='utf-8')
     print(json.dumps(report['summary']), flush=True)

@@ -10,7 +10,7 @@ from .artifacts import load_artifacts, prediction_fingerprints
 
 def main():
     root = Path(__file__).resolve().parents[2]
-    verification_path = root / 'docs/phase6/reload_verification.json'
+    verification_path = root / 'backend/test_data/model_reload_reference.json'
     verification = json.loads(verification_path.read_text(encoding='utf-8'))
     model, preprocessor, metadata = load_artifacts(root / 'backend/models')
     frame = load_csv((root / 'data/UNSW_NB15_training-set.csv').read_bytes())
@@ -24,7 +24,9 @@ def main():
         raise ValueError('Fresh-process reload differs from pre-save outputs.')
     verification['fresh_process_reload_identical'] = True
     verification['fresh_process_fit_calls_forbidden'] = True
-    verification_path.write_text(json.dumps(verification, indent=2), encoding='utf-8')
+    output_path = root / 'artifacts/model_reload_verification.json'
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    output_path.write_text(json.dumps(verification, indent=2), encoding='utf-8')
     print('Fresh-process transform, prediction and probability fingerprints match; no fitting.', flush=True)
 
 

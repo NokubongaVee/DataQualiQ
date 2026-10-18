@@ -7,7 +7,7 @@ import { createServer } from 'vite'
 import { getIntrusionResults, percentage } from './src/utils/intrusionResults.js'
 import { normalizeAssessmentResult } from './src/utils/assessmentResult.js'
 
-const results = JSON.parse(await readFile(new URL('../docs/statistics-audit/results.json', import.meta.url), 'utf8'))
+const results = JSON.parse(await readFile(new URL('../backend/test_data/statistics/results.json', import.meta.url), 'utf8'))
 let server, Overview, Chart, Quality, Upload, Pages
 before(async () => {
   server = await createServer({ server: { middlewareMode: true, hmr: false, ws: false }, appType: 'custom' })
@@ -20,7 +20,7 @@ const render = (component, props) => renderToStaticMarkup(React.createElement(co
 const plain = html => html.replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ')
 const expectedCards = { clean: [0,0,0,0], missing: [3,0,0,0], duplicates: [0,3,0,0], invalid: [0,0,3,0], outlier: [0,0,0,1], mixed: [3,0,3,1], many_fields: [7,0,0,0], all_missing: [60,0,0,0] }
 
-const network = JSON.parse(await readFile(new URL('../docs/phase9/functional_validation.json', import.meta.url), 'utf8')).response
+const network = JSON.parse(await readFile(new URL('../backend/test_data/network_analysis.json', import.meta.url), 'utf8')).response
 test('combined Dashboard uses real sections without workflow boxes or the placeholder', () => {
   const html = render(Overview, { result: network })
   const text = plain(html)
@@ -112,7 +112,7 @@ test('field chart fractions, empty chart, and collision-safe Other grouping rema
     assert.equal(arcs.length, counts.length)
     arcs.forEach((arc,index) => assert.ok(Math.abs(Number(arc[1])/Number(arc[2])-counts[index].count/5)<1e-12))
   }
-  const result = JSON.parse(await readFile(new URL('../docs/statistics-audit/other-column-result.json', import.meta.url), 'utf8'))
+  const result = JSON.parse(await readFile(new URL('../backend/test_data/statistics/other-column-result.json', import.meta.url), 'utf8'))
   const html = render(Quality, { result })
   assert.equal((html.match(/<article/g) || []).length, 4)
   assert.ok(plain(html).includes('Other 2 finding occurrences · Affected values 2'))

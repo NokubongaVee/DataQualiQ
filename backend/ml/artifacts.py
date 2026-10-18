@@ -191,11 +191,11 @@ def main():
     root = Path(__file__).resolve().parents[2]
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--training', type=Path, default=root / 'data/UNSW_NB15_training-set.csv')
-    parser.add_argument('--evaluation', type=Path, default=root / 'docs/phase5/evaluation.json')
+    parser.add_argument('--evaluation', type=Path, default=root / 'backend/models/selection_reference.json')
     parser.add_argument('--output', type=Path, default=root / 'backend/models')
     args = parser.parse_args()
     verification = persist_selected(args.training, args.evaluation, args.output)
-    report_path = root / 'docs/phase6/reload_verification.json'
+    report_path = root / 'artifacts/model_reload_verification.json'
     report_path.parent.mkdir(parents=True, exist_ok=True)
     report_path.write_text(json.dumps(verification, indent=2), encoding='utf-8')
     print(json.dumps(verification), flush=True)

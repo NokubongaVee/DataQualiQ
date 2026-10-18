@@ -19,7 +19,7 @@ missing = base.copy(); missing.loc[0, 'dur'] = ''; missing.loc[1, 'service'] = '
 save('missing_values', missing, 'Missing dur numeric and service categorical cells', 'Missing findings, saved handling and Review; predictions retained')
 invalid = base.copy(); invalid.loc[0, 'dur'] = '-1'
 save('invalid_numeric', invalid, 'Negative duration violates structural nonnegative rule', 'Invalid finding, rejected row with null class/probability')
-unseen = base.copy(); unseen.loc[0, 'proto'] = 'phase15-unseen-proto'
+unseen = base.copy(); unseen.loc[0, 'proto'] = 'unseen-test-proto'
 save('unseen_category', unseen, 'Structurally valid unseen protocol token', 'Unseen audit, saved encoding, Review without retraining')
 extreme = base.copy(); extreme.loc[len(extreme)-1, 'dur'] = '100000000'
 save('analytical_outlier', extreme, 'Valid extreme duration in last row', 'Analytical finding; no rejection or reliability downgrade solely for outlier')

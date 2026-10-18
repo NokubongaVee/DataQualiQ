@@ -54,4 +54,4 @@ def merge(output):
 
 
 if __name__ == '__main__':
-    merge(Path(__file__).resolve().parents[2] / 'docs/phase16')
+    merge(Path(__file__).resolve().parents[2] / 'artifacts/controlled_experiment')

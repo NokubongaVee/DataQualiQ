@@ -88,7 +88,7 @@ try {
   // an actual same-origin Vite endpoint, preserving the unchanged app API call.
   await call('Fetch.disable')
   await evaluate('window.originalFetch = window.fetch; window.fetch = async (url, options) => { const response = await window.originalFetch(String(url).includes("localhost:8000/assess") ? "/audit-assess" : url, options); if (response.ok) window.auditResult = await response.clone().json(); return response }')
-  const fixtures = path.resolve(frontend, '../docs/statistics-audit/fixtures')
+  const fixtures = path.resolve(frontend, '../backend/test_data/statistics/fixtures')
   await selectFile(path.join(fixtures, 'mixed.csv'))
   await click('Analyse Network Traffic')
   await until(() => evaluate('!!sessionStorage.getItem("assessmentSummary") && !document.querySelector("input[type=file]")'), 'real upload and dashboard')

@@ -68,7 +68,7 @@ def main():
             report = {'validation': {'input': 'First 1000 official testing rows; predictive projection only, no labels',
                 'actual_http_endpoint': '/analyze-network?offset=0&limit=10',
                 'fit_methods_forbidden_in_api_process': True, 'response_bytes': len(raw)}, 'response': result}
-            output = root / 'docs/phase9/functional_validation.json'
+            output = root / 'artifacts/api_validation.json'
             output.parent.mkdir(parents=True, exist_ok=True)
             output.write_text(json.dumps(report, indent=2, allow_nan=False), encoding='utf-8')
             print(json.dumps({'intrusion_summary': result['intrusion_summary'],

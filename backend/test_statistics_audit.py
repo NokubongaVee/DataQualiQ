@@ -13,7 +13,7 @@ from csv_loading import load_csv
 from profiling import profile_column
 from validity_checks import check_date_validity, check_phone_validity, check_currency_validity
 
-ROOT = Path(__file__).resolve().parents[1] / 'docs/statistics-audit'
+ROOT = Path(__file__).resolve().parents[1] / 'backend/test_data/statistics'
 # Expected findings are derived from the intentionally edited CSV cells.
 EXPECTED = {
  'clean': (100, 'A', []),

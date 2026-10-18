@@ -1,4 +1,4 @@
-"""Phase 2 behavioural invariants, using generic and alternate network schemas."""
+"""Network preprocessing behavioural invariants, using generic and alternate network schemas."""
 import asyncio
 import io
 import json
@@ -35,7 +35,7 @@ def network_frame():
         'truth': ['0'] * 5 + ['1'] * 4 + [''], 'attack_kind': ['Normal'] * 5 + ['Other'] * 5})
 
 
-class Phase2Tests(unittest.TestCase):
+class NetworkPreprocessingTests(unittest.TestCase):
     def test_generic_missing_duplicates_and_representation(self):
         frame = pd.DataFrame({'customer': ['A', 'A', 'B'], 'category': [' Gold ', 'gold', ''], 'amount': ['1', '1', 'NA']})
         self.assertEqual(check_missing(frame, 'amount')['row_indices'], [2])
